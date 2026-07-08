@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>伦敦住宿候选报告｜2026.8.21-8.25</title>
+  <title>英国行程住宿候选｜2026.8.21-8.31</title>
   <style>
     :root {
       --bg: #f6f4ef;
@@ -44,7 +44,6 @@
     h1 { margin: 0 0 10px; font-size: 34px; letter-spacing: 0; }
     h2 { margin: 0 0 12px; font-size: 24px; letter-spacing: 0; }
     h3 { margin: 0 0 8px; font-size: 19px; letter-spacing: 0; }
-    h4 { margin: 0 0 6px; font-size: 15px; letter-spacing: 0; }
     p { margin: 0 0 9px; }
     main { padding: 22px; }
     .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
@@ -79,7 +78,7 @@
     .tab-button.active { background: var(--navy); border-color: var(--navy); color: white; }
     .panel { display: none; }
     .panel.active { display: block; }
-    .notice {
+    .note {
       background: var(--soft-warn);
       border: 1px solid #e1bf78;
       color: #5d3c05;
@@ -93,7 +92,7 @@
       gap: 12px;
       margin: 0 0 18px;
     }
-    .quick-card, .option, .mini {
+    .quick-card, .option, .mini, .block {
       background: var(--paper);
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -102,14 +101,14 @@
     .quick-card { padding: 13px 14px; box-shadow: none; }
     .quick-card strong { display: block; font-size: 19px; color: var(--navy); }
     .quick-card span { color: var(--muted); font-size: 13px; }
-    .option {
-      margin: 0 0 18px;
-      overflow: hidden;
+    .block { margin: 0 0 18px; overflow: hidden; }
+    .block-head {
+      padding: 15px 18px;
+      border-bottom: 1px solid var(--line);
+      background: #fbfaf5;
     }
-    .option.over {
-      border-color: #d8968e;
-      background: #fff9f7;
-    }
+    .option { margin: 0 0 18px; overflow: hidden; }
+    .option.over { border-color: #d8968e; background: #fff9f7; }
     .head {
       display: grid;
       grid-template-columns: 292px minmax(0, 1fr);
@@ -165,6 +164,27 @@
     }
     .badge.warn { background: var(--amber); }
     .badge.red { background: var(--red); }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      padding: 14px;
+    }
+    .choice {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .choice img {
+      width: 100%;
+      height: 128px;
+      object-fit: cover;
+      display: block;
+      background: #ddd6ca;
+    }
+    .choice-body { padding: 11px; }
+    .choice h3 { font-size: 16px; }
     .meta {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -195,10 +215,6 @@
     .body { padding: 16px 18px; border-top: 1px solid var(--line); }
     .grid2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
     .mini { padding: 12px; box-shadow: none; }
-    table { width: 100%; border-collapse: collapse; background: white; border: 1px solid var(--line); font-size: 14px; }
-    th, td { text-align: left; vertical-align: top; padding: 9px 10px; border-bottom: 1px solid var(--line); }
-    th { background: var(--soft); color: var(--navy); white-space: nowrap; }
-    tr:last-child td { border-bottom: 0; }
     .routes {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -214,7 +230,7 @@
     .route small { display: block; color: var(--muted); margin-top: 5px; }
     .fine { color: var(--muted); font-size: 13px; }
     @media (max-width: 920px) {
-      .quick, .head, .meta, .grid2, .routes { grid-template-columns: 1fr; }
+      .quick, .head, .meta, .grid2, .routes, .cards { grid-template-columns: 1fr; }
       h1 { font-size: 28px; }
       .photo { min-height: 225px; }
     }
@@ -223,12 +239,12 @@
 <body>
   <header>
     <div class="wrap">
-      <h1>伦敦住宿候选报告</h1>
-      <p>日期：2026 年 8 月 21 日入住，8 月 25 日退房。这里按“能不能少折腾、床是不是真能睡、交通是否顺手、订房来源是否靠谱”来排。</p>
+      <h1>英国行程住宿候选</h1>
+      <p>2026 年 8 月 21 日到 8 月 31 日。重点城市：伦敦、曼彻斯特、剑桥/Duxford、多佛/坎特伯雷。</p>
       <div class="chips">
-        <span class="chip">Plan A：8/21 单人 + 8/22-25 三人</span>
-        <span class="chip">Plan B：8/21-25 全程三人</span>
-        <span class="chip">酒店与 Airbnb 都纳入</span>
+        <span class="chip">伦敦前段：8/21-8/25</span>
+        <span class="chip">曼彻斯特：8/25-8/27</span>
+        <span class="chip">伦敦后段：8/27-8/31</span>
         <span class="chip">价格统一换算成人民币</span>
       </div>
     </div>
@@ -237,271 +253,308 @@
   <main>
     <div class="wrap">
       <nav class="tabs" role="tablist">
-        <button class="tab-button active" data-tab="planA" type="button">Plan A｜1+3 分段住</button>
-        <button class="tab-button" data-tab="planB" type="button">Plan B｜全程三人间</button>
+        <button class="tab-button active" data-tab="londonSplit" type="button">伦敦 1+3</button>
+        <button class="tab-button" data-tab="londonAll" type="button">伦敦全程三人</button>
+        <button class="tab-button" data-tab="manchester" type="button">曼彻斯特 8/25-27</button>
+        <button class="tab-button" data-tab="londonReturn" type="button">伦敦后段 8/27-31</button>
       </nav>
 
-      <section id="planA" class="panel active">
-        <div class="notice">
-          Plan A 的重点：21 号一个人先落地，22 号另外两人到。最舒服的不是账面最便宜，而是 21 号先到的人能把箱子安顿好，22 号集合时不用拖着行李穿城换住处。这里仍然放入 ¥1600-2500/晚的三人段；超过 ¥2500/晚会标红，不作为优先推荐。
-        </div>
+      <section id="londonSplit" class="panel active">
         <div class="quick">
-          <div class="quick-card"><strong>最省事</strong><span>Royal National 接续住，21 号和 22-25 都在同一家</span></div>
-          <div class="quick-card"><strong>最贴预算</strong><span>Star Hotel 接续住，三人段约 ¥1786/晚</span></div>
-          <div class="quick-card"><strong>Airbnb 增补</strong><span>Queens Park、Camden、Earl's Court、West Kensington 都已补入</span></div>
-          <div class="quick-card"><strong>红色</strong><span>超过 ¥2500/晚或风险明显，不优先订</span></div>
+          <div class="quick-card"><strong>D1 单人</strong><span>8/21-8/22，一人先到伦敦</span></div>
+          <div class="quick-card"><strong>D2-D5 三人</strong><span>8/22-8/25，三人同住</span></div>
+          <div class="quick-card"><strong>Airbnb</strong><span>以口碑稳定、床位清楚的房源为主</span></div>
+          <div class="quick-card"><strong>交通</strong><span>Euston / 国王十字一带最省事</span></div>
+        </div>
+
+        <div class="block">
+          <div class="block-head">
+            <h2>D1｜8/21 单人住宿备选</h2>
+            <p>这几个都适合一个人先到伦敦住一晚。优先选 Euston / Russell Square / Bloomsbury 一带，22 号和另外两人集合更轻松。</p>
+          </div>
+          <div class="cards">
+            <div class="choice">
+              <img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/56bee051.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Royal National Hotel">
+              <div class="choice-body">
+                <h3>Royal National Hotel</h3>
+                <p><b>房型</b> Twin Room，2 Twin Beds。约 ¥1210/晚。</p>
+                <p><b>交通</b> 到 Euston 步行/公交约 8 分钟，打车约 3 分钟。</p>
+                <p><a href="https://www.expedia.com/London-Hotels-The-Royal-National-Hotel.h55001.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1">Expedia</a> · <a href="https://www.booking.com/hotel/gb/royal-national.html">Booking</a></p>
+              </div>
+            </div>
+            <div class="choice">
+              <img src="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/93788716.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Star Hotel">
+              <div class="choice-body">
+                <h3>Star Hotel</h3>
+                <p><b>房型</b> Single Room，1 Twin Bed。约 ¥932/晚。</p>
+                <p><b>交通</b> 到 Euston 公共交通约 39 分钟，打车约 18 分钟。</p>
+                <p><a href="https://www.expedia.com/London-Hotels-Star-Hotel-Bed-Breakfast.h888617.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1">Expedia</a> · <a href="https://www.booking.com/hotel/gb/star-hotel.html">Booking</a></p>
+              </div>
+            </div>
+            <div class="choice">
+              <img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/e57c5389.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="City Sleeper / Royal National area">
+              <div class="choice-body">
+                <h3>City Sleeper / Bedford Way 一带</h3>
+                <p><b>房型</b> 单人/双人房按当天下单页确认。Royal National 同区域。</p>
+                <p><b>交通</b> 到 Euston、Russell Square、国王十字都短。</p>
+                <p><a href="https://www.expedia.com/London-Hotels-City-Sleeper-At-Royal-National-Hotel.h91228514.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1">Expedia</a></p>
+              </div>
+            </div>
+            <div class="choice">
+              <img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/e57c5389.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Tavistock / Bloomsbury area">
+              <div class="choice-body">
+                <h3>Tavistock / Bloomsbury 一带</h3>
+                <p><b>房型</b> 单人或双人基础房，适合 D1 过渡。</p>
+                <p><b>交通</b> 靠 Russell Square，第二天去三人房或 Euston 都方便。</p>
+                <p><a href="https://www.expedia.com/London-Hotels-Tavistock-Hotel.h54849.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1">Expedia</a></p>
+              </div>
+            </div>
+            <div class="choice">
+              <img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/4114400d.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="President Hotel">
+              <div class="choice-body">
+                <h3>President Hotel</h3>
+                <p><b>房型</b> 单人/双人房按下单页确认。</p>
+                <p><b>交通</b> Russell Square 附近，适合与 Royal National / Bloomsbury 三人段衔接。</p>
+                <p><a href="https://www.expedia.com/London-Hotels-President-Hotel.h25275.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1">Expedia</a></p>
+              </div>
+            </div>
+            <div class="choice">
+              <img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/ebc0dda5.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="George Hotel">
+              <div class="choice-body">
+                <h3>George Hotel</h3>
+                <p><b>房型</b> 单人/双人基础房，需确认是否共用卫浴。</p>
+                <p><b>交通</b> Russell Square 约 5 分钟，Euston 约 8 分钟步行。</p>
+                <p><a href="https://www.expedia.com/London-Hotels-George-Hotel.h1876169.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1">Expedia</a></p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <article class="option">
           <div class="head">
             <div class="photo">
-              <img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/dfc6cfd7.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Royal National room">
+              <img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/dfc6cfd7.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Royal National Triple Room">
               <div class="links">
-                <a href="https://www.expedia.com/London-Hotels-The-Royal-National-Hotel.h55001.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&x_pwa=1&useRewards=false&rm1=a1&regionId=178279&destination=London%2C%20England%2C%20United%20Kingdom&destType=MARKET&selected=55001&sort=RECOMMENDED">21号单人</a>
-                <a href="https://www.expedia.com/London-Hotels-The-Royal-National-Hotel.h55001.Hotel-Information?chkin=2026-08-22&chkout=2026-08-25&x_pwa=1&useRewards=false&rm1=a3&regionId=178279&destination=London%2C%20England%2C%20United%20Kingdom&destType=MARKET&selected=55001&sort=RECOMMENDED">22-25三人</a>
+                <a href="https://www.expedia.com/London-Hotels-The-Royal-National-Hotel.h55001.Hotel-Information?chkin=2026-08-22&chkout=2026-08-25&rm1=a3">Expedia</a>
                 <a href="https://www.booking.com/hotel/gb/royal-national.html">Booking</a>
+                <a href="https://www.imperialhotels.co.uk/hotels/royal-national-hotel/rooms/triple-room/53-27/">官网房型</a>
               </div>
             </div>
             <div>
               <div class="title-row">
                 <div>
-                  <h2>A1｜Royal National 接续住</h2>
-                  <p>21 号单人先住 Royal National，22 号换/接到同酒店 Triple Room。行李、集合、去 Euston 都最顺。</p>
+                  <h2>D2-D5｜Royal National Hotel｜Triple Room</h2>
+                  <p>8/22-8/25 三人住。位置对 Euston、HP Tour 换乘、市中心步行都最顺。</p>
                 </div>
                 <span class="badge">首选</span>
               </div>
               <div class="meta">
-                <div class="pill"><b>总价估算</b>约 ¥5705</div>
-                <div class="pill"><b>三人段</b>约 ¥1498/晚</div>
+                <div class="pill"><b>价格</b>约 ¥4495 / 3 晚</div>
+                <div class="pill"><b>每晚</b>约 ¥1498</div>
                 <div class="pill"><b>床</b>3 Twin Beds</div>
-                <div class="pill"><b>退款</b>三人段 8/19 前可退</div>
+                <div class="pill"><b>退款</b>8/19 前可退</div>
               </div>
               <div class="tags">
-                <span class="tag good">22-25 抓取显示还有 4 间</span>
-                <span class="tag good">无 sofa bed</span>
-                <span class="tag good">24小时前台，行李衔接最稳</span>
+                <span class="tag good">三张单人床</span>
+                <span class="tag good">24 小时前台</span>
+                <span class="tag good">行李衔接最简单</span>
               </div>
             </div>
           </div>
           <div class="body grid2">
-            <div class="mini">
-              <h3>房型</h3>
-              <p>8/21-8/22：Twin Room，2 张单人床，约 ¥1210。8/22-8/25：Triple Room，3 张单人床，约 ¥4495。</p>
-              <p>设施：Free WiFi、冰箱、桌子、熨斗/熨衣板；酒店有餐厅、早餐、24/7 前台。</p>
-            </div>
-            <div class="mini">
-              <h3>交通</h3>
-              <div class="routes">
-                <div class="route"><b>酒店 → Euston</b>步行/公交约 8 分钟；打车约 3 分钟。<small>适合 8/25 拖箱子去火车站。</small></div>
-                <div class="route"><b>酒店 → Harry Potter</b>地铁/火车到 Watford Junction 约 35 分钟，再 shuttle 约 15 分钟；打车约 39 分钟。</div>
-                <div class="route"><b>酒店 → Tower Bridge</b>Russell Square / Euston 一带转地铁或公交约 33 分钟；打车约 17 分钟。</div>
-                <div class="route"><b>酒店 → Big Ben</b>地铁/公交约 25 分钟；打车约 10 分钟。</div>
-              </div>
-            </div>
+            <div class="mini"><h3>房间</h3><p>Triple Room，约 269 sq ft，Free WiFi、冰箱、桌子、熨斗/熨衣板。早餐可加购。</p></div>
+            <div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>到 Euston</b>步行/公交约 8 分钟；打车约 3 分钟。</div><div class="route"><b>到 HP Tour</b>到 Watford Junction 约 35 分钟，再接 shuttle 约 15 分钟。</div><div class="route"><b>到 Tower Bridge</b>公共交通约 33 分钟；打车约 17 分钟。</div><div class="route"><b>到 Big Ben</b>公共交通约 25 分钟；打车约 10 分钟。</div></div></div>
           </div>
         </article>
 
         <article class="option">
           <div class="head">
             <div class="photo">
-              <img src="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/6268d8f6.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Star Hotel room">
-              <div class="links">
-                <a href="https://www.expedia.com/London-Hotels-Star-Hotel-Bed-Breakfast.h888617.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&x_pwa=1&useRewards=false&rm1=a1&regionId=178279&destination=London%2C%20England%2C%20United%20Kingdom&destType=MARKET">21号单人</a>
-                <a href="https://www.expedia.com/London-Hotels-Star-Hotel-Bed-Breakfast.h888617.Hotel-Information?chkin=2026-08-22&chkout=2026-08-25&x_pwa=1&useRewards=false&rm1=a3&regionId=178279&destination=London%2C%20England%2C%20United%20Kingdom&destType=MARKET">22-25三人</a>
-                <a href="https://www.booking.com/hotel/gb/star-hotel.html">Booking</a>
-              </div>
+              <img src="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/6268d8f6.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Star Hotel Quadruple Room">
+              <div class="links"><a href="https://www.expedia.com/London-Hotels-Star-Hotel-Bed-Breakfast.h888617.Hotel-Information?chkin=2026-08-22&chkout=2026-08-25&rm1=a3">Expedia</a><a href="https://www.booking.com/hotel/gb/star-hotel.html">Booking</a></div>
             </div>
             <div>
-              <div class="title-row">
-                <div>
-                  <h2>A2｜Star Hotel 接续住</h2>
-                  <p>21 号 Single Room，22-25 接 Quadruple Room。评分高，三人段价格在合理区间，但每天去 Euston 比 Royal National 远。</p>
-                </div>
-                <span class="badge">预算内</span>
-              </div>
-              <div class="meta">
-                <div class="pill"><b>总价估算</b>约 ¥6290</div>
-                <div class="pill"><b>三人段</b>约 ¥1786/晚</div>
-                <div class="pill"><b>床</b>1 Double + 2 Twin</div>
-                <div class="pill"><b>退款</b>三人段加价可 8/19 前退</div>
-              </div>
-              <div class="tags">
-                <span class="tag good">22-25 抓取只剩 1 间</span>
-                <span class="tag good">无 sofa bed</span>
-                <span class="tag warn">无电梯，晚到需提前联系</span>
-              </div>
+              <div class="title-row"><div><h2>D2-D5｜Star Hotel｜Quadruple Room</h2><p>西伦敦小型酒店，评分高，三人睡眠面更宽；去 Euston/国王十字比 Bloomsbury 远。</p></div><span class="badge">稳妥</span></div>
+              <div class="meta"><div class="pill"><b>价格</b>约 ¥5358 / 3 晚</div><div class="pill"><b>每晚</b>约 ¥1786</div><div class="pill"><b>床</b>1 Double + 2 Twin</div><div class="pill"><b>退款</b>加价可 8/19 前退</div></div>
+              <div class="tags"><span class="tag good">真实床位</span><span class="tag good">评分 9.0/10</span><span class="tag warn">无电梯</span></div>
             </div>
           </div>
-          <div class="body grid2">
-            <div class="mini"><h3>房型</h3><p>8/21-8/22：Single Room，1 张单人床。8/22-8/25：Quadruple Room，1 张双人床 + 2 张单人床，约 213 sq ft。</p><p>设施：Free WiFi、冰箱、桌子、遮光窗帘；小型酒店/B&B 风格。</p></div>
-            <div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>酒店 → Euston</b>公共交通约 39 分钟；打车约 18 分钟。</div><div class="route"><b>酒店 → Harry Potter</b>公共交通约 1小时29分；打车约 39 分钟。</div><div class="route"><b>酒店 → Tower Bridge</b>公共交通约 50 分钟；打车约 31 分钟。</div><div class="route"><b>Heathrow → 酒店</b>Piccadilly line 方向公共交通约 58 分钟；打车约 25 分钟。</div></div></div>
-          </div>
-        </article>
-
-        <article class="option">
-          <div class="head">
-            <div class="photo">
-              <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1706365638853922255/original/9609dd2f-8236-4f47-90de-6f1b96e30672.jpeg?im_w=960" alt="Queens Park Airbnb">
-              <div class="links">
-                <a href="https://zh.airbnb.com/rooms/1706365638853922255?adults=3&check_in=2026-08-22&check_out=2026-08-25">Airbnb 22-25</a>
-                <a href="https://zh.airbnb.com/rooms/1706365638853922255?adults=3&check_in=2026-08-21&check_out=2026-08-25">Airbnb 21-25</a>
-              </div>
-            </div>
-            <div>
-              <div class="title-row"><div><h2>A3｜21号 Royal National + Queens Park Airbnb</h2><p>21 号先住 Royal National，22-25 搬到 Queens Park 两卧公寓。价格好，但床型和安全设施要谨慎确认。</p></div><span class="badge warn">便宜但需确认</span></div>
-              <div class="meta">
-                <div class="pill"><b>组合总价</b>约 ¥5829</div>
-                <div class="pill"><b>三人段</b>¥110,511 JPY ≈ ¥4619，约 ¥1540/晚</div>
-                <div class="pill"><b>床</b>2 卧室，2 张床，床型未完全展开</div>
-                <div class="pill"><b>退款</b>Airbnb 显示免费取消</div>
-              </div>
-              <div class="tags"><span class="tag warn">新房源，仅 1 条评价</span><span class="tag warn">未报告烟雾/一氧化碳报警器</span><span class="tag good">无 sofa bed 字样</span></div>
-            </div>
-          </div>
-          <div class="body grid2">
-            <div class="mini"><h3>房源</h3><p>整套出租单元，2 卧室，2 张床，1 卫，厨房、电视、洗衣机、内部付费停车。3 人睡两张床，默认需要两人同床。</p></div>
-            <div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>Airbnb → Oxford Circus</b>房源描述称步行约 5 分钟到地铁，约 15 分钟到 Oxford Circus。</div><div class="route"><b>Airbnb → Euston</b>地铁通常需换乘，约 25-35 分钟；打车约 20-30 分钟。</div><div class="route"><b>Airbnb → Harry Potter</b>去 Watford Junction 方向需换乘，公共交通保守 1 小时以上。</div><div class="route"><b>行李</b>民宿没有前台寄存保障，22 号入住前能否放箱子需问房东。</div></div></div>
-          </div>
+          <div class="body grid2"><div class="mini"><h3>房间</h3><p>Quadruple Room，约 213 sq ft，Free WiFi、冰箱、桌子、遮光窗帘。</p></div><div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>到 Euston</b>公共交通约 39 分钟；打车约 18 分钟。</div><div class="route"><b>到 HP Tour</b>公共交通约 1小时29分；打车约 39 分钟。</div><div class="route"><b>到 Tower Bridge</b>公共交通约 50 分钟；打车约 31 分钟。</div><div class="route"><b>到 Heathrow</b>公共交通约 58 分钟；打车约 25 分钟。</div></div></div></div>
         </article>
 
         <article class="option">
           <div class="head">
             <div class="photo">
               <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1534865615026164814/original/2e84e3d5-94e2-4a94-a592-cdab6f9f5350.jpeg?im_w=960" alt="Camden Airbnb">
-              <div class="links">
-                <a href="https://zh.airbnb.com/rooms/1534865615026164814?adults=3&check_in=2026-08-22&check_out=2026-08-25">Airbnb 22-25</a>
-                <a href="https://zh.airbnb.com/rooms/1534865615026164814?adults=3&check_in=2026-08-21&check_out=2026-08-25">Airbnb 21-25</a>
-              </div>
+              <div class="links"><a href="https://zh.airbnb.com/rooms/1534865615026164814?adults=3&check_in=2026-08-22&check_out=2026-08-25">Airbnb</a></div>
             </div>
             <div>
-              <div class="title-row"><div><h2>A4｜21号 Royal National + Camden / Mornington Crescent Airbnb</h2><p>22-25 住靠近 Mornington Crescent 的两卧两卫 Airbnb，去 Euston/国王十字比西伦敦民宿顺。</p></div><span class="badge">Airbnb 推荐</span></div>
-              <div class="meta">
-                <div class="pill"><b>组合总价</b>约 ¥8464</div>
-                <div class="pill"><b>三人段</b>¥173,534 JPY ≈ ¥7254，约 ¥2418/晚</div>
-                <div class="pill"><b>床</b>1 张 1.8m + 1 张 1.35m</div>
-                <div class="pill"><b>退款</b>搜索页显示免费取消</div>
-              </div>
-              <div class="tags"><span class="tag good">2 卫生间</span><span class="tag good">4.89 / 37 条评价</span><span class="tag warn">两张床，三人中两人需同床</span></div>
+              <div class="title-row"><div><h2>D2-D5｜Camden / Mornington Crescent Airbnb</h2><p>2 卧 2 卫，靠近 Mornington Crescent。去 Euston/国王十字比西伦敦民宿更顺。</p></div><span class="badge">Airbnb</span></div>
+              <div class="meta"><div class="pill"><b>价格</b>¥173,534 JPY ≈ ¥7254</div><div class="pill"><b>每晚</b>约 ¥2418</div><div class="pill"><b>床</b>1 张 1.8m + 1 张 1.35m</div><div class="pill"><b>退款</b>搜索页显示免费取消</div></div>
+              <div class="tags"><span class="tag good">4.89 / 37 条评价</span><span class="tag good">2 个卫生间</span><span class="tag warn">三人中两人需同床</span></div>
             </div>
           </div>
-          <div class="body grid2">
-            <div class="mini"><h3>房源</h3><p>整套出租单元，2 卧室，2 张床，2 卫。厨房、洗衣机、洗碗机、全尺寸冰箱、快速 WiFi。房源说明提到一楼，无需楼梯。</p></div>
-            <div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>Airbnb → Mornington Crescent</b>房源称地铁站仅几步之遥。</div><div class="route"><b>Airbnb → Euston</b>Northern line 或步行/短途打车，约 10-18 分钟区间。</div><div class="route"><b>Airbnb → Tower Bridge</b>Northern/Jubilee 或公交换乘，约 35-45 分钟；打车约 20-30 分钟。</div><div class="route"><b>Airbnb → Harry Potter</b>去 Euston 再到 Watford Junction，整体通常比西伦敦 Airbnb 更顺。</div></div></div>
-          </div>
+          <div class="body grid2"><div class="mini"><h3>房源</h3><p>整套出租单元，厨房、洗衣机、洗碗机、全尺寸冰箱、快速 WiFi。页面说明位于一楼。</p></div><div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>到 Euston</b>Northern line / 步行 / 短途打车约 10-18 分钟。</div><div class="route"><b>到 HP Tour</b>先到 Euston，再去 Watford Junction。</div><div class="route"><b>到 Tower Bridge</b>公共交通约 35-45 分钟；打车约 20-30 分钟。</div><div class="route"><b>到西区</b>Northern line 方向较顺。</div></div></div></div>
         </article>
 
         <article class="option">
           <div class="head">
             <div class="photo">
               <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1077431780373331051/original/6484fff8-a2aa-4b16-a94c-225321d4b6e3.jpeg?im_w=960" alt="West Kensington Airbnb">
-              <div class="links"><a href="https://zh.airbnb.com/rooms/1077431780373331051?adults=3&check_in=2026-08-22&check_out=2026-08-25">Airbnb 22-25</a></div>
+              <div class="links"><a href="https://zh.airbnb.com/rooms/1077431780373331051?adults=3&check_in=2026-08-22&check_out=2026-08-25">Airbnb</a></div>
             </div>
             <div>
-              <div class="title-row"><div><h2>A5｜21号 Royal National + West Kensington Airbnb</h2><p>22-25 搬到 West Kensington，两卧三床，价格在区间内；比 Queens Park 更像三人可分开睡，但去 Euston 较远。</p></div><span class="badge">三床 Airbnb</span></div>
-              <div class="meta">
-                <div class="pill"><b>组合总价</b>约 ¥6645</div>
-                <div class="pill"><b>三人段</b>¥130,012 JPY ≈ ¥5435，约 ¥1812/晚</div>
-                <div class="pill"><b>床</b>2 卧室，3 张床</div>
-                <div class="pill"><b>退款</b>7/23 前可免费取消</div>
-              </div>
-              <div class="tags"><span class="tag good">4.82 / 73 条评价</span><span class="tag good">自助入住</span><span class="tag warn">床型细节需在下单前再确认</span></div>
+              <div class="title-row"><div><h2>D2-D5｜West Kensington Airbnb</h2><p>2 卧 3 床，三人分开睡更容易；西伦敦位置去 Heathrow 方便，去 Euston 较远。</p></div><span class="badge">三床</span></div>
+              <div class="meta"><div class="pill"><b>价格</b>¥130,012 JPY ≈ ¥5435</div><div class="pill"><b>每晚</b>约 ¥1812</div><div class="pill"><b>床</b>2 卧室，3 张床</div><div class="pill"><b>退款</b>7/23 前可免费取消</div></div>
+              <div class="tags"><span class="tag good">4.82 / 73 条评价</span><span class="tag good">自助入住</span><span class="tag warn">床型细节下单前再确认</span></div>
             </div>
           </div>
-          <div class="body grid2">
-            <div class="mini"><h3>房源</h3><p>整套出租单元，5 位客人、2 卧室、3 张床、1 卫。房源介绍强调 West Kensington 附近多条地铁线和超市便利。</p></div>
-            <div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>Airbnb → West Kensington station</b>房源/公开摘要提到步行约 5-6 分钟到地铁。</div><div class="route"><b>Airbnb → Euston</b>District/Piccadilly 方向换 Victoria/Northern，约 35-45 分钟；打车约 25-35 分钟。</div><div class="route"><b>Airbnb → Tower Bridge</b>District/Jubilee 或 District/Circle 换乘，约 45-55 分钟。</div><div class="route"><b>Heathrow → Airbnb</b>Piccadilly line 到西伦敦较顺，约 45-60 分钟。</div></div></div>
-          </div>
+          <div class="body grid2"><div class="mini"><h3>房源</h3><p>整套出租单元，5 位客人，2 卧室，3 张床，1 卫。</p></div><div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>到地铁</b>公开信息约 5-6 分钟到 West Kensington。</div><div class="route"><b>到 Euston</b>公共交通约 35-45 分钟；打车约 25-35 分钟。</div><div class="route"><b>到 Tower Bridge</b>公共交通约 45-55 分钟。</div><div class="route"><b>到 Heathrow</b>Piccadilly line 方向较顺，约 45-60 分钟。</div></div></div></div>
         </article>
 
         <article class="option over">
           <div class="head">
             <div class="photo">
-              <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1326017562293584933/original/eccd6c4c-317c-47cc-a0b2-0dd41d1538ea.jpeg?im_w=960" alt="Earl's Court Airbnb">
-              <div class="links"><a href="https://zh.airbnb.com/rooms/1638486027888363990?adults=3&check_in=2026-08-22&check_out=2026-08-25">Airbnb 22-25</a></div>
+              <img src="https://a0.muscache.com/im/pictures/prohost-api/Hosting-1566071751940768005/original/4e8b0a55-04f1-46e4-bb47-6e537132420f.jpeg?im_w=960" alt="Portobello Airbnb">
+              <div class="links"><a href="https://zh.airbnb.com/rooms/1566071751940768005?adults=3&check_in=2026-08-22&check_out=2026-08-25">Airbnb</a></div>
             </div>
             <div>
-              <div class="title-row"><div><h2>A6｜21号 Royal National + Earl's Court 5.0 Airbnb</h2><p>评分和位置很好，22-25 可订；但只有两张床，且 8/21-25 全程不可订，所以只适合 Plan A。</p></div><span class="badge warn">好但不省</span></div>
-              <div class="meta">
-                <div class="pill"><b>组合总价</b>约 ¥7677</div>
-                <div class="pill"><b>三人段</b>¥154,714 JPY ≈ ¥6467，约 ¥2156/晚</div>
-                <div class="pill"><b>床</b>2 卧室，2 张床</div>
-                <div class="pill"><b>退款</b>8/21 前可免费取消</div>
-              </div>
-              <div class="tags"><span class="tag good">5.0 / 8 条评价</span><span class="tag good">烟雾和一氧化碳报警器</span><span class="tag warn">无空调，评论提到夏天热</span></div>
+              <div class="title-row"><div><h2>D2-D5｜Portobello Road 现代 2 床度假屋</h2><p>2 卧 3 床，评价好；主要问题是位置偏西，去 Euston/HP Tour 不如 Bloomsbury。</p></div><span class="badge warn">高质但远</span></div>
+              <div class="meta"><div class="pill"><b>价格</b>¥208,780 JPY ≈ ¥8727</div><div class="pill red"><b>每晚</b>约 ¥2909</div><div class="pill"><b>床</b>2 卧室，3 张床</div><div class="pill"><b>退款</b>7/23 前可免费取消</div></div>
+              <div class="tags"><span class="tag good">5.0 / 35 条评价</span><span class="tag good">自助入住</span><span class="tag warn">价格偏高</span></div>
             </div>
-          </div>
-          <div class="body grid2">
-            <div class="mini"><h3>房源</h3><p>整套出租单元，4 位客人、2 卧室、2 张床、1 卫。厨房、WiFi、工作区、电视、洗衣机、烘干机。</p></div>
-            <div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>Airbnb → Earl's Court station</b>房源称步行约 5 分钟。</div><div class="route"><b>Airbnb → 市中心</b>Piccadilly / District line，房源称约 15-20 分钟到伦敦市中心。</div><div class="route"><b>Airbnb → Euston</b>Piccadilly / District 换 Victoria/Northern，约 30-40 分钟。</div><div class="route"><b>Heathrow → Airbnb</b>Piccadilly line 直达方向较顺，约 45-55 分钟。</div></div></div>
           </div>
         </article>
       </section>
 
-      <section id="planB" class="panel">
-        <div class="notice">
-          Plan B 是 8/21-8/25 四晚三人一直住同一个地方。这里至少列 5 个可选项；¥1600-2500/晚都展示，超过 ¥2500/晚标红弱推荐。明确依赖 sofa bed 的房型不进推荐位，只在排除说明里写。
-        </div>
+      <section id="londonAll" class="panel">
         <div class="quick">
-          <div class="quick-card"><strong>推荐 1</strong><span>Royal National：位置最稳，三张单人床</span></div>
-          <div class="quick-card"><strong>推荐 2</strong><span>Star Hotel：价格最贴区间，真实床位</span></div>
-          <div class="quick-card"><strong>Airbnb</strong><span>Queens Park、Camden、Portobello、Earl's Court 已补入</span></div>
-          <div class="quick-card"><strong>谨慎</strong><span>超过 ¥2500/晚或安全/床型有疑问会标红</span></div>
+          <div class="quick-card"><strong>首选</strong><span>Royal National：三张单人床，位置最顺</span></div>
+          <div class="quick-card"><strong>备选</strong><span>Star Hotel：评分高，床位真实</span></div>
+          <div class="quick-card"><strong>Airbnb</strong><span>Camden / West Kensington / Portobello</span></div>
+          <div class="quick-card"><strong>口碑</strong><span>优先保留评价和床位信息更清楚的选项</span></div>
         </div>
 
         <article class="option">
           <div class="head">
-            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/dfc6cfd7.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Royal National Triple Room"><div class="links"><a href="https://www.expedia.com/London-Hotels-The-Royal-National-Hotel.h55001.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&x_pwa=1&rfrr=HSR&pwa_ts=1720000000000&useRewards=false&rm1=a3&regionId=178279&destination=London%2C%20England%2C%20United%20Kingdom&destType=MARKET&selected=55001&sort=RECOMMENDED">Expedia</a><a href="https://www.booking.com/hotel/gb/royal-national.html">Booking</a><a href="https://www.imperialhotels.co.uk/hotels/royal-national-hotel/rooms/triple-room/53-27/">官网房型</a></div></div>
-            <div><div class="title-row"><div><h2>B1｜Royal National Hotel｜Triple Room</h2><p>8/21-8/25 全程三人不换地方。Euston、Russell Square、国王十字都顺，三张单人床最干净。</p></div><span class="badge">推荐 1</span></div><div class="meta"><div class="pill"><b>价格</b>约 ¥6338 / 4 晚</div><div class="pill"><b>每晚</b>约 ¥1585</div><div class="pill"><b>床</b>3 Twin Beds</div><div class="pill"><b>库存</b>抓取显示剩 1 间</div></div><div class="tags"><span class="tag good">无 sofa bed</span><span class="tag good">最少折腾</span><span class="tag warn">可退截止需 checkout 最终确认</span></div></div>
+            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/dfc6cfd7.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Royal National Triple Room"><div class="links"><a href="https://www.expedia.com/London-Hotels-The-Royal-National-Hotel.h55001.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&rm1=a3">Expedia</a><a href="https://www.booking.com/hotel/gb/royal-national.html">Booking</a></div></div>
+            <div><div class="title-row"><div><h2>Royal National Hotel｜Triple Room</h2><p>8/21-8/25 四晚三人同住。Euston、Russell Square、国王十字都顺。</p></div><span class="badge">推荐</span></div><div class="meta"><div class="pill"><b>价格</b>约 ¥6338 / 4 晚</div><div class="pill"><b>每晚</b>约 ¥1585</div><div class="pill"><b>床</b>3 Twin Beds</div><div class="pill"><b>库存</b>抓取时剩 1 间</div></div><div class="tags"><span class="tag good">三张单人床</span><span class="tag good">24 小时前台</span><span class="tag good">拖行李最省事</span></div></div>
           </div>
-          <div class="body grid2"><div class="mini"><h3>房间和设施</h3><p>Triple Room，约 269 sq ft，Free WiFi、冰箱、桌子、熨斗/熨衣板。酒店有餐厅、早餐、24/7 前台。</p></div><div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>到 Euston</b>步行/公交约 8 分钟；打车约 3 分钟。</div><div class="route"><b>到 Harry Potter</b>到 Watford Junction 约 35 分钟 + shuttle 约 15 分钟；打车约 39 分钟。</div><div class="route"><b>到 Tower Bridge</b>公共交通约 33 分钟；打车约 17 分钟。</div><div class="route"><b>到 Big Ben</b>公共交通约 25 分钟；打车约 10 分钟。</div></div></div></div>
         </article>
 
         <article class="option">
           <div class="head">
-            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/6268d8f6.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Star Hotel Quadruple Room"><div class="links"><a href="https://www.expedia.com/London-Hotels-Star-Hotel-Bed-Breakfast.h888617.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&x_pwa=1&useRewards=false&rm1=a3&regionId=178279&destination=London&destType=MARKET">Expedia</a><a href="https://www.booking.com/hotel/gb/star-hotel.html">Booking</a><a href="https://us.trip.com/hotels/london-hotel-detail-3723504/star-hotel-bandb/">Trip.com</a></div></div>
-            <div><div class="title-row"><div><h2>B2｜Star Hotel｜Quadruple Room</h2><p>小型酒店/B&B，评分高，价格落在目标区间，床位真实。缺点是西边位置，去 Euston 和 Tower Bridge 时间更长。</p></div><span class="badge">推荐 2</span></div><div class="meta"><div class="pill"><b>价格</b>约 ¥7528 / 4 晚</div><div class="pill"><b>每晚</b>约 ¥1882</div><div class="pill"><b>床</b>1 Double + 2 Twin</div><div class="pill"><b>退款</b>加约 $58 可 8/18 前退</div></div><div class="tags"><span class="tag good">无 sofa bed</span><span class="tag good">9.0/10</span><span class="tag warn">无电梯，晚到需提前联系</span></div></div>
+            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/6268d8f6.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Star Hotel Quadruple Room"><div class="links"><a href="https://www.expedia.com/London-Hotels-Star-Hotel-Bed-Breakfast.h888617.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&rm1=a3">Expedia</a><a href="https://www.booking.com/hotel/gb/star-hotel.html">Booking</a></div></div>
+            <div><div class="title-row"><div><h2>Star Hotel｜Quadruple Room</h2><p>8/21-8/25 四晚三人同住。小型酒店/B&B，评分高，西伦敦位置。</p></div><span class="badge">稳妥</span></div><div class="meta"><div class="pill"><b>价格</b>约 ¥7528 / 4 晚</div><div class="pill"><b>每晚</b>约 ¥1882</div><div class="pill"><b>床</b>1 Double + 2 Twin</div><div class="pill"><b>退款</b>加价可 8/18 前退</div></div><div class="tags"><span class="tag good">真实床位</span><span class="tag good">9.0/10</span><span class="tag warn">无电梯</span></div></div>
           </div>
-          <div class="body grid2"><div class="mini"><h3>房间和设施</h3><p>Quadruple Room，约 213 sq ft，Free WiFi、冰箱、桌子、遮光窗帘、婴儿床可申请。</p></div><div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>到 Euston</b>公共交通约 39 分钟；打车约 18 分钟。</div><div class="route"><b>到 Harry Potter</b>公共交通约 1小时29分；打车约 39 分钟。</div><div class="route"><b>到 Tower Bridge</b>公共交通约 50 分钟；打车约 31 分钟。</div><div class="route"><b>到 Heathrow</b>公共交通约 58 分钟；打车约 25 分钟。</div></div></div></div>
-        </article>
-
-        <article class="option">
-          <div class="head">
-            <div class="photo"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1706365638853922255/original/9609dd2f-8236-4f47-90de-6f1b96e30672.jpeg?im_w=960" alt="Queens Park Airbnb"><div class="links"><a href="https://zh.airbnb.com/rooms/1706365638853922255?adults=3&check_in=2026-08-21&check_out=2026-08-25">Airbnb</a></div></div>
-            <div><div class="title-row"><div><h2>B3｜Airbnb｜Queens Park 2 卧公寓</h2><p>价格低，适合想住整套公寓；但页面没有展开具体床型，且报警器信息不好看。</p></div><span class="badge warn">便宜但谨慎</span></div><div class="meta"><div class="pill"><b>价格</b>¥147,348 JPY ≈ ¥6159</div><div class="pill"><b>每晚</b>约 ¥1540</div><div class="pill"><b>床</b>2 卧室，2 张床</div><div class="pill"><b>退款</b>8/20 前可免费取消</div></div><div class="tags"><span class="tag warn">新房源，仅 1 条评价</span><span class="tag warn">床型需问房东</span><span class="tag bad">未报告烟雾/一氧化碳报警器</span></div></div>
-          </div>
-          <div class="body grid2"><div class="mini"><h3>房源</h3><p>整套出租单元，5 位客人、2 卧室、2 张床、1 卫；厨房、电视、洗衣机、内部付费停车。</p></div><div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>到 Oxford Circus</b>房源称地铁约 15 分钟。</div><div class="route"><b>到 Euston</b>公共交通约 25-35 分钟；打车约 20-30 分钟。</div><div class="route"><b>到 Tower Bridge</b>通常需换乘，约 45-55 分钟。</div><div class="route"><b>到 Harry Potter</b>公共交通保守 1 小时以上，且 22 号入住前寄存行李要问房东。</div></div></div></div>
         </article>
 
         <article class="option">
           <div class="head">
             <div class="photo"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1534865615026164814/original/2e84e3d5-94e2-4a94-a592-cdab6f9f5350.jpeg?im_w=960" alt="Camden Airbnb"><div class="links"><a href="https://zh.airbnb.com/rooms/1534865615026164814?adults=3&check_in=2026-08-21&check_out=2026-08-25">Airbnb</a></div></div>
-            <div><div class="title-row"><div><h2>B4｜Airbnb｜Camden / Mornington Crescent 2卧2卫</h2><p>交通位置比西伦敦 Airbnb 更适合 Euston/国王十字行程，2 个卫生间加分；价格在 ¥2500/晚以内。</p></div><span class="badge">Airbnb 推荐</span></div><div class="meta"><div class="pill"><b>价格</b>¥221,632 JPY ≈ ¥9264</div><div class="pill"><b>每晚</b>约 ¥2316</div><div class="pill"><b>床</b>1 张 1.8m + 1 张 1.35m</div><div class="pill"><b>退款</b>7/22 前可免费取消</div></div><div class="tags"><span class="tag good">4.89 / 37 条评价</span><span class="tag good">2 卫生间</span><span class="tag warn">两张床，三人需同床分配</span></div></div>
+            <div><div class="title-row"><div><h2>Camden / Mornington Crescent Airbnb</h2><p>2 卧 2 卫，靠地铁，适合 Euston/国王十字方向。</p></div><span class="badge">Airbnb</span></div><div class="meta"><div class="pill"><b>价格</b>¥221,632 JPY ≈ ¥9264</div><div class="pill"><b>每晚</b>约 ¥2316</div><div class="pill"><b>床</b>1 张 1.8m + 1 张 1.35m</div><div class="pill"><b>退款</b>7/22 前可免费取消</div></div><div class="tags"><span class="tag good">4.89 / 37 条评价</span><span class="tag good">2 卫生间</span><span class="tag warn">三人中两人同床</span></div></div>
           </div>
-          <div class="body grid2"><div class="mini"><h3>房源</h3><p>整套出租单元，2 卧室，2 张床，2 卫。厨房、洗衣机、洗碗机、全尺寸冰箱、快速 WiFi。房源提到一楼。</p></div><div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>到 Mornington Crescent</b>房源称地铁站几步之遥。</div><div class="route"><b>到 Euston</b>Northern line / 步行 / 短途打车，约 10-18 分钟。</div><div class="route"><b>到 Tower Bridge</b>公共交通约 35-45 分钟；打车约 20-30 分钟。</div><div class="route"><b>到 Harry Potter</b>先去 Euston，再转 Watford Junction，整体顺。</div></div></div></div>
         </article>
 
         <article class="option over">
           <div class="head">
             <div class="photo"><img src="https://a0.muscache.com/im/pictures/prohost-api/Hosting-1566071751940768005/original/4e8b0a55-04f1-46e4-bb47-6e537132420f.jpeg?im_w=960" alt="Portobello Airbnb"><div class="links"><a href="https://zh.airbnb.com/rooms/1566071751940768005?adults=3&check_in=2026-08-21&check_out=2026-08-25">Airbnb</a></div></div>
-            <div><div class="title-row"><div><h2>B5｜Airbnb｜Portobello Road 现代 2 床度假屋</h2><p>房源质量很好，3 张床，评价漂亮；但价格超过 ¥2500/晚，标红弱推荐。</p></div><span class="badge red">超 ¥2500</span></div><div class="meta"><div class="pill red"><b>价格</b>¥275,412 JPY ≈ ¥11512</div><div class="pill red"><b>每晚</b>约 ¥2878</div><div class="pill"><b>床</b>2 卧室，3 张床</div><div class="pill"><b>退款</b>7/22 前可免费取消</div></div><div class="tags"><span class="tag good">5.0 / 35 条评价</span><span class="tag good">排名前 5%</span><span class="tag bad">超过预算上限，不优先</span></div></div>
+            <div><div class="title-row"><div><h2>Portobello Road 现代 2 床度假屋</h2><p>2 卧 3 床，房源质量好；价格高，且对 Euston/HP Tour 不如北伦敦顺。</p></div><span class="badge red">偏贵</span></div><div class="meta"><div class="pill"><b>价格</b>¥275,412 JPY ≈ ¥11512</div><div class="pill red"><b>每晚</b>约 ¥2878</div><div class="pill"><b>床</b>2 卧室，3 张床</div><div class="pill"><b>退款</b>7/22 前可免费取消</div></div><div class="tags"><span class="tag good">5.0 / 35 条评价</span><span class="tag warn">价格偏高</span></div></div>
           </div>
-          <div class="body grid2"><div class="mini"><h3>房源</h3><p>整套出租单元，5 位客人、2 卧室、3 张床、1 卫；自助入住，Portobello / Notting Hill 一带。</p></div><div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>到 Notting Hill / Portobello</b>本地游逛很方便。</div><div class="route"><b>到 Euston</b>公共交通通常 35-45 分钟；打车约 25-35 分钟。</div><div class="route"><b>到 Tower Bridge</b>公共交通约 50-60 分钟。</div><div class="route"><b>到 Heathrow</b>西伦敦方向较顺，打车通常比东/北伦敦短。</div></div></div></div>
         </article>
-
-        <article class="option over">
-          <div class="head">
-            <div class="photo"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1435460877977730928/original/c06fd088-e600-46c2-9b25-dc9a6634a40e.jpeg?im_w=960" alt="Earl's Court Airbnb Clarissa"><div class="links"><a href="https://zh.airbnb.com/rooms/1435460877977730928?adults=3&check_in=2026-08-21&check_out=2026-08-25">Airbnb</a></div></div>
-            <div><div class="title-row"><div><h2>B6｜Airbnb｜Earl's Court 2 King Beds</h2><p>位置方便，2 张 1.8m 大床，适合两人同床；但价格超过 ¥2500/晚，且有差评提到安全感问题。</p></div><span class="badge red">超 ¥2500</span></div><div class="meta"><div class="pill red"><b>价格</b>¥269,775 JPY ≈ ¥11277</div><div class="pill red"><b>每晚</b>约 ¥2819</div><div class="pill"><b>床</b>2 张约 1.8m 双人床</div><div class="pill"><b>退款</b>7/22 前可免费取消</div></div><div class="tags"><span class="tag good">靠近 Earl's Court station</span><span class="tag warn">4.58 / 36 条评价</span><span class="tag bad">差评风险明显，不优先</span></div></div>
-          </div>
-          <div class="body grid2"><div class="mini"><h3>房源</h3><p>整套出租单元，5 位客人、2 卧室、2 张床、1 卫。厨房、WiFi、电视、洗衣机、室内干衣机、冰箱。页面提到可折叠床适合第 5 位，不作为三人主要床位。</p></div><div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>到 Earl's Court station</b>房源称仅几分钟。</div><div class="route"><b>到 Euston</b>Piccadilly/District 换线，约 30-40 分钟。</div><div class="route"><b>到 Heathrow</b>Piccadilly line 方向较顺，约 45-55 分钟。</div><div class="route"><b>到 Tower Bridge</b>公共交通约 45-55 分钟。</div></div></div></div>
-        </article>
-
-        <div class="notice">
-          排除/弱化：W6 Family Studio、Space Apart Hotel、Notting Hill 明亮现代 2 卧等明确含 sofa bed 或超过预算太多的房型，不作为推荐。W6 Triple Studio 不是 sofa bed，但只有 1 张双人床 + 1 张单人床且低于舒适预算，作为省钱备胎，不放在前 5。
-        </div>
       </section>
 
-      <p class="fine">价格为 2026-07-08 抓取时的页面价并换算为人民币：USD/CNY≈6.80，JPY/CNY≈0.0418。订房平台会动态变价，最后以进入付款前页面为准。</p>
+      <section id="manchester" class="panel">
+        <div class="quick">
+          <div class="quick-card"><strong>日期</strong><span>8/25 入住，8/27 退房</span></div>
+          <div class="quick-card"><strong>行程</strong><span>曼彻斯特科学工业博物馆、足球博物馆、利物浦一日游</span></div>
+          <div class="quick-card"><strong>位置</strong><span>Manchester Piccadilly / Victoria / 市中心优先</span></div>
+          <div class="quick-card"><strong>床位</strong><span>三人房或四人房，不靠 sofa bed</span></div>
+        </div>
+
+        <article class="option">
+          <div class="head">
+            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/6268d8f6.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="The Reach at Piccadilly"><div class="links"><a href="https://www.expedia.com/Manchester-Hotels-Reach-AT-Piccadilly-Tribute-Portfolio.h96970748.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3">Expedia</a></div></div>
+            <div><div class="title-row"><div><h2>The Reach at Piccadilly｜Family Room</h2><p>Piccadilly 旁边，去利物浦、回伦敦、城内移动都好用。</p></div><span class="badge">曼城首选</span></div><div class="meta"><div class="pill"><b>床</b>1 Double + 2 Twin</div><div class="pill"><b>房型</b>Family Room, Multiple Beds</div><div class="pill"><b>区域</b>Piccadilly / Canal</div><div class="pill"><b>备注</b>Marriott 系</div></div><div class="tags"><span class="tag good">真实床位</span><span class="tag good">靠 Piccadilly</span><span class="tag good">去利物浦火车方便</span></div></div>
+          </div>
+          <div class="body grid2"><div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>酒店 → Manchester Piccadilly</b>步行级别，适合 8/27 去伦敦/剑桥方向。</div><div class="route"><b>酒店 → National Football Museum</b>电车/步行约 15-25 分钟。</div><div class="route"><b>酒店 → Science and Industry Museum</b>公交/电车约 15-25 分钟；打车约 10 分钟。</div><div class="route"><b>酒店 → Liverpool Lime Street</b>从 Piccadilly / Victoria 坐火车，约 40-60 分钟。</div></div></div><div class="mini"><h3>适合度</h3><p>更适合把曼彻斯特当两晚交通枢纽。优先度高于老旧便宜酒店。</p></div></div>
+        </article>
+
+        <article class="option">
+          <div class="head">
+            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/f7e161bc.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Britannia Manchester"><div class="links"><a href="https://www.expedia.com/Manchester-Hotels-Britannia-Hotel-Manchester-City-Centre.h41523.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3">Expedia</a></div></div>
+            <div><div class="title-row"><div><h2>Britannia Hotel Manchester｜Triple / Family Room</h2><p>市中心 Piccadilly Gardens 附近，价格通常低，但酒店评价一般。</p></div><span class="badge warn">便宜备选</span></div><div class="meta"><div class="pill"><b>床</b>Triple Room / Family Room</div><div class="pill"><b>可选</b>3 Twin 或 1 Double + 2 Twin</div><div class="pill"><b>评分</b>6.8/10</div><div class="pill"><b>位置</b>Piccadilly Gardens</div></div><div class="tags"><span class="tag good">市中心</span><span class="tag warn">评价一般</span><span class="tag warn">可能有酒吧/夜间噪音</span></div></div>
+          </div>
+        </article>
+
+        <article class="option">
+          <div class="head">
+            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/9da2c734.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Manchester Stay Hotel"><div class="links"><a href="https://www.expedia.com/Manchester-Hotels-YALLY-Hotel.h42395450.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3">Expedia</a></div></div>
+            <div><div class="title-row"><div><h2>Manchester Stay Hotel｜Standard Triple Room</h2><p>三张单人床，免费停车；位置不如市中心，适合打车/自驾取向。</p></div><span class="badge">三单床</span></div><div class="meta"><div class="pill"><b>床</b>3 Twin Beds</div><div class="pill"><b>房型</b>Standard Triple Room</div><div class="pill"><b>设施</b>Free WiFi / free parking</div><div class="pill"><b>面积</b>约 172 sq ft</div></div><div class="tags"><span class="tag good">三张单人床</span><span class="tag good">停车方便</span><span class="tag warn">离核心景点更远</span></div></div>
+          </div>
+        </article>
+
+        <article class="option">
+          <div class="head">
+            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/7c674f08.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Travelodge Manchester Central Arena"><div class="links"><a href="https://www.expedia.com/Manchester-Hotels-Travelodge-Manchester-Central-Arena.h4924312.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3">Expedia</a></div></div>
+            <div><div class="title-row"><div><h2>Travelodge Manchester Central Arena｜Family / Quadruple</h2><p>靠 AO Arena / Victoria，去国家足球博物馆和 Victoria 站方便。</p></div><span class="badge">Victoria 方向</span></div><div class="meta"><div class="pill"><b>床</b>Family: 1 Double + 2 Twin</div><div class="pill"><b>可选</b>Quadruple: 2 Double</div><div class="pill"><b>区域</b>Central Arena</div><div class="pill"><b>适合</b>利物浦火车/市中心</div></div><div class="tags"><span class="tag good">真实床位</span><span class="tag good">靠 Victoria</span><span class="tag warn">基础型酒店</span></div></div>
+          </div>
+        </article>
+
+        <article class="option">
+          <div class="head">
+            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/d4aeafa6.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Leonardo Manchester Central"><div class="links"><a href="https://www.expedia.com/Manchester-Hotels-Jurys-Inn-Manchester-City-Centre.h205304.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3">Expedia</a></div></div>
+            <div><div class="title-row"><div><h2>Leonardo Hotel Manchester Central｜Standard Triple</h2><p>靠 Manchester Central / Deansgate，去科学工业博物馆方便。</p></div><span class="badge">景点友好</span></div><div class="meta"><div class="pill"><b>房型</b>Standard Triple Room</div><div class="pill"><b>设施</b>Free WiFi / desk</div><div class="pill"><b>区域</b>Manchester Central</div><div class="pill"><b>适合</b>科学工业博物馆</div></div><div class="tags"><span class="tag good">到 MOSI 近</span><span class="tag good">市中心</span><span class="tag warn">床型以下单页为准</span></div></div>
+          </div>
+        </article>
+      </section>
+
+      <section id="londonReturn" class="panel">
+        <div class="quick">
+          <div class="quick-card"><strong>日期</strong><span>8/27 入住，8/31 退房</span></div>
+          <div class="quick-card"><strong>行程</strong><span>Duxford/剑桥、多佛/坎特伯雷、伦敦机场离境</span></div>
+          <div class="quick-card"><strong>位置</strong><span>King's Cross / St Pancras / Euston 优先</span></div>
+          <div class="quick-card"><strong>床位</strong><span>三人房，优先三张单人床</span></div>
+        </div>
+
+        <article class="option">
+          <div class="head">
+            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/dfc6cfd7.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Hilton London Euston"><div class="links"><a href="https://www.expedia.com/London-Hotels-Hilton-London-Euston.h2612.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3">Expedia</a><a href="https://www.booking.com/hotel/gb/hilton-london-euston.html">Booking</a></div></div>
+            <div><div class="title-row"><div><h2>Hilton London Euston｜Triple Room</h2><p>Euston / St Pancras / King's Cross 三角区，适合后段铁路日行程。</p></div><span class="badge">后段首选</span></div><div class="meta"><div class="pill"><b>床</b>3 Twin Beds</div><div class="pill"><b>面积</b>约 172 sq ft</div><div class="pill"><b>位置</b>Euston</div><div class="pill"><b>设施</b>保险箱、熨斗、WiFi</div></div><div class="tags"><span class="tag good">三张单人床</span><span class="tag good">去火车站最顺</span><span class="tag good">机场日也好衔接</span></div></div>
+          </div>
+          <div class="body grid2"><div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>到 Cambridge / Duxford</b>从 King's Cross / St Pancras 区域转铁路去 Cambridge，再接 Duxford 方向。</div><div class="route"><b>到 Dover / Canterbury</b>到 St Pancras 坐 Southeastern High Speed 方向较顺。</div><div class="route"><b>到 Heathrow</b>地铁/Elizabeth line 换乘；打车约 45-60 分钟。</div><div class="route"><b>到 Gatwick</b>St Pancras / Thameslink 方向可衔接。</div></div></div><div class="mini"><h3>适合度</h3><p>后段每天铁路出行多，Euston / St Pancras 比西伦敦或南岸更省心。</p></div></div>
+        </article>
+
+        <article class="option">
+          <div class="head">
+            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/1b1ab152.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Staunton Hotel"><div class="links"><a href="https://www.expedia.com/London-Hotels-Staunton-Hotel.h1381535.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3">Expedia</a></div></div>
+            <div><div class="title-row"><div><h2>Staunton Hotel｜Triple Room Ensuite</h2><p>Bloomsbury，离 Euston / British Museum / Tottenham Court Road 都近。</p></div><span class="badge">舒适</span></div><div class="meta"><div class="pill"><b>床</b>3 Twin 或 1 Twin + 1 Double</div><div class="pill"><b>面积</b>约 194 sq ft</div><div class="pill"><b>评价</b>Triple 房型 9.6/10</div><div class="pill"><b>卫浴</b>Ensuite</div></div><div class="tags"><span class="tag good">独立卫浴</span><span class="tag good">Bloomsbury</span><span class="tag warn">床型需选择三单床配置</span></div></div>
+          </div>
+        </article>
+
+        <article class="option">
+          <div class="head">
+            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/02888876.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Travelodge King's Cross Royal Scot"><div class="links"><a href="https://www.expedia.com/London-Hotels-Travelodge-London-Kings-Cross-Royal-Scot-Hotel.h6395.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3">Expedia</a></div></div>
+            <div><div class="title-row"><div><h2>Travelodge London Kings Cross Royal Scot｜Triple Room</h2><p>King's Cross / St Pancras 方向，铁路日程友好，设施基础。</p></div><span class="badge">交通优先</span></div><div class="meta"><div class="pill"><b>床</b>3 Twin Beds</div><div class="pill"><b>房型</b>Triple Room</div><div class="pill"><b>区域</b>King's Cross</div><div class="pill"><b>定位</b>基础型酒店</div></div><div class="tags"><span class="tag good">三张单人床</span><span class="tag good">靠 St Pancras</span><span class="tag warn">舒适度普通</span></div></div>
+          </div>
+        </article>
+
+        <article class="option">
+          <div class="head">
+            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/56bee051.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Albany Hotel"><div class="links"><a href="https://www.expedia.com/London-Hotels-Albany-Hotel.h11899736.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3">Expedia</a></div></div>
+            <div><div class="title-row"><div><h2>Albany Hotel｜Triple Room Shared Bathroom</h2><p>Bloomsbury / Euston 附近，三张单人床；共用卫浴是主要减分。</p></div><span class="badge warn">省钱备选</span></div><div class="meta"><div class="pill"><b>床</b>3 Twin Beds</div><div class="pill"><b>面积</b>约 237 sq ft</div><div class="pill"><b>卫浴</b>Shared Bathroom</div><div class="pill"><b>交通</b>Euston 约 9 分钟步行</div></div><div class="tags"><span class="tag good">三张单人床</span><span class="tag good">位置好</span><span class="tag warn">共用卫浴</span></div></div>
+          </div>
+        </article>
+
+        <article class="option">
+          <div class="head">
+            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/e57c5389.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Kings Cross apartment"><div class="links"><a href="https://www.expedia.com/London-Hotels-Kings-Cross-International.h55185244.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3">Expedia</a></div></div>
+            <div><div class="title-row"><div><h2>Budget Apartment Next to Kings Cross - Eurostar</h2><p>公寓型，靠 King's Cross / St Pancras，适合想要更多床位和厨房空间。</p></div><span class="badge">公寓</span></div><div class="meta"><div class="pill"><b>床</b>1 Double + 3 Twin</div><div class="pill"><b>面积</b>约 377 sq ft</div><div class="pill"><b>房型</b>Superior/Deluxe Apartment</div><div class="pill"><b>容量</b>Sleeps 5</div></div><div class="tags"><span class="tag good">床位充足</span><span class="tag good">靠 Eurostar / St Pancras</span><span class="tag warn">公寓管理稳定性需看下单页评价</span></div></div>
+          </div>
+        </article>
+      </section>
+
+      <p class="fine">价格为抓取页面时的估算，汇率按 USD/CNY≈6.80、JPY/CNY≈0.0418。实际库存、税费和退款截止以进入订房付款前页面为准。</p>
     </div>
   </main>
 
