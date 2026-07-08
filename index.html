@@ -118,6 +118,7 @@
         <span class="chip">三人段优先真实床位</span>
         <span class="chip">超过 ¥2500/晚标红</span>
         <span class="chip">所有可见候选必须有空调</span>
+        <span class="chip">Airbnb 门槛改为 2 条以上评价</span>
       </div>
     </div>
   </header>
@@ -339,7 +340,7 @@
     ];
 
     const summaries = {
-      londonSplit: [["Plan A","8/21 一人住，8/22-25 三人同住。"],["空调硬条件","无空调或公开页面不明确的酒店已剔除。"],["D2-D5","优先 Euston / St Pancras / King's Cross 周边。"],["床型口径","第三人不靠 sofa bed；三人房下单页需锁定真实床位。"]],
+      londonSplit: [["Plan A","8/21 一人住，8/22-25 三人同住。"],["空调硬条件","无空调或公开页面不明确的酒店已剔除。"],["D2-D5","优先 Euston / St Pancras / King's Cross 周边。"],["Airbnb","门槛降到 2 条以上评价，但仍必须确认空调和真实床位。"]],
       londonAll: [["Plan B","8/21-8/25 四晚三人同住，不换房。"],["空调硬条件","只保留公开页面明确 air conditioning 的选项。"],["床型口径","只考虑 3 Twin / 1 Double + 2 Twin / 2 Queen / 多床套房。"],["提醒","价格、库存、退改以付款前页面为准。"]],
       manchester: [["日期","8/25 入住，8/27 退房。"],["行程","科学工业博物馆、足球博物馆、利物浦一日游。"],["空调硬条件","只保留空调明确的市中心/车站候选。"],["床型口径","下单时锁定真实床位，不接受 sofa bed。"]],
       londonReturn: [["日期","8/27 入住，8/31 退房。"],["行程","Duxford/剑桥、多佛/坎特伯雷、伦敦机场离境。"],["空调硬条件","只保留空调明确的酒店/套房。"],["位置","King's Cross / St Pancras / Euston 优先。"]]
@@ -427,6 +428,38 @@
           tags: [["good", "空调明确"], ["good", "床位充足"], ["warn", "需锁定具体多床房"]],
           links: [["Expedia", "https://www.expedia.com/London-Hotels-Comfort-Inn-Suites-Kings-Cross-St-Pancras.h37002037.Hotel-Information?chkin=2026-08-22&chkout=2026-08-25&rm1=a3"], ["官网", "https://www.stpancrashotelgroup.com/hotels/the-suites.html"]],
           routes: commonLondonRoutes(), env: "适合重视空间和床位的人；必须在下单页锁定多床套房，不接受 sofa bed 替代第三张床。退房、押金和退款以付款页为准。"
+        },
+        {
+          title: "D2-D5｜Kings Cross Inn Hotel｜Triple / Quadruple Room", badge: "车站近", img: IMG.royal4,
+          desc: "King's Cross 对面，Triple Room 可住 3 人；公开页面显示全客房空调，Quadruple Room 有 2 Twin + 1 Double。",
+          meta: [["价格", "需付款页复核"], ["床", "Triple: 1 Double + 1 Twin"], ["可选", "Quadruple: 1 Double + 2 Twin"], ["设施", "空调、冰箱、24h 前台"]],
+          tags: [["good", "空调明确"], ["good", "车站近"], ["warn", "评分一般"]],
+          links: [["Expedia", "https://www.expedia.com/London-Hotels-Kings-Cross-Inn-Hotel.h2537960.Hotel-Information?chkin=2026-08-22&chkout=2026-08-25&rm1=a3"], ["Hotels.com", "https://www.hotels.com/ho413421/kings-cross-inn-hotel-london-united-kingdom/"]],
+          routes: commonLondonRoutes(), env: "位置非常省事，适合以交通优先。Triple 是 1 Double + 1 Twin；若三人想睡面更宽，优先看 Quadruple Room。退房、税费、退款截止日以付款页为准。"
+        },
+        {
+          title: "D2-D5｜King's Cross Express Inn｜Family Room", badge: "经济型", img: IMG.star2,
+          desc: "King's Cross / St Pancras 附近，公开页面显示 56 间空调客房；Family Room 为 2 Double Beds。",
+          meta: [["价格", "需付款页复核"], ["房型", "Family Room"], ["床", "2 Double Beds"], ["设施", "空调、24h 前台、洗衣"]],
+          tags: [["good", "空调明确"], ["good", "2 张双人床"], ["warn", "基础型酒店"]],
+          links: [["Expedia", "https://www.expedia.com/London-Hotels-Kings-Cross-Express-Hotel.h103087906.Hotel-Information?chkin=2026-08-22&chkout=2026-08-25&rm1=a3"], ["Hotels.com", "https://www.hotels.com/ho3299812992/kings-cross-express-hotel-london-united-kingdom/"]],
+          routes: commonLondonRoutes(), env: "适合想把预算压住但仍要空调和车站位置的人。Family Room 是 2 Double Beds，三人中会有两人同床；退房和退款以付款页为准。"
+        },
+        {
+          title: "D2-D5｜Crowne Plaza London - King's Cross｜Premium 2 Double", badge: "舒适", img: IMG.royal,
+          desc: "IHG / Crowne Plaza，所有客房空调；Premium Rooms 可选 2 Double Beds，舒适度比经济酒店更稳。",
+          meta: [["价格", "需付款页复核"], ["房型", "Premium Room"], ["床", "2 Double Beds"], ["设施", "空调、餐厅、健身房"]],
+          tags: [["good", "空调明确"], ["good", "2 张双人床"], ["warn", "离 St Pancras 约需短程交通"]],
+          links: [["IHG", "https://www.ihg.com/crowneplaza/hotels/us/en/london/lonkc/hoteldetail/rooms"], ["Booking", "https://www.booking.com/hotel/gb/holiday-inn-london-kings-cross-bloomsbury.html"]],
+          routes: [["到 St Pancras / King's Cross", "公交/打车短程，通常约 10-20 分钟。"], ["到 Euston", "公交/打车短程，约 10-20 分钟。"], ["到 Tower Bridge", "公共交通约 35-45 分钟。"], ["到 HP Studio", "先到 Euston，再 Watford Junction 火车 + 接驳。"]], env: "更像标准四星酒店，空调、餐饮、健身房和前台稳定。Premium 2 Double 可住三人但会有两人同床；退房、退款和税费以付款页为准。"
+        },
+        {
+          title: "D2-D5｜The Pack and Carriage London｜Deluxe Triple Room", badge: "三人房", img: IMG.star,
+          desc: "Euston / Camden 方向，Deluxe Triple Room 页面显示空调；位置比 King’s Cross 稍偏西但仍适合北伦敦行程。",
+          meta: [["价格", "需付款页复核"], ["房型", "Deluxe Triple Room"], ["床", "三人床型需付款页确认"], ["设施", "空调、独立卫浴"]],
+          tags: [["good", "空调明确"], ["good", "三人房"], ["warn", "床型需再次确认"]],
+          links: [["Orbitz", "https://www.orbitz.com/London-Hotels-The-Pack-And-Carriage-London.h30674905.Hotel-Information"]],
+          routes: commonLondonRoutes(), env: "作为补充候选，适合前几个车站酒店无房或价格太高时看。下单页需确认具体床型不是 sofa bed；退改和税费以付款页为准。"
         }
       );
 
