@@ -173,12 +173,60 @@
     };
 
     const d1Choices = [
-      ["Royal National Hotel", IMG.royal2, "Twin Room，2 Twin Beds，约 ¥1210。", "到 Euston 步行/公交约 8 分钟，第二天换三人房最少折腾。"],
-      ["Star Hotel", IMG.star2, "Single Room，1 Twin Bed，约 ¥932。", "西伦敦，去 Heathrow 和西侧住宿顺；去 Euston 公共交通约 39 分钟。"],
-      ["City Sleeper / Bedford Way 一带", IMG.royal3, "单人或双人房按下单页确认。", "Russell Square / Euston 中间，衔接 Bloomsbury 三人段方便。"],
-      ["Tavistock / Bloomsbury 一带", IMG.royal, "单人或双人房。", "大英博物馆、Russell Square、Euston 都在短程范围。"],
-      ["President Hotel", IMG.royal4, "单人或双人房。", "Russell Square 旁，适合第二天转 Royal National / Bloomsbury。"],
-      ["George Hotel", IMG.star3, "单人房。", "Euston / St Pancras 步行圈，房间通常紧凑但换乘方便。"]
+      {
+        name: "Royal National Hotel",
+        img: IMG.royal2,
+        price: "约 ¥1210 / 1 晚",
+        room: "Twin Room，2 Twin Beds",
+        link: links.royalSingle,
+        transfer: "到 Euston 步行/公交约 8 分钟；若 D2-D5 也住 Royal National，第二天基本就是同楼或同街区换房。",
+        refund: "可退款房价以下单页为准；前台和寄存稳定，适合晚到或行李多。"
+      },
+      {
+        name: "Star Hotel",
+        img: IMG.star2,
+        price: "约 ¥932 / 1 晚",
+        room: "Single Room，1 Twin Bed",
+        link: "https://www.expedia.com/London-Hotels-Star-Hotel-Bed-Breakfast.h888617.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1",
+        transfer: "西伦敦；若 D2-D5 转 Bloomsbury/Euston，公共交通约 39 分钟，打车约 18-30 分钟。",
+        refund: "晚到需提前联系；无电梯，行李多会麻烦。可退款加价和截止日以下单页为准。"
+      },
+      {
+        name: "City Sleeper at Royal National",
+        img: IMG.royal3,
+        price: "参考约 ¥1050-1300 / 1 晚",
+        room: "单人/双人房按付款页确认",
+        link: "https://www.expedia.com/London-Hotels-City-Sleeper-At-Royal-National-Hotel.h83245150.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1",
+        transfer: "Bedford Way / Russell Square 一带；衔接 Royal National、Tavistock、President 都是短距离拖箱。",
+        refund: "Expedia 公开页显示近期开价约 $155 起；8/21 单晚库存和退款截止日需要付款页复核。"
+      },
+      {
+        name: "Tavistock Hotel",
+        img: IMG.royal,
+        price: "参考约 ¥1100-1500 / 1 晚",
+        room: "Single / Double Room 按付款页确认",
+        link: "https://www.expedia.com/London-Hotels-Tavistock-Hotel.h62769.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1",
+        transfer: "Russell Square 步行约 5 分钟，Euston Square 步行约 8 分钟；转 Bloomsbury/Euston 三人房很顺。",
+        refund: "Expedia 公开页显示 14:00 起入住、11:00 退房；免费取消截止日和税费以付款页为准。"
+      },
+      {
+        name: "President Hotel",
+        img: IMG.royal4,
+        price: "参考约 ¥1100-1500 / 1 晚",
+        room: "Single Room，1 Twin Bed",
+        link: "https://www.expedia.com/London-Hotels-The-President-Hotel.h54995.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1",
+        transfer: "Russell Square 旁；第二天转 Royal National / City Sleeper / Tavistock 都是短距离拖箱。",
+        refund: "单人房公开页显示 1 Twin Bed、Free WiFi；具体价格、退房、退款截止日以付款页为准。"
+      },
+      {
+        name: "George Hotel",
+        img: IMG.star3,
+        price: "参考约 ¥900-1300 / 1 晚",
+        room: "Single Room",
+        link: "https://www.booking.com/searchresults.html?ss=George+Hotel+London+Cartwright+Gardens&checkin=2026-08-21&checkout=2026-08-22&group_adults=1&no_rooms=1&group_children=0",
+        transfer: "Cartwright Gardens / Euston 一带；去 St Pancras、Euston、Russell Square 都能短程步行或打车。",
+        refund: "房间通常紧凑，适合一晚过渡；是否独立卫浴、早餐和免费取消需在 Booking/付款页确认。"
+      }
     ];
 
     function commonLondonRoutes(area) {
@@ -322,7 +370,7 @@
     }
     function renderChoices() {
       return `<div class="block"><div class="block-head"><h2>D1｜8/21 单人房候选</h2><p>这一晚的目标是便宜、好入住、第二天和三人段衔接省事。若 D2-D5 住 Bloomsbury/Euston，一晚单人房住同区域最省拖箱；若后段住西伦敦，则 Star Hotel 这类西侧选项衔接更顺。</p></div>
-        <div class="cards">${d1Choices.map(([name,img,room,traffic]) => `<article class="choice"><img src="${img}" alt="${name}"><div class="choice-body"><h3>${name}</h3><p><b>房型</b> ${room}</p><p><b>交通</b> ${traffic}</p></div></article>`).join("")}</div></div>`;
+        <div class="cards">${d1Choices.map((item) => `<article class="choice"><img src="${item.img}" alt="${item.name}"><div class="choice-body"><h3>${item.name}</h3><p><b>参考价</b> ${item.price}</p><p><b>房型</b> ${item.room}</p><p><b>第二天拖箱</b> ${item.transfer}</p><p><b>退房/退款</b> ${item.refund}</p><p><a href="${item.link}">订房链接</a></p></div></article>`).join("")}</div></div>`;
     }
 
     document.querySelector("#londonSplit").innerHTML = quickHtml(summaries.londonSplit) + renderChoices() + splitOptions.map(renderOption).join("");
