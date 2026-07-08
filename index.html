@@ -11,17 +11,15 @@
       --ink: #1d252c;
       --muted: #65717c;
       --line: #ded8cc;
-      --teal: #1c756b;
+      --teal: #1b756d;
       --navy: #243b53;
-      --clay: #9b4f3f;
-      --amber: #b27928;
-      --good: #22764c;
-      --warn: #a06716;
-      --bad: #a64235;
-      --soft-teal: #e4f1ee;
-      --soft-amber: #fff1d8;
-      --soft-red: #fbe8e4;
-      --soft-blue: #eaf0f6;
+      --amber: #a56912;
+      --red: #af3e34;
+      --green: #25734a;
+      --soft: #eef3f2;
+      --soft-warn: #fff1d8;
+      --soft-red: #fbe7e3;
+      --shadow: 0 8px 24px rgba(29,37,44,.07);
     }
     * { box-sizing: border-box; }
     body {
@@ -31,43 +29,42 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
       line-height: 1.55;
     }
-    a { color: var(--teal); font-weight: 700; text-decoration: none; }
+    a { color: var(--teal); font-weight: 750; text-decoration: none; }
     a:hover { text-decoration: underline; }
     header {
-      color: #fff;
+      color: white;
       background:
-        linear-gradient(90deg, rgba(29,37,44,.92), rgba(28,117,107,.72)),
+        linear-gradient(90deg, rgba(29,37,44,.92), rgba(27,117,109,.70)),
         url("https://images.trvl-media.com/lodging/1000000/60000/55100/55001/56bee051.jpg?impolicy=resizecrop&rw=1400&ra=fit");
       background-size: cover;
       background-position: center;
-      padding: 38px 22px 30px;
+      padding: 40px 22px 32px;
     }
-    .wrap { max-width: 1180px; margin: 0 auto; }
+    .wrap { max-width: 1200px; margin: 0 auto; }
     h1 { margin: 0 0 10px; font-size: 34px; letter-spacing: 0; }
     h2 { margin: 0 0 12px; font-size: 24px; letter-spacing: 0; }
-    h3 { margin: 0 0 8px; font-size: 20px; letter-spacing: 0; }
-    h4 { margin: 0 0 8px; font-size: 16px; letter-spacing: 0; }
-    p { margin: 0 0 10px; }
+    h3 { margin: 0 0 8px; font-size: 19px; letter-spacing: 0; }
+    h4 { margin: 0 0 6px; font-size: 15px; letter-spacing: 0; }
+    p { margin: 0 0 9px; }
     main { padding: 22px; }
     .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
     .chip {
       border: 1px solid rgba(255,255,255,.38);
-      background: rgba(255,255,255,.15);
+      background: rgba(255,255,255,.14);
       border-radius: 999px;
       padding: 7px 10px;
       font-size: 14px;
     }
     .tabs {
       display: flex;
-      gap: 10px;
       flex-wrap: wrap;
-      margin: 0 0 18px;
+      gap: 10px;
       position: sticky;
       top: 0;
-      z-index: 5;
+      z-index: 10;
       background: rgba(246,244,239,.96);
-      padding: 10px 0;
       border-bottom: 1px solid var(--line);
+      padding: 10px 0;
       backdrop-filter: blur(8px);
     }
     .tab-button {
@@ -76,68 +73,65 @@
       color: var(--navy);
       border-radius: 8px;
       padding: 10px 13px;
-      font-weight: 800;
+      font-weight: 850;
       cursor: pointer;
     }
-    .tab-button.active {
-      background: var(--navy);
-      border-color: var(--navy);
-      color: #fff;
-    }
-    .tab-panel { display: none; }
-    .tab-panel.active { display: block; }
+    .tab-button.active { background: var(--navy); border-color: var(--navy); color: white; }
+    .panel { display: none; }
+    .panel.active { display: block; }
     .notice {
-      background: var(--soft-amber);
-      border: 1px solid #e0bd76;
+      background: var(--soft-warn);
+      border: 1px solid #e1bf78;
+      color: #5d3c05;
       border-radius: 8px;
       padding: 12px 14px;
-      color: #5c3d08;
-      margin-bottom: 16px;
+      margin: 16px 0;
     }
-    .summary-grid {
+    .quick {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
-      margin-bottom: 18px;
+      margin: 0 0 18px;
     }
-    .summary-card {
+    .quick-card, .option, .mini {
       background: var(--paper);
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 13px 14px;
+      box-shadow: var(--shadow);
     }
-    .summary-card strong { display: block; font-size: 19px; color: var(--navy); }
-    .summary-card span { color: var(--muted); font-size: 13px; }
+    .quick-card { padding: 13px 14px; box-shadow: none; }
+    .quick-card strong { display: block; font-size: 19px; color: var(--navy); }
+    .quick-card span { color: var(--muted); font-size: 13px; }
     .option {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 8px;
       margin: 0 0 18px;
       overflow: hidden;
-      box-shadow: 0 8px 24px rgba(29,37,44,.06);
     }
-    .option-head {
+    .option.over {
+      border-color: #d8968e;
+      background: #fff9f7;
+    }
+    .head {
       display: grid;
-      grid-template-columns: 300px minmax(0, 1fr);
+      grid-template-columns: 292px minmax(0, 1fr);
       gap: 18px;
       padding: 18px;
       border-bottom: 1px solid var(--line);
     }
     .photo {
       position: relative;
-      min-height: 210px;
+      min-height: 214px;
       border-radius: 8px;
       overflow: hidden;
-      background: #d8d2c7;
+      background: #ddd6ca;
     }
     .photo img {
       width: 100%;
       height: 100%;
-      min-height: 210px;
+      min-height: 214px;
       object-fit: cover;
       display: block;
     }
-    .photo-links {
+    .links {
       position: absolute;
       left: 10px;
       right: 10px;
@@ -146,118 +140,83 @@
       flex-wrap: wrap;
       gap: 7px;
     }
-    .photo-links a {
-      color: #fff;
-      background: rgba(29,37,44,.82);
-      border: 1px solid rgba(255,255,255,.3);
+    .links a {
+      color: white;
+      background: rgba(29,37,44,.84);
+      border: 1px solid rgba(255,255,255,.28);
       border-radius: 6px;
       padding: 5px 8px;
       font-size: 12px;
     }
-    .headline {
+    .title-row {
       display: flex;
-      align-items: flex-start;
       justify-content: space-between;
+      align-items: flex-start;
       gap: 12px;
       margin-bottom: 8px;
     }
-    .rank {
-      color: #fff;
+    .badge {
+      color: white;
       background: var(--teal);
       border-radius: 7px;
       padding: 5px 8px;
-      font-weight: 800;
+      font-weight: 850;
       white-space: nowrap;
     }
+    .badge.warn { background: var(--amber); }
+    .badge.red { background: var(--red); }
     .meta {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 8px;
       margin: 12px 0;
     }
     .pill {
+      background: white;
       border: 1px solid var(--line);
-      background: #fff;
       border-radius: 7px;
       padding: 8px 9px;
       font-size: 14px;
     }
     .pill b { display: block; color: var(--navy); }
-    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 10px 0 0; }
+    .pill.red { background: var(--soft-red); border-color: #e0aaa3; color: #7c221a; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; }
     .tag {
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--navy);
       border-radius: 999px;
       padding: 4px 8px;
       font-size: 13px;
-      border: 1px solid var(--line);
-      background: #fff;
-      color: var(--navy);
     }
-    .tag.good { color: var(--good); background: #e6f3ec; border-color: #b8d8c6; }
-    .tag.warn { color: var(--warn); background: var(--soft-amber); border-color: #e0bd76; }
-    .tag.bad { color: var(--bad); background: var(--soft-red); border-color: #e4b5ad; }
-    .section { padding: 16px 18px; border-top: 1px solid var(--line); }
-    .section:first-child { border-top: 0; }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 14px;
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    th, td {
-      text-align: left;
-      vertical-align: top;
-      padding: 9px 10px;
-      border-bottom: 1px solid var(--line);
-    }
-    th { background: #eef3f2; color: var(--navy); white-space: nowrap; }
+    .tag.good { color: var(--green); background: #e6f3ec; border-color: #b8d8c6; }
+    .tag.warn { color: var(--amber); background: var(--soft-warn); border-color: #e1bf78; }
+    .tag.bad { color: var(--red); background: var(--soft-red); border-color: #e0aaa3; }
+    .body { padding: 16px 18px; border-top: 1px solid var(--line); }
+    .grid2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+    .mini { padding: 12px; box-shadow: none; }
+    table { width: 100%; border-collapse: collapse; background: white; border: 1px solid var(--line); font-size: 14px; }
+    th, td { text-align: left; vertical-align: top; padding: 9px 10px; border-bottom: 1px solid var(--line); }
+    th { background: var(--soft); color: var(--navy); white-space: nowrap; }
     tr:last-child td { border-bottom: 0; }
-    .two-col {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 14px;
-    }
-    .mini {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 12px;
-    }
-    .route-list {
+    .routes {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
     }
     .route {
-      background: #fff;
+      background: white;
       border: 1px solid var(--line);
       border-radius: 8px;
       padding: 10px;
     }
     .route b { display: block; color: var(--navy); margin-bottom: 4px; }
-    .source-note {
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .excluded {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      margin-top: 18px;
-      overflow: hidden;
-    }
-    .footer {
-      color: var(--muted);
-      font-size: 13px;
-      padding: 18px 0 0;
-    }
-    @media (max-width: 900px) {
-      .summary-grid, .meta, .two-col, .route-list { grid-template-columns: 1fr; }
-      .option-head { grid-template-columns: 1fr; }
-      .photo { min-height: 220px; }
+    .route small { display: block; color: var(--muted); margin-top: 5px; }
+    .fine { color: var(--muted); font-size: 13px; }
+    @media (max-width: 920px) {
+      .quick, .head, .meta, .grid2, .routes { grid-template-columns: 1fr; }
       h1 { font-size: 28px; }
+      .photo { min-height: 225px; }
     }
   </style>
 </head>
@@ -265,417 +224,294 @@
   <header>
     <div class="wrap">
       <h1>伦敦住宿候选报告</h1>
-      <p>入住日期：2026 年 8 月 21 日；退房日期：2026 年 8 月 25 日。预算按人民币显示，优先看交通省事、三人真实床位、可取消政策和订房入口可靠性。</p>
+      <p>日期：2026 年 8 月 21 日入住，8 月 25 日退房。这里按“能不能少折腾、床是不是真能睡、交通是否顺手、订房来源是否靠谱”来排。</p>
       <div class="chips">
-        <span class="chip">预算：约 ¥1600-2000/晚</span>
-        <span class="chip">排除第三张床为 sofa bed 的主选项</span>
-        <span class="chip">酒店 + Airbnb 均已检查</span>
-        <span class="chip">汇率：USD≈6.80，JPY≈0.0418</span>
+        <span class="chip">Plan A：8/21 单人 + 8/22-25 三人</span>
+        <span class="chip">Plan B：8/21-25 全程三人</span>
+        <span class="chip">酒店与 Airbnb 都纳入</span>
+        <span class="chip">价格统一换算成人民币</span>
       </div>
     </div>
   </header>
 
   <main>
     <div class="wrap">
-      <div class="tabs" role="tablist">
-        <button class="tab-button active" data-tab="split" type="button">8/21 单人 + 8/22-25 三人</button>
-        <button class="tab-button" data-tab="together" type="button">8/21-25 全程三人</button>
-      </div>
+      <nav class="tabs" role="tablist">
+        <button class="tab-button active" data-tab="planA" type="button">Plan A｜1+3 分段住</button>
+        <button class="tab-button" data-tab="planB" type="button">Plan B｜全程三人间</button>
+      </nav>
 
-      <section id="split" class="tab-panel active">
+      <section id="planA" class="panel active">
         <div class="notice">
-          这一页签的核心不是“每天少走几分钟”，而是少折腾箱子：21 号一个人先到，22 号另外两人到后，最好能在同一区域甚至同一家酒店接上。能寄存行李、少换交通线、少拖箱子上下地铁楼梯，实际体感差很多。
+          Plan A 的重点：21 号一个人先落地，22 号另外两人到。最舒服的不是账面最便宜，而是 21 号先到的人能把箱子安顿好，22 号集合时不用拖着行李穿城换住处。这里仍然放入 ¥1600-2500/晚的三人段；超过 ¥2500/晚会标红，不作为优先推荐。
         </div>
-        <div class="summary-grid">
-          <div class="summary-card"><strong>首选</strong><span>Royal National：21 号单人 + 22-25 三人，行李衔接最顺</span></div>
-          <div class="summary-card"><strong>¥5705</strong><span>Royal National 分段组合约总价，按 Expedia 抓取价换算</span></div>
-          <div class="summary-card"><strong>3 张单人床</strong><span>22-25 Triple Room，不用 sofa bed</span></div>
-          <div class="summary-card"><strong>8/19 前</strong><span>22-25 三人房 Expedia 可退截止</span></div>
+        <div class="quick">
+          <div class="quick-card"><strong>最省事</strong><span>Royal National 接续住，21 号和 22-25 都在同一家</span></div>
+          <div class="quick-card"><strong>最贴预算</strong><span>Star Hotel 接续住，三人段约 ¥1786/晚</span></div>
+          <div class="quick-card"><strong>Airbnb 增补</strong><span>Queens Park、Camden、Earl's Court、West Kensington 都已补入</span></div>
+          <div class="quick-card"><strong>红色</strong><span>超过 ¥2500/晚或风险明显，不优先订</span></div>
         </div>
 
         <article class="option">
-          <div class="option-head">
+          <div class="head">
             <div class="photo">
-              <img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/dfc6cfd7.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Royal National Hotel room">
-              <div class="photo-links">
-                <a href="https://www.expedia.com/London-Hotels-The-Royal-National-Hotel.h55001.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&x_pwa=1&useRewards=false&rm1=a1&regionId=178279&destination=London%2C%20England%2C%20United%20Kingdom&destType=MARKET&selected=55001&sort=RECOMMENDED">21号单人订房</a>
-                <a href="https://www.expedia.com/London-Hotels-The-Royal-National-Hotel.h55001.Hotel-Information?chkin=2026-08-22&chkout=2026-08-25&x_pwa=1&useRewards=false&rm1=a3&regionId=178279&destination=London%2C%20England%2C%20United%20Kingdom&destType=MARKET&selected=55001&sort=RECOMMENDED">22-25三人订房</a>
-                <a href="https://www.booking.com/hotel/gb/royal-national.html">Booking 备选</a>
-                <a href="https://www.imperialhotels.co.uk/hotels/royal-national-hotel/rooms/triple-room/53-27/">官网房型</a>
+              <img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/dfc6cfd7.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Royal National room">
+              <div class="links">
+                <a href="https://www.expedia.com/London-Hotels-The-Royal-National-Hotel.h55001.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&x_pwa=1&useRewards=false&rm1=a1&regionId=178279&destination=London%2C%20England%2C%20United%20Kingdom&destType=MARKET&selected=55001&sort=RECOMMENDED">21号单人</a>
+                <a href="https://www.expedia.com/London-Hotels-The-Royal-National-Hotel.h55001.Hotel-Information?chkin=2026-08-22&chkout=2026-08-25&x_pwa=1&useRewards=false&rm1=a3&regionId=178279&destination=London%2C%20England%2C%20United%20Kingdom&destType=MARKET&selected=55001&sort=RECOMMENDED">22-25三人</a>
+                <a href="https://www.booking.com/hotel/gb/royal-national.html">Booking</a>
               </div>
             </div>
             <div>
-              <div class="headline">
+              <div class="title-row">
                 <div>
-                  <h2>方案 A｜Royal National Hotel 接续住</h2>
-                  <p>Bloomsbury / Russell Square，一人先住同一酒店，22 号三人房接上。对 Euston、国王十字、市中心景点最省事。</p>
+                  <h2>A1｜Royal National 接续住</h2>
+                  <p>21 号单人先住 Royal National，22 号换/接到同酒店 Triple Room。行李、集合、去 Euston 都最顺。</p>
                 </div>
-                <span class="rank">首选</span>
+                <span class="badge">首选</span>
               </div>
               <div class="meta">
-                <div class="pill"><b>21号单人</b>Twin Room，2 Twin Beds，约 ¥1210/晚</div>
-                <div class="pill"><b>22-25三人</b>Triple Room，3 Twin Beds，约 ¥4495/3晚</div>
-                <div class="pill"><b>合计</b>约 ¥5705；三人段约 ¥1498/晚</div>
+                <div class="pill"><b>总价估算</b>约 ¥5705</div>
+                <div class="pill"><b>三人段</b>约 ¥1498/晚</div>
+                <div class="pill"><b>床</b>3 Twin Beds</div>
+                <div class="pill"><b>退款</b>三人段 8/19 前可退</div>
               </div>
               <div class="tags">
-                <span class="tag good">三人段 3 张单人床</span>
                 <span class="tag good">22-25 抓取显示还有 4 间</span>
-                <span class="tag good">24小时前台</span>
-                <span class="tag warn">酒店页面写公共区域无电梯，入住前再确认具体楼栋/房间</span>
+                <span class="tag good">无 sofa bed</span>
+                <span class="tag good">24小时前台，行李衔接最稳</span>
               </div>
             </div>
           </div>
-          <div class="section two-col">
+          <div class="body grid2">
             <div class="mini">
-              <h3>房型和退款</h3>
-              <table>
-                <tr><th>日期</th><th>房型</th><th>床</th><th>可退信息</th></tr>
-                <tr><td>8/21-8/22</td><td>Twin Room</td><td>2 张单人床</td><td>非退基础价；加约 $17 可 8/18 前免费取消；加约 $68 可 8/20 前免费取消</td></tr>
-                <tr><td>8/22-8/25</td><td>Triple Room</td><td>3 张单人床</td><td>Expedia 显示 Fully refundable before Aug 19</td></tr>
-              </table>
+              <h3>房型</h3>
+              <p>8/21-8/22：Twin Room，2 张单人床，约 ¥1210。8/22-8/25：Triple Room，3 张单人床，约 ¥4495。</p>
+              <p>设施：Free WiFi、冰箱、桌子、熨斗/熨衣板；酒店有餐厅、早餐、24/7 前台。</p>
             </div>
             <div class="mini">
-              <h3>设施和实际感受</h3>
-              <p>房内抓取到：Free WiFi、Refrigerator、Desk、Iron/ironing board。酒店有餐厅、英式早餐可加购、24/7 前台、可付费停车。</p>
-              <p>拖行李优势明显在哪里：22 号两人到伦敦时，先到的人可以把箱子留在酒店，三人集合后只处理换房/拿钥匙，不需要拖箱子穿城去另一家。</p>
-            </div>
-          </div>
-          <div class="section">
-            <h3>交通：从住宿出发</h3>
-            <div class="route-list">
-              <div class="route"><b>Euston / 国王十字区域</b>步行或公交约 8-15 分钟；打车约 3-8 分钟。</div>
-              <div class="route"><b>Warner Bros. Studio Tour</b>公共交通约 35 分钟到 Watford Junction，再接官方 shuttle 约 15 分钟；打车直达约 39 分钟。</div>
-              <div class="route"><b>Tower Bridge</b>地铁/公交约 33 分钟；打车约 17 分钟。</div>
-              <div class="route"><b>Big Ben / Westminster</b>地铁/公交约 25 分钟；打车约 10 分钟。</div>
-              <div class="route"><b>Emirates Stadium</b>地铁/公交约 20 分钟；打车约 15 分钟。</div>
-              <div class="route"><b>Heathrow / Gatwick</b>Heathrow 公共交通约 1小时14分、打车约 47 分钟；Gatwick 公共交通约 1小时01分、打车约 1小时17分。</div>
+              <h3>交通</h3>
+              <div class="routes">
+                <div class="route"><b>酒店 → Euston</b>步行/公交约 8 分钟；打车约 3 分钟。<small>适合 8/25 拖箱子去火车站。</small></div>
+                <div class="route"><b>酒店 → Harry Potter</b>地铁/火车到 Watford Junction 约 35 分钟，再 shuttle 约 15 分钟；打车约 39 分钟。</div>
+                <div class="route"><b>酒店 → Tower Bridge</b>Russell Square / Euston 一带转地铁或公交约 33 分钟；打车约 17 分钟。</div>
+                <div class="route"><b>酒店 → Big Ben</b>地铁/公交约 25 分钟；打车约 10 分钟。</div>
+              </div>
             </div>
           </div>
         </article>
 
         <article class="option">
-          <div class="option-head">
+          <div class="head">
             <div class="photo">
               <img src="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/6268d8f6.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Star Hotel room">
-              <div class="photo-links">
-                <a href="https://www.expedia.com/London-Hotels-Star-Hotel-Bed-Breakfast.h888617.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&x_pwa=1&useRewards=false&rm1=a1&regionId=178279&destination=London%2C%20England%2C%20United%20Kingdom&destType=MARKET">21号单人订房</a>
-                <a href="https://www.expedia.com/London-Hotels-Star-Hotel-Bed-Breakfast.h888617.Hotel-Information?chkin=2026-08-22&chkout=2026-08-25&x_pwa=1&useRewards=false&rm1=a3&regionId=178279&destination=London%2C%20England%2C%20United%20Kingdom&destType=MARKET">22-25三人订房</a>
-                <a href="https://www.booking.com/hotel/gb/star-hotel.html">Booking 备选</a>
-                <a href="https://us.trip.com/hotels/london-hotel-detail-3723504/star-hotel-bandb/">Trip.com 备选</a>
+              <div class="links">
+                <a href="https://www.expedia.com/London-Hotels-Star-Hotel-Bed-Breakfast.h888617.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&x_pwa=1&useRewards=false&rm1=a1&regionId=178279&destination=London%2C%20England%2C%20United%20Kingdom&destType=MARKET">21号单人</a>
+                <a href="https://www.expedia.com/London-Hotels-Star-Hotel-Bed-Breakfast.h888617.Hotel-Information?chkin=2026-08-22&chkout=2026-08-25&x_pwa=1&useRewards=false&rm1=a3&regionId=178279&destination=London%2C%20England%2C%20United%20Kingdom&destType=MARKET">22-25三人</a>
+                <a href="https://www.booking.com/hotel/gb/star-hotel.html">Booking</a>
               </div>
             </div>
             <div>
-              <div class="headline">
+              <div class="title-row">
                 <div>
-                  <h2>方案 B｜Star Hotel 接续住</h2>
-                  <p>Shepherds Bush / Hammersmith 一带，小型 B&B 风格，评分高、床位真实，价格落在预算区间。</p>
+                  <h2>A2｜Star Hotel 接续住</h2>
+                  <p>21 号 Single Room，22-25 接 Quadruple Room。评分高，三人段价格在合理区间，但每天去 Euston 比 Royal National 远。</p>
                 </div>
-                <span class="rank">预算内</span>
+                <span class="badge">预算内</span>
               </div>
               <div class="meta">
-                <div class="pill"><b>21号单人</b>Single Room，1 Twin Bed，约 ¥932/晚</div>
-                <div class="pill"><b>22-25三人</b>Quadruple Room，1 Double + 2 Twin，约 ¥5358/3晚</div>
-                <div class="pill"><b>合计</b>约 ¥6290；三人段约 ¥1786/晚</div>
+                <div class="pill"><b>总价估算</b>约 ¥6290</div>
+                <div class="pill"><b>三人段</b>约 ¥1786/晚</div>
+                <div class="pill"><b>床</b>1 Double + 2 Twin</div>
+                <div class="pill"><b>退款</b>三人段加价可 8/19 前退</div>
               </div>
               <div class="tags">
-                <span class="tag good">三人段没有 sofa bed</span>
-                <span class="tag good">22-25 抓取显示只剩 1 间</span>
-                <span class="tag good">9.0/10 Expedia 评分</span>
-                <span class="tag warn">无电梯；晚到需提前联系</span>
+                <span class="tag good">22-25 抓取只剩 1 间</span>
+                <span class="tag good">无 sofa bed</span>
+                <span class="tag warn">无电梯，晚到需提前联系</span>
               </div>
             </div>
           </div>
-          <div class="section two-col">
-            <div class="mini">
-              <h3>房型和退款</h3>
-              <table>
-                <tr><th>日期</th><th>房型</th><th>床</th><th>可退信息</th></tr>
-                <tr><td>8/21-8/22</td><td>Single Room</td><td>1 张单人床</td><td>非退基础价；加约 $7 可 8/18 前免费取消</td></tr>
-                <tr><td>8/22-8/25</td><td>Quadruple Room</td><td>1 张双人床 + 2 张单人床</td><td>非退基础价；加约 $41 可 8/19 前免费取消；页面显示 Reserve now, pay deposit</td></tr>
-              </table>
-            </div>
-            <div class="mini">
-              <h3>设施和实际感受</h3>
-              <p>房内抓取到：Free WiFi、Refrigerator、Desk、blackout drapes、free cribs/infant beds。酒店无电梯，噪音安静性不能保证。</p>
-              <p>适合愿意住西边、重视评分和真实床位的人；不适合每天都围绕 Euston/国王十字上下车的人。</p>
-            </div>
-          </div>
-          <div class="section">
-            <h3>交通：从住宿出发</h3>
-            <div class="route-list">
-              <div class="route"><b>Euston / 国王十字区域</b>公共交通约 39 分钟；打车约 18 分钟。</div>
-              <div class="route"><b>Warner Bros. Studio Tour</b>公共交通约 1小时29分；打车约 39 分钟。</div>
-              <div class="route"><b>Tower Bridge</b>公共交通约 50 分钟；打车约 31 分钟。</div>
-              <div class="route"><b>Heathrow</b>公共交通约 58 分钟；打车约 25 分钟。</div>
-            </div>
+          <div class="body grid2">
+            <div class="mini"><h3>房型</h3><p>8/21-8/22：Single Room，1 张单人床。8/22-8/25：Quadruple Room，1 张双人床 + 2 张单人床，约 213 sq ft。</p><p>设施：Free WiFi、冰箱、桌子、遮光窗帘；小型酒店/B&B 风格。</p></div>
+            <div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>酒店 → Euston</b>公共交通约 39 分钟；打车约 18 分钟。</div><div class="route"><b>酒店 → Harry Potter</b>公共交通约 1小时29分；打车约 39 分钟。</div><div class="route"><b>酒店 → Tower Bridge</b>公共交通约 50 分钟；打车约 31 分钟。</div><div class="route"><b>Heathrow → 酒店</b>Piccadilly line 方向公共交通约 58 分钟；打车约 25 分钟。</div></div></div>
           </div>
         </article>
 
         <article class="option">
-          <div class="option-head">
+          <div class="head">
             <div class="photo">
-              <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1706365638853922255/original/9609dd2f-8236-4f47-90de-6f1b96e30672.jpeg?im_w=960" alt="Airbnb Queens Park flat">
-              <div class="photo-links">
+              <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1706365638853922255/original/9609dd2f-8236-4f47-90de-6f1b96e30672.jpeg?im_w=960" alt="Queens Park Airbnb">
+              <div class="links">
                 <a href="https://zh.airbnb.com/rooms/1706365638853922255?adults=3&check_in=2026-08-22&check_out=2026-08-25">Airbnb 22-25</a>
                 <a href="https://zh.airbnb.com/rooms/1706365638853922255?adults=3&check_in=2026-08-21&check_out=2026-08-25">Airbnb 21-25</a>
               </div>
             </div>
             <div>
-              <div class="headline">
-                <div>
-                  <h2>Airbnb 候选｜Queens Park 2 卧公寓</h2>
-                  <p>8/22-8/25 搜索结果显示可订，3 晚约 ¥4619，价格很好；但 Airbnb 页面只写 2 张床，没展开到床型，不建议在房东确认前直接下单。</p>
-                </div>
-                <span class="rank">需确认</span>
-              </div>
+              <div class="title-row"><div><h2>A3｜21号 Royal National + Queens Park Airbnb</h2><p>21 号先住 Royal National，22-25 搬到 Queens Park 两卧公寓。价格好，但床型和安全设施要谨慎确认。</p></div><span class="badge warn">便宜但需确认</span></div>
               <div class="meta">
-                <div class="pill"><b>房源</b>整套出租单元，2 卧室，2 张床，1 卫</div>
-                <div class="pill"><b>8/22-8/25</b>¥110,511 JPY ≈ ¥4619，总价约 ¥1540/晚</div>
-                <div class="pill"><b>8/21-8/25</b>¥147,348 JPY ≈ ¥6159，总价约 ¥1540/晚</div>
+                <div class="pill"><b>组合总价</b>约 ¥5829</div>
+                <div class="pill"><b>三人段</b>¥110,511 JPY ≈ ¥4619，约 ¥1540/晚</div>
+                <div class="pill"><b>床</b>2 卧室，2 张床，床型未完全展开</div>
+                <div class="pill"><b>退款</b>Airbnb 显示免费取消</div>
               </div>
-              <div class="tags">
-                <span class="tag good">Airbnb 页面显示可免费取消</span>
-                <span class="tag warn">新房源，仅 1 条评价</span>
-                <span class="tag warn">页面未写明两张床各自类型</span>
-                <span class="tag bad">未报告烟雾/一氧化碳报警器</span>
-              </div>
+              <div class="tags"><span class="tag warn">新房源，仅 1 条评价</span><span class="tag warn">未报告烟雾/一氧化碳报警器</span><span class="tag good">无 sofa bed 字样</span></div>
             </div>
           </div>
-          <div class="section">
-            <h3>交通：从 Queens Park 出发</h3>
-            <div class="route-list">
-              <div class="route"><b>Oxford Circus</b>房源介绍称步行 5 分钟到地铁，约 15 分钟到 Oxford Circus。</div>
-              <div class="route"><b>Euston / 国王十字</b>通常需地铁换乘，约 25-35 分钟；打车约 20-30 分钟，视路况。</div>
-              <div class="route"><b>Harry Potter 片场</b>到 Watford Junction 方向需要换乘，保守估计公共交通 1小时以上。</div>
-              <div class="route"><b>拖行李</b>比酒店弱：没有前台寄存保障，22 号两人到达前后的行李衔接要看房东是否允许。</div>
+          <div class="body grid2">
+            <div class="mini"><h3>房源</h3><p>整套出租单元，2 卧室，2 张床，1 卫，厨房、电视、洗衣机、内部付费停车。3 人睡两张床，默认需要两人同床。</p></div>
+            <div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>Airbnb → Oxford Circus</b>房源描述称步行约 5 分钟到地铁，约 15 分钟到 Oxford Circus。</div><div class="route"><b>Airbnb → Euston</b>地铁通常需换乘，约 25-35 分钟；打车约 20-30 分钟。</div><div class="route"><b>Airbnb → Harry Potter</b>去 Watford Junction 方向需换乘，公共交通保守 1 小时以上。</div><div class="route"><b>行李</b>民宿没有前台寄存保障，22 号入住前能否放箱子需问房东。</div></div></div>
+          </div>
+        </article>
+
+        <article class="option">
+          <div class="head">
+            <div class="photo">
+              <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1534865615026164814/original/2e84e3d5-94e2-4a94-a592-cdab6f9f5350.jpeg?im_w=960" alt="Camden Airbnb">
+              <div class="links">
+                <a href="https://zh.airbnb.com/rooms/1534865615026164814?adults=3&check_in=2026-08-22&check_out=2026-08-25">Airbnb 22-25</a>
+                <a href="https://zh.airbnb.com/rooms/1534865615026164814?adults=3&check_in=2026-08-21&check_out=2026-08-25">Airbnb 21-25</a>
+              </div>
             </div>
+            <div>
+              <div class="title-row"><div><h2>A4｜21号 Royal National + Camden / Mornington Crescent Airbnb</h2><p>22-25 住靠近 Mornington Crescent 的两卧两卫 Airbnb，去 Euston/国王十字比西伦敦民宿顺。</p></div><span class="badge">Airbnb 推荐</span></div>
+              <div class="meta">
+                <div class="pill"><b>组合总价</b>约 ¥8464</div>
+                <div class="pill"><b>三人段</b>¥173,534 JPY ≈ ¥7254，约 ¥2418/晚</div>
+                <div class="pill"><b>床</b>1 张 1.8m + 1 张 1.35m</div>
+                <div class="pill"><b>退款</b>搜索页显示免费取消</div>
+              </div>
+              <div class="tags"><span class="tag good">2 卫生间</span><span class="tag good">4.89 / 37 条评价</span><span class="tag warn">两张床，三人中两人需同床</span></div>
+            </div>
+          </div>
+          <div class="body grid2">
+            <div class="mini"><h3>房源</h3><p>整套出租单元，2 卧室，2 张床，2 卫。厨房、洗衣机、洗碗机、全尺寸冰箱、快速 WiFi。房源说明提到一楼，无需楼梯。</p></div>
+            <div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>Airbnb → Mornington Crescent</b>房源称地铁站仅几步之遥。</div><div class="route"><b>Airbnb → Euston</b>Northern line 或步行/短途打车，约 10-18 分钟区间。</div><div class="route"><b>Airbnb → Tower Bridge</b>Northern/Jubilee 或公交换乘，约 35-45 分钟；打车约 20-30 分钟。</div><div class="route"><b>Airbnb → Harry Potter</b>去 Euston 再到 Watford Junction，整体通常比西伦敦 Airbnb 更顺。</div></div></div>
+          </div>
+        </article>
+
+        <article class="option">
+          <div class="head">
+            <div class="photo">
+              <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1077431780373331051/original/6484fff8-a2aa-4b16-a94c-225321d4b6e3.jpeg?im_w=960" alt="West Kensington Airbnb">
+              <div class="links"><a href="https://zh.airbnb.com/rooms/1077431780373331051?adults=3&check_in=2026-08-22&check_out=2026-08-25">Airbnb 22-25</a></div>
+            </div>
+            <div>
+              <div class="title-row"><div><h2>A5｜21号 Royal National + West Kensington Airbnb</h2><p>22-25 搬到 West Kensington，两卧三床，价格在区间内；比 Queens Park 更像三人可分开睡，但去 Euston 较远。</p></div><span class="badge">三床 Airbnb</span></div>
+              <div class="meta">
+                <div class="pill"><b>组合总价</b>约 ¥6645</div>
+                <div class="pill"><b>三人段</b>¥130,012 JPY ≈ ¥5435，约 ¥1812/晚</div>
+                <div class="pill"><b>床</b>2 卧室，3 张床</div>
+                <div class="pill"><b>退款</b>7/23 前可免费取消</div>
+              </div>
+              <div class="tags"><span class="tag good">4.82 / 73 条评价</span><span class="tag good">自助入住</span><span class="tag warn">床型细节需在下单前再确认</span></div>
+            </div>
+          </div>
+          <div class="body grid2">
+            <div class="mini"><h3>房源</h3><p>整套出租单元，5 位客人、2 卧室、3 张床、1 卫。房源介绍强调 West Kensington 附近多条地铁线和超市便利。</p></div>
+            <div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>Airbnb → West Kensington station</b>房源/公开摘要提到步行约 5-6 分钟到地铁。</div><div class="route"><b>Airbnb → Euston</b>District/Piccadilly 方向换 Victoria/Northern，约 35-45 分钟；打车约 25-35 分钟。</div><div class="route"><b>Airbnb → Tower Bridge</b>District/Jubilee 或 District/Circle 换乘，约 45-55 分钟。</div><div class="route"><b>Heathrow → Airbnb</b>Piccadilly line 到西伦敦较顺，约 45-60 分钟。</div></div></div>
+          </div>
+        </article>
+
+        <article class="option over">
+          <div class="head">
+            <div class="photo">
+              <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1326017562293584933/original/eccd6c4c-317c-47cc-a0b2-0dd41d1538ea.jpeg?im_w=960" alt="Earl's Court Airbnb">
+              <div class="links"><a href="https://zh.airbnb.com/rooms/1638486027888363990?adults=3&check_in=2026-08-22&check_out=2026-08-25">Airbnb 22-25</a></div>
+            </div>
+            <div>
+              <div class="title-row"><div><h2>A6｜21号 Royal National + Earl's Court 5.0 Airbnb</h2><p>评分和位置很好，22-25 可订；但只有两张床，且 8/21-25 全程不可订，所以只适合 Plan A。</p></div><span class="badge warn">好但不省</span></div>
+              <div class="meta">
+                <div class="pill"><b>组合总价</b>约 ¥7677</div>
+                <div class="pill"><b>三人段</b>¥154,714 JPY ≈ ¥6467，约 ¥2156/晚</div>
+                <div class="pill"><b>床</b>2 卧室，2 张床</div>
+                <div class="pill"><b>退款</b>8/21 前可免费取消</div>
+              </div>
+              <div class="tags"><span class="tag good">5.0 / 8 条评价</span><span class="tag good">烟雾和一氧化碳报警器</span><span class="tag warn">无空调，评论提到夏天热</span></div>
+            </div>
+          </div>
+          <div class="body grid2">
+            <div class="mini"><h3>房源</h3><p>整套出租单元，4 位客人、2 卧室、2 张床、1 卫。厨房、WiFi、工作区、电视、洗衣机、烘干机。</p></div>
+            <div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>Airbnb → Earl's Court station</b>房源称步行约 5 分钟。</div><div class="route"><b>Airbnb → 市中心</b>Piccadilly / District line，房源称约 15-20 分钟到伦敦市中心。</div><div class="route"><b>Airbnb → Euston</b>Piccadilly / District 换 Victoria/Northern，约 30-40 分钟。</div><div class="route"><b>Heathrow → Airbnb</b>Piccadilly line 直达方向较顺，约 45-55 分钟。</div></div></div>
           </div>
         </article>
       </section>
 
-      <section id="together" class="tab-panel">
+      <section id="planB" class="panel">
         <div class="notice">
-          这一页签假设 8/21-8/25 四晚都三人一起住，不换地方。主选项只保留没有明确 sofa bed 的房型；床位不完整或超预算的会标出来，不混进推荐里。
+          Plan B 是 8/21-8/25 四晚三人一直住同一个地方。这里至少列 5 个可选项；¥1600-2500/晚都展示，超过 ¥2500/晚标红弱推荐。明确依赖 sofa bed 的房型不进推荐位，只在排除说明里写。
         </div>
-        <div class="summary-grid">
-          <div class="summary-card"><strong>最省事</strong><span>Royal National：三张单人床，位置最好，价格略低于预算下限</span></div>
-          <div class="summary-card"><strong>最贴预算</strong><span>Star Hotel：约 ¥1882/晚，床位真实，只剩 1 间</span></div>
-          <div class="summary-card"><strong>Airbnb</strong><span>Queens Park 可订但要确认床型和报警器问题</span></div>
-          <div class="summary-card"><strong>排除</strong><span>所有第三床依赖 sofa bed 的房型不作为主选</span></div>
+        <div class="quick">
+          <div class="quick-card"><strong>推荐 1</strong><span>Royal National：位置最稳，三张单人床</span></div>
+          <div class="quick-card"><strong>推荐 2</strong><span>Star Hotel：价格最贴区间，真实床位</span></div>
+          <div class="quick-card"><strong>Airbnb</strong><span>Queens Park、Camden、Portobello、Earl's Court 已补入</span></div>
+          <div class="quick-card"><strong>谨慎</strong><span>超过 ¥2500/晚或安全/床型有疑问会标红</span></div>
         </div>
 
         <article class="option">
-          <div class="option-head">
-            <div class="photo">
-              <img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/dfc6cfd7.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Royal National Triple Room">
-              <div class="photo-links">
-                <a href="https://www.expedia.com/London-Hotels-The-Royal-National-Hotel.h55001.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&x_pwa=1&rfrr=HSR&pwa_ts=1720000000000&useRewards=false&rm1=a3&regionId=178279&destination=London%2C%20England%2C%20United%20Kingdom&destType=MARKET&selected=55001&sort=RECOMMENDED">Expedia 订房</a>
-                <a href="https://www.booking.com/hotel/gb/royal-national.html">Booking 备选</a>
-                <a href="https://www.hotels.com/ho626300/the-royal-national-hotel-london-united-kingdom/">Hotels.com 备选</a>
-                <a href="https://www.imperialhotels.co.uk/hotels/royal-national-hotel/rooms/triple-room/53-27/">官网房型</a>
-              </div>
-            </div>
-            <div>
-              <div class="headline">
-                <div>
-                  <h2>Royal National Hotel｜Triple Room</h2>
-                  <p>38-51 Bedford Way。位置对 Euston、国王十字、Russell Square、Bloomsbury 一带非常顺，适合把住宿当交通枢纽。</p>
-                </div>
-                <span class="rank">推荐 1</span>
-              </div>
-              <div class="meta">
-                <div class="pill"><b>价格</b>$932 四晚 ≈ ¥6338；约 ¥1585/晚</div>
-                <div class="pill"><b>床</b>3 Twin Beds，三人各睡单人床</div>
-                <div class="pill"><b>库存</b>8/21-8/25 抓取显示 We have 1 left</div>
-              </div>
-              <div class="tags">
-                <span class="tag good">无 sofa bed</span>
-                <span class="tag good">交通最稳</span>
-                <span class="tag good">24/7 前台</span>
-                <span class="tag warn">全程四晚退款截止需进 checkout 再最终确认</span>
-              </div>
-            </div>
+          <div class="head">
+            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/dfc6cfd7.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Royal National Triple Room"><div class="links"><a href="https://www.expedia.com/London-Hotels-The-Royal-National-Hotel.h55001.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&x_pwa=1&rfrr=HSR&pwa_ts=1720000000000&useRewards=false&rm1=a3&regionId=178279&destination=London%2C%20England%2C%20United%20Kingdom&destType=MARKET&selected=55001&sort=RECOMMENDED">Expedia</a><a href="https://www.booking.com/hotel/gb/royal-national.html">Booking</a><a href="https://www.imperialhotels.co.uk/hotels/royal-national-hotel/rooms/triple-room/53-27/">官网房型</a></div></div>
+            <div><div class="title-row"><div><h2>B1｜Royal National Hotel｜Triple Room</h2><p>8/21-8/25 全程三人不换地方。Euston、Russell Square、国王十字都顺，三张单人床最干净。</p></div><span class="badge">推荐 1</span></div><div class="meta"><div class="pill"><b>价格</b>约 ¥6338 / 4 晚</div><div class="pill"><b>每晚</b>约 ¥1585</div><div class="pill"><b>床</b>3 Twin Beds</div><div class="pill"><b>库存</b>抓取显示剩 1 间</div></div><div class="tags"><span class="tag good">无 sofa bed</span><span class="tag good">最少折腾</span><span class="tag warn">可退截止需 checkout 最终确认</span></div></div>
           </div>
-          <div class="section two-col">
-            <div class="mini">
-              <h3>房间与设施</h3>
-              <p>Triple Room，约 269 sq ft，3 张单人床。页面抓取到 Free WiFi、Refrigerator、Desk、Iron/ironing board；酒店有餐厅、早餐可加购、付费停车、24/7 前台。</p>
-              <p>窗户：Expedia 房型摘要没有明确写“有窗/无窗”；官网房型图片显示正常客房窗景，最终以下单页和酒店确认为准。</p>
-            </div>
-            <div class="mini">
-              <h3>为什么拖行李优势明显</h3>
-              <p>它靠近 Euston / Russell Square，去火车站、地铁站和市中心都短。三个人带箱子时，少一次换线、少一次找民宿门牌、少一次等房东回复，就是实打实省体力。</p>
-            </div>
-          </div>
-          <div class="section">
-            <h3>交通：公共交通 + 打车</h3>
-            <div class="route-list">
-              <div class="route"><b>Euston</b>步行/公交约 8 分钟；打车约 3 分钟。</div>
-              <div class="route"><b>Warner Bros. Studio Tour</b>公共交通约 35 分钟到 Watford Junction + shuttle 约 15 分钟；打车约 39 分钟。</div>
-              <div class="route"><b>Tower Bridge</b>公共交通约 33 分钟；打车约 17 分钟。</div>
-              <div class="route"><b>Big Ben</b>公共交通约 25 分钟；打车约 10 分钟。</div>
-              <div class="route"><b>Emirates Stadium</b>公共交通约 20 分钟；打车约 15 分钟。</div>
-              <div class="route"><b>机场</b>Heathrow 公共交通约 1小时14分/打车约 47 分钟；Gatwick 公共交通约 1小时01分/打车约 1小时17分。</div>
-            </div>
-          </div>
+          <div class="body grid2"><div class="mini"><h3>房间和设施</h3><p>Triple Room，约 269 sq ft，Free WiFi、冰箱、桌子、熨斗/熨衣板。酒店有餐厅、早餐、24/7 前台。</p></div><div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>到 Euston</b>步行/公交约 8 分钟；打车约 3 分钟。</div><div class="route"><b>到 Harry Potter</b>到 Watford Junction 约 35 分钟 + shuttle 约 15 分钟；打车约 39 分钟。</div><div class="route"><b>到 Tower Bridge</b>公共交通约 33 分钟；打车约 17 分钟。</div><div class="route"><b>到 Big Ben</b>公共交通约 25 分钟；打车约 10 分钟。</div></div></div></div>
         </article>
 
         <article class="option">
-          <div class="option-head">
-            <div class="photo">
-              <img src="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/6268d8f6.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Star Hotel Quadruple Room">
-              <div class="photo-links">
-                <a href="https://www.expedia.com/London-Hotels-Star-Hotel-Bed-Breakfast.h888617.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&x_pwa=1&useRewards=false&rm1=a3&regionId=178279&destination=London&destType=MARKET">Expedia 订房</a>
-                <a href="https://www.booking.com/hotel/gb/star-hotel.html">Booking 备选</a>
-                <a href="https://us.trip.com/hotels/london-hotel-detail-3723504/star-hotel-bandb/">Trip.com 备选</a>
-              </div>
-            </div>
-            <div>
-              <div class="headline">
-                <div>
-                  <h2>Star Hotel｜Quadruple Room</h2>
-                  <p>Shepherds Bush Road，小型酒店/B&B 风格。价格最贴近预算，评分比 Royal National 高，但每天进市中心时间更长。</p>
-                </div>
-                <span class="rank">推荐 2</span>
-              </div>
-              <div class="meta">
-                <div class="pill"><b>价格</b>$1107 四晚 ≈ ¥7528；约 ¥1882/晚</div>
-                <div class="pill"><b>床</b>1 Double Bed + 2 Twin Beds</div>
-                <div class="pill"><b>库存</b>8/21-8/25 抓取显示 We have 1 left</div>
-              </div>
-              <div class="tags">
-                <span class="tag good">无 sofa bed</span>
-                <span class="tag good">评分 9.0/10</span>
-                <span class="tag good">可加钱 8/18 前免费取消</span>
-                <span class="tag warn">无电梯；房间 213 sq ft</span>
-              </div>
-            </div>
+          <div class="head">
+            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/6268d8f6.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Star Hotel Quadruple Room"><div class="links"><a href="https://www.expedia.com/London-Hotels-Star-Hotel-Bed-Breakfast.h888617.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&x_pwa=1&useRewards=false&rm1=a3&regionId=178279&destination=London&destType=MARKET">Expedia</a><a href="https://www.booking.com/hotel/gb/star-hotel.html">Booking</a><a href="https://us.trip.com/hotels/london-hotel-detail-3723504/star-hotel-bandb/">Trip.com</a></div></div>
+            <div><div class="title-row"><div><h2>B2｜Star Hotel｜Quadruple Room</h2><p>小型酒店/B&B，评分高，价格落在目标区间，床位真实。缺点是西边位置，去 Euston 和 Tower Bridge 时间更长。</p></div><span class="badge">推荐 2</span></div><div class="meta"><div class="pill"><b>价格</b>约 ¥7528 / 4 晚</div><div class="pill"><b>每晚</b>约 ¥1882</div><div class="pill"><b>床</b>1 Double + 2 Twin</div><div class="pill"><b>退款</b>加约 $58 可 8/18 前退</div></div><div class="tags"><span class="tag good">无 sofa bed</span><span class="tag good">9.0/10</span><span class="tag warn">无电梯，晚到需提前联系</span></div></div>
           </div>
-          <div class="section two-col">
-            <div class="mini">
-              <h3>房间与设施</h3>
-              <p>Quadruple Room，约 213 sq ft，1 张双人床 + 2 张单人床。抓取到 Free WiFi、Refrigerator、Desk、blackout drapes、free cribs/infant beds。</p>
-              <p>窗户：Expedia 图片里有窗，但房型文字未把“有窗”作为承诺项。无电梯，晚到需提前联系。</p>
-            </div>
-            <div class="mini">
-              <h3>退款</h3>
-              <p>8/21-8/25 页面显示非退基础价；加约 $58 可 Fully refundable before Aug 18；Reserve now, pay deposit。最后仍以下单页为准。</p>
-            </div>
-          </div>
-          <div class="section">
-            <h3>交通：公共交通 + 打车</h3>
-            <div class="route-list">
-              <div class="route"><b>Euston</b>公共交通约 39 分钟；打车约 18 分钟。</div>
-              <div class="route"><b>Warner Bros. Studio Tour</b>公共交通约 1小时29分；打车约 39 分钟。</div>
-              <div class="route"><b>Tower Bridge</b>公共交通约 50 分钟；打车约 31 分钟。</div>
-              <div class="route"><b>Heathrow</b>公共交通约 58 分钟；打车约 25 分钟。</div>
-            </div>
-          </div>
+          <div class="body grid2"><div class="mini"><h3>房间和设施</h3><p>Quadruple Room，约 213 sq ft，Free WiFi、冰箱、桌子、遮光窗帘、婴儿床可申请。</p></div><div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>到 Euston</b>公共交通约 39 分钟；打车约 18 分钟。</div><div class="route"><b>到 Harry Potter</b>公共交通约 1小时29分；打车约 39 分钟。</div><div class="route"><b>到 Tower Bridge</b>公共交通约 50 分钟；打车约 31 分钟。</div><div class="route"><b>到 Heathrow</b>公共交通约 58 分钟；打车约 25 分钟。</div></div></div></div>
         </article>
 
         <article class="option">
-          <div class="option-head">
-            <div class="photo">
-              <img src="https://images.trvl-media.com/lodging/3000000/2040000/2030300/2030220/c75934f3.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="W6 Hotel Hammersmith room">
-              <div class="photo-links">
-                <a href="https://www.expedia.com/London-Hotels-W6-Hotel-Hammersmith.h2030220.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&x_pwa=1&useRewards=false&rm1=a3&regionId=178279&destination=London&destType=MARKET">Expedia 订房</a>
-                <a href="https://www.booking.com/hotel/gb/so-sienna.html">Booking 备选</a>
-                <a href="https://www.hotels.com/ho269043/w6-hotel-hammersmith-london-united-kingdom/">Hotels.com 备选</a>
-              </div>
-            </div>
-            <div>
-              <div class="headline">
-                <div>
-                  <h2>W6 Hotel Hammersmith｜Triple Studio</h2>
-                  <p>Hammersmith，像公寓式酒店。优点是便宜、有小厨房感；缺点是只有 1 张双人床 + 1 张单人床，必须两人共睡。</p>
-                </div>
-                <span class="rank">备选</span>
-              </div>
-              <div class="meta">
-                <div class="pill"><b>价格</b>$789 四晚 ≈ ¥5365；约 ¥1341/晚</div>
-                <div class="pill"><b>床</b>1 Twin Bed + 1 Double Bed</div>
-                <div class="pill"><b>退款</b>加约 $88 可 8/19 前免费取消</div>
-              </div>
-              <div class="tags">
-                <span class="tag good">不是 sofa bed</span>
-                <span class="tag warn">低于预算，不是舒适优先</span>
-                <span class="tag warn">两人要共用双人床</span>
-                <span class="tag warn">离 Euston 更远</span>
-              </div>
-            </div>
+          <div class="head">
+            <div class="photo"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1706365638853922255/original/9609dd2f-8236-4f47-90de-6f1b96e30672.jpeg?im_w=960" alt="Queens Park Airbnb"><div class="links"><a href="https://zh.airbnb.com/rooms/1706365638853922255?adults=3&check_in=2026-08-21&check_out=2026-08-25">Airbnb</a></div></div>
+            <div><div class="title-row"><div><h2>B3｜Airbnb｜Queens Park 2 卧公寓</h2><p>价格低，适合想住整套公寓；但页面没有展开具体床型，且报警器信息不好看。</p></div><span class="badge warn">便宜但谨慎</span></div><div class="meta"><div class="pill"><b>价格</b>¥147,348 JPY ≈ ¥6159</div><div class="pill"><b>每晚</b>约 ¥1540</div><div class="pill"><b>床</b>2 卧室，2 张床</div><div class="pill"><b>退款</b>8/20 前可免费取消</div></div><div class="tags"><span class="tag warn">新房源，仅 1 条评价</span><span class="tag warn">床型需问房东</span><span class="tag bad">未报告烟雾/一氧化碳报警器</span></div></div>
           </div>
-          <div class="section">
-            <h3>交通：公共交通 + 打车</h3>
-            <div class="route-list">
-              <div class="route"><b>Euston</b>公共交通约 30 分钟；打车约 20 分钟。</div>
-              <div class="route"><b>Warner Bros. Studio Tour</b>公共交通约 1小时26分；打车约 39 分钟。</div>
-              <div class="route"><b>Tower Bridge</b>公共交通约 43 分钟；打车约 31 分钟。</div>
-              <div class="route"><b>Heathrow</b>公共交通约 54 分钟；打车约 25 分钟。</div>
-            </div>
-          </div>
+          <div class="body grid2"><div class="mini"><h3>房源</h3><p>整套出租单元，5 位客人、2 卧室、2 张床、1 卫；厨房、电视、洗衣机、内部付费停车。</p></div><div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>到 Oxford Circus</b>房源称地铁约 15 分钟。</div><div class="route"><b>到 Euston</b>公共交通约 25-35 分钟；打车约 20-30 分钟。</div><div class="route"><b>到 Tower Bridge</b>通常需换乘，约 45-55 分钟。</div><div class="route"><b>到 Harry Potter</b>公共交通保守 1 小时以上，且 22 号入住前寄存行李要问房东。</div></div></div></div>
         </article>
 
         <article class="option">
-          <div class="option-head">
-            <div class="photo">
-              <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1706365638853922255/original/9609dd2f-8236-4f47-90de-6f1b96e30672.jpeg?im_w=960" alt="Airbnb Queens Park">
-              <div class="photo-links">
-                <a href="https://zh.airbnb.com/rooms/1706365638853922255?adults=3&check_in=2026-08-21&check_out=2026-08-25">Airbnb 订房</a>
-              </div>
-            </div>
-            <div>
-              <div class="headline">
-                <div>
-                  <h2>Airbnb｜Queens Park 2 床位公寓</h2>
-                  <p>这是 Airbnb 搜到的低价候选，价格漂亮，但因为页面没有展示每张床的具体类型，且报警器信息有风险，建议只作为“联系确认后再订”的选项。</p>
-                </div>
-                <span class="rank">Airbnb</span>
-              </div>
-              <div class="meta">
-                <div class="pill"><b>价格</b>¥147,348 JPY 四晚 ≈ ¥6159；约 ¥1540/晚</div>
-                <div class="pill"><b>床</b>2 卧室，2 张床，未见 sofa bed 字样</div>
-                <div class="pill"><b>退款</b>8/20 前可免费取消；今日先付 ¥0</div>
-              </div>
-              <div class="tags">
-                <span class="tag good">Airbnb 真实页面可订</span>
-                <span class="tag warn">新房源，只有 1 条评价</span>
-                <span class="tag warn">两张床类型需问房东</span>
-                <span class="tag bad">未报告烟雾/一氧化碳报警器</span>
-              </div>
-            </div>
+          <div class="head">
+            <div class="photo"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1534865615026164814/original/2e84e3d5-94e2-4a94-a592-cdab6f9f5350.jpeg?im_w=960" alt="Camden Airbnb"><div class="links"><a href="https://zh.airbnb.com/rooms/1534865615026164814?adults=3&check_in=2026-08-21&check_out=2026-08-25">Airbnb</a></div></div>
+            <div><div class="title-row"><div><h2>B4｜Airbnb｜Camden / Mornington Crescent 2卧2卫</h2><p>交通位置比西伦敦 Airbnb 更适合 Euston/国王十字行程，2 个卫生间加分；价格在 ¥2500/晚以内。</p></div><span class="badge">Airbnb 推荐</span></div><div class="meta"><div class="pill"><b>价格</b>¥221,632 JPY ≈ ¥9264</div><div class="pill"><b>每晚</b>约 ¥2316</div><div class="pill"><b>床</b>1 张 1.8m + 1 张 1.35m</div><div class="pill"><b>退款</b>7/22 前可免费取消</div></div><div class="tags"><span class="tag good">4.89 / 37 条评价</span><span class="tag good">2 卫生间</span><span class="tag warn">两张床，三人需同床分配</span></div></div>
           </div>
+          <div class="body grid2"><div class="mini"><h3>房源</h3><p>整套出租单元，2 卧室，2 张床，2 卫。厨房、洗衣机、洗碗机、全尺寸冰箱、快速 WiFi。房源提到一楼。</p></div><div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>到 Mornington Crescent</b>房源称地铁站几步之遥。</div><div class="route"><b>到 Euston</b>Northern line / 步行 / 短途打车，约 10-18 分钟。</div><div class="route"><b>到 Tower Bridge</b>公共交通约 35-45 分钟；打车约 20-30 分钟。</div><div class="route"><b>到 Harry Potter</b>先去 Euston，再转 Watford Junction，整体顺。</div></div></div></div>
         </article>
 
-        <div class="excluded">
-          <div class="section">
-            <h2>排除或不主推</h2>
-            <table>
-              <tr><th>地点</th><th>原因</th><th>价格/状态</th></tr>
-              <tr><td>W6 Hotel Hammersmith Family Studio</td><td>1 Double Bed + 1 Double Sofa Bed，三人睡眠依赖 sofa bed</td><td>$854 四晚；不作为主选</td></tr>
-              <tr><td>Space Apart Hotel Triple Studio</td><td>1 Double Bed + 1 Double Sofa Bed，且超过预算</td><td>$1269 四晚，约 ¥2157/晚</td></tr>
-              <tr><td>Airbnb Notting Hill 明亮现代 2 卧</td><td>页面明确写有 1 张 sofa bed，且超预算</td><td>¥242,689 JPY 四晚，约 ¥2536/晚</td></tr>
-              <tr><td>Airbnb Camden 2卧/2卫</td><td>不是 sofa bed，但只有 1 张 1.8m 床 + 1 张 1.35m 床，且超预算</td><td>¥221,632 JPY 四晚，约 ¥2316/晚；7/22 前可免费取消</td></tr>
-              <tr><td>Albany Hotel / President Hotel / 部分 Travelodge 等</td><td>本轮日期和 3 成人条件下未稳定显示可订房型</td><td>不列为可订候选</td></tr>
-            </table>
+        <article class="option over">
+          <div class="head">
+            <div class="photo"><img src="https://a0.muscache.com/im/pictures/prohost-api/Hosting-1566071751940768005/original/4e8b0a55-04f1-46e4-bb47-6e537132420f.jpeg?im_w=960" alt="Portobello Airbnb"><div class="links"><a href="https://zh.airbnb.com/rooms/1566071751940768005?adults=3&check_in=2026-08-21&check_out=2026-08-25">Airbnb</a></div></div>
+            <div><div class="title-row"><div><h2>B5｜Airbnb｜Portobello Road 现代 2 床度假屋</h2><p>房源质量很好，3 张床，评价漂亮；但价格超过 ¥2500/晚，标红弱推荐。</p></div><span class="badge red">超 ¥2500</span></div><div class="meta"><div class="pill red"><b>价格</b>¥275,412 JPY ≈ ¥11512</div><div class="pill red"><b>每晚</b>约 ¥2878</div><div class="pill"><b>床</b>2 卧室，3 张床</div><div class="pill"><b>退款</b>7/22 前可免费取消</div></div><div class="tags"><span class="tag good">5.0 / 35 条评价</span><span class="tag good">排名前 5%</span><span class="tag bad">超过预算上限，不优先</span></div></div>
           </div>
+          <div class="body grid2"><div class="mini"><h3>房源</h3><p>整套出租单元，5 位客人、2 卧室、3 张床、1 卫；自助入住，Portobello / Notting Hill 一带。</p></div><div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>到 Notting Hill / Portobello</b>本地游逛很方便。</div><div class="route"><b>到 Euston</b>公共交通通常 35-45 分钟；打车约 25-35 分钟。</div><div class="route"><b>到 Tower Bridge</b>公共交通约 50-60 分钟。</div><div class="route"><b>到 Heathrow</b>西伦敦方向较顺，打车通常比东/北伦敦短。</div></div></div></div>
+        </article>
+
+        <article class="option over">
+          <div class="head">
+            <div class="photo"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1435460877977730928/original/c06fd088-e600-46c2-9b25-dc9a6634a40e.jpeg?im_w=960" alt="Earl's Court Airbnb Clarissa"><div class="links"><a href="https://zh.airbnb.com/rooms/1435460877977730928?adults=3&check_in=2026-08-21&check_out=2026-08-25">Airbnb</a></div></div>
+            <div><div class="title-row"><div><h2>B6｜Airbnb｜Earl's Court 2 King Beds</h2><p>位置方便，2 张 1.8m 大床，适合两人同床；但价格超过 ¥2500/晚，且有差评提到安全感问题。</p></div><span class="badge red">超 ¥2500</span></div><div class="meta"><div class="pill red"><b>价格</b>¥269,775 JPY ≈ ¥11277</div><div class="pill red"><b>每晚</b>约 ¥2819</div><div class="pill"><b>床</b>2 张约 1.8m 双人床</div><div class="pill"><b>退款</b>7/22 前可免费取消</div></div><div class="tags"><span class="tag good">靠近 Earl's Court station</span><span class="tag warn">4.58 / 36 条评价</span><span class="tag bad">差评风险明显，不优先</span></div></div>
+          </div>
+          <div class="body grid2"><div class="mini"><h3>房源</h3><p>整套出租单元，5 位客人、2 卧室、2 张床、1 卫。厨房、WiFi、电视、洗衣机、室内干衣机、冰箱。页面提到可折叠床适合第 5 位，不作为三人主要床位。</p></div><div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>到 Earl's Court station</b>房源称仅几分钟。</div><div class="route"><b>到 Euston</b>Piccadilly/District 换线，约 30-40 分钟。</div><div class="route"><b>到 Heathrow</b>Piccadilly line 方向较顺，约 45-55 分钟。</div><div class="route"><b>到 Tower Bridge</b>公共交通约 45-55 分钟。</div></div></div></div>
+        </article>
+
+        <div class="notice">
+          排除/弱化：W6 Family Studio、Space Apart Hotel、Notting Hill 明亮现代 2 卧等明确含 sofa bed 或超过预算太多的房型，不作为推荐。W6 Triple Studio 不是 sofa bed，但只有 1 张双人床 + 1 张单人床且低于舒适预算，作为省钱备胎，不放在前 5。
         </div>
       </section>
 
-      <div class="footer">
-        <p>价格和库存为 2026-07-08 抓取页面时看到的结果；订房平台会动态变价，最终以点击订房进入付款前页面为准。汇率参考：USD/CNY 约 6.80；JPY/CNY 约 0.0418。</p>
-        <p>汇率来源：<a href="https://www.wsj.com/finance/currencies/asian-currencies-mostly-weaken-amid-renewed-mideast-tensions-6f52d297">WSJ USD/CNY</a>、<a href="https://www.google.com/finance/beta/quote/JPY-CNY">Google Finance JPY/CNY</a>。住宿来源：Expedia、Booking、Hotels.com、酒店官网、Airbnb。</p>
-      </div>
+      <p class="fine">价格为 2026-07-08 抓取时的页面价并换算为人民币：USD/CNY≈6.80，JPY/CNY≈0.0418。订房平台会动态变价，最后以进入付款前页面为准。</p>
     </div>
   </main>
 
   <script>
     const buttons = document.querySelectorAll('.tab-button');
-    const panels = document.querySelectorAll('.tab-panel');
+    const panels = document.querySelectorAll('.panel');
     buttons.forEach((button) => {
       button.addEventListener('click', () => {
-        const tab = button.dataset.tab;
         buttons.forEach((b) => b.classList.toggle('active', b === button));
-        panels.forEach((panel) => panel.classList.toggle('active', panel.id === tab));
+        panels.forEach((panel) => panel.classList.toggle('active', panel.id === button.dataset.tab));
       });
     });
   </script>
