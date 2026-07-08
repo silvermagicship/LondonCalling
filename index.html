@@ -6,26 +6,13 @@
   <title>英国行程住宿候选｜2026.8.21-8.31</title>
   <style>
     :root {
-      --bg: #f6f4ef;
-      --paper: #fffdf8;
-      --ink: #1d252c;
-      --muted: #65717c;
-      --line: #ded8cc;
-      --teal: #1b756d;
-      --navy: #243b53;
-      --amber: #a56912;
-      --red: #af3e34;
-      --green: #25734a;
-      --soft: #eef3f2;
-      --soft-warn: #fff1d8;
-      --soft-red: #fbe7e3;
-      --shadow: 0 8px 24px rgba(29,37,44,.07);
+      --bg: #f6f4ef; --paper: #fffdf8; --ink: #1d252c; --muted: #65717c;
+      --line: #ded8cc; --teal: #1b756d; --navy: #243b53; --amber: #a56912;
+      --red: #af3e34; --green: #25734a; --shadow: 0 8px 24px rgba(29,37,44,.07);
     }
     * { box-sizing: border-box; }
     body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
+      margin: 0; background: var(--bg); color: var(--ink);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
       line-height: 1.55;
     }
@@ -34,205 +21,90 @@
     header {
       color: white;
       background:
-        linear-gradient(90deg, rgba(29,37,44,.92), rgba(27,117,109,.70)),
-        url("https://images.trvl-media.com/lodging/1000000/60000/55100/55001/56bee051.jpg?impolicy=resizecrop&rw=1400&ra=fit");
-      background-size: cover;
-      background-position: center;
-      padding: 40px 22px 32px;
+        linear-gradient(90deg, rgba(29,37,44,.93), rgba(27,117,109,.72)),
+        url("https://images.trvl-media.com/lodging/1000000/60000/55100/55001/56bee051.jpg?impolicy=resizecrop&rw=900&ra=fit");
+      background-size: cover; background-position: center; padding: 40px 22px 32px;
     }
     .wrap { max-width: 1200px; margin: 0 auto; }
     h1 { margin: 0 0 10px; font-size: 34px; letter-spacing: 0; }
     h2 { margin: 0 0 12px; font-size: 24px; letter-spacing: 0; }
-    h3 { margin: 0 0 8px; font-size: 19px; letter-spacing: 0; }
+    h3 { margin: 0 0 8px; font-size: 18px; letter-spacing: 0; }
     p { margin: 0 0 9px; }
     main { padding: 22px; }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .chips, .tags, .links { display: flex; flex-wrap: wrap; gap: 8px; }
     .chip {
-      border: 1px solid rgba(255,255,255,.38);
-      background: rgba(255,255,255,.14);
-      border-radius: 999px;
-      padding: 7px 10px;
-      font-size: 14px;
+      border: 1px solid rgba(255,255,255,.38); background: rgba(255,255,255,.14);
+      border-radius: 999px; padding: 7px 10px; font-size: 14px;
     }
     .tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(246,244,239,.96);
-      border-bottom: 1px solid var(--line);
-      padding: 10px 0;
-      backdrop-filter: blur(8px);
+      display: flex; flex-wrap: wrap; gap: 10px; position: sticky; top: 0; z-index: 10;
+      background: rgba(246,244,239,.96); border-bottom: 1px solid var(--line);
+      padding: 10px 0; backdrop-filter: blur(8px);
     }
     .tab-button {
-      border: 1px solid var(--line);
-      background: var(--paper);
-      color: var(--navy);
-      border-radius: 8px;
-      padding: 10px 13px;
-      font-weight: 850;
-      cursor: pointer;
+      border: 1px solid var(--line); background: var(--paper); color: var(--navy);
+      border-radius: 8px; padding: 10px 13px; font-weight: 850; cursor: pointer;
     }
     .tab-button.active { background: var(--navy); border-color: var(--navy); color: white; }
     .panel { display: none; }
     .panel.active { display: block; }
-    .note {
-      background: var(--soft-warn);
-      border: 1px solid #e1bf78;
-      color: #5d3c05;
-      border-radius: 8px;
-      padding: 12px 14px;
-      margin: 16px 0;
-    }
     .quick {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      margin: 0 0 18px;
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px; margin: 0 0 18px;
     }
     .quick-card, .option, .mini, .block {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      box-shadow: var(--shadow);
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: 8px; box-shadow: var(--shadow);
     }
     .quick-card { padding: 13px 14px; box-shadow: none; }
-    .quick-card strong { display: block; font-size: 19px; color: var(--navy); }
+    .quick-card strong { display: block; font-size: 18px; color: var(--navy); }
     .quick-card span { color: var(--muted); font-size: 13px; }
     .block { margin: 0 0 18px; overflow: hidden; }
-    .block-head {
-      padding: 15px 18px;
-      border-bottom: 1px solid var(--line);
-      background: #fbfaf5;
-    }
-    .option { margin: 0 0 18px; overflow: hidden; }
-    .option.over { border-color: #d8968e; background: #fff9f7; }
-    .head {
-      display: grid;
-      grid-template-columns: 292px minmax(0, 1fr);
-      gap: 18px;
-      padding: 18px;
-      border-bottom: 1px solid var(--line);
-    }
-    .photo {
-      position: relative;
-      min-height: 214px;
-      border-radius: 8px;
-      overflow: hidden;
-      background: #ddd6ca;
-    }
-    .photo img {
-      width: 100%;
-      height: 100%;
-      min-height: 214px;
-      object-fit: cover;
-      display: block;
-    }
-    .links {
-      position: absolute;
-      left: 10px;
-      right: 10px;
-      bottom: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-    .links a {
-      color: white;
-      background: rgba(29,37,44,.84);
-      border: 1px solid rgba(255,255,255,.28);
-      border-radius: 6px;
-      padding: 5px 8px;
-      font-size: 12px;
-    }
-    .title-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 8px;
-    }
-    .badge {
-      color: white;
-      background: var(--teal);
-      border-radius: 7px;
-      padding: 5px 8px;
-      font-weight: 850;
-      white-space: nowrap;
-    }
-    .badge.warn { background: var(--amber); }
-    .badge.red { background: var(--red); }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      padding: 14px;
-    }
-    .choice {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .choice img {
-      width: 100%;
-      height: 128px;
-      object-fit: cover;
-      display: block;
-      background: #ddd6ca;
-    }
+    .block-head { padding: 15px 18px; border-bottom: 1px solid var(--line); background: #fbfaf5; }
+    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding: 14px; }
+    .choice { background: white; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .choice img { width: 100%; height: 128px; object-fit: cover; display: block; background: #ddd6ca; }
     .choice-body { padding: 11px; }
     .choice h3 { font-size: 16px; }
-    .meta {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 8px;
-      margin: 12px 0;
+    .option { margin: 0 0 18px; overflow: hidden; }
+    .option.over { border-color: #d8968e; background: #fff9f7; }
+    .head { display: grid; grid-template-columns: 292px minmax(0,1fr); gap: 18px; padding: 18px; border-bottom: 1px solid var(--line); }
+    .photo { position: relative; min-height: 214px; border-radius: 8px; overflow: hidden; background: #ddd6ca; }
+    .photo img { width: 100%; height: 100%; min-height: 214px; object-fit: cover; display: block; }
+    .links { position: absolute; left: 10px; right: 10px; bottom: 10px; }
+    .links a {
+      color: white; background: rgba(29,37,44,.84); border: 1px solid rgba(255,255,255,.28);
+      border-radius: 6px; padding: 5px 8px; font-size: 12px;
     }
-    .pill {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 7px;
-      padding: 8px 9px;
-      font-size: 14px;
-    }
+    .title-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
+    .badge { color: white; background: var(--teal); border-radius: 7px; padding: 5px 8px; font-weight: 850; white-space: nowrap; }
+    .badge.warn { background: var(--amber); }
+    .badge.red { background: var(--red); }
+    .meta { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 8px; margin: 12px 0; }
+    .pill { background: white; border: 1px solid var(--line); border-radius: 7px; padding: 8px 9px; font-size: 14px; }
     .pill b { display: block; color: var(--navy); }
-    .pill.red { background: var(--soft-red); border-color: #e0aaa3; color: #7c221a; }
-    .tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .pill.red { background: #fbe7e3; border-color: #e0aaa3; color: #7c221a; }
     .tag {
-      border: 1px solid var(--line);
-      background: white;
-      color: var(--navy);
-      border-radius: 999px;
-      padding: 4px 8px;
-      font-size: 13px;
+      border: 1px solid var(--line); background: white; color: var(--navy);
+      border-radius: 999px; padding: 4px 8px; font-size: 13px;
     }
     .tag.good { color: var(--green); background: #e6f3ec; border-color: #b8d8c6; }
-    .tag.warn { color: var(--amber); background: var(--soft-warn); border-color: #e1bf78; }
-    .tag.bad { color: var(--red); background: var(--soft-red); border-color: #e0aaa3; }
+    .tag.warn { color: var(--amber); background: #fff1d8; border-color: #e1bf78; }
+    .tag.bad { color: var(--red); background: #fbe7e3; border-color: #e0aaa3; }
     .body { padding: 16px 18px; border-top: 1px solid var(--line); }
-    .grid2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+    .grid2 { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 14px; }
     .mini { padding: 12px; box-shadow: none; }
-    .routes {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }
-    .route {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 10px;
-    }
-    .route b { display: block; color: var(--navy); margin-bottom: 4px; }
-    .route small { display: block; color: var(--muted); margin-top: 5px; }
-    .fine { color: var(--muted); font-size: 13px; }
-    @media (max-width: 920px) {
-      .quick, .head, .meta, .grid2, .routes, .cards { grid-template-columns: 1fr; }
-      h1 { font-size: 28px; }
-      .photo { min-height: 225px; }
+    .routes { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+    .route { border-left: 4px solid var(--teal); background: #f8fbfa; padding: 9px 10px; border-radius: 6px; font-size: 14px; }
+    .route b { display: block; color: var(--navy); }
+    .fine { color: var(--muted); font-size: 13px; margin: 18px 0 0; }
+    @media (max-width: 900px) {
+      h1 { font-size: 27px; } main { padding: 14px; }
+      .quick, .cards, .grid2, .routes, .meta { grid-template-columns: 1fr; }
+      .head { grid-template-columns: 1fr; }
+      .photo, .photo img { min-height: 200px; }
+      .title-row { display: block; }
+      .badge { display: inline-block; margin: 4px 0 8px; white-space: normal; }
     }
   </style>
 </head>
@@ -240,331 +112,230 @@
   <header>
     <div class="wrap">
       <h1>英国行程住宿候选</h1>
-      <p>2026 年 8 月 21 日到 8 月 31 日。重点城市：伦敦、曼彻斯特、剑桥/Duxford、多佛/坎特伯雷。</p>
+      <p>2026.8.21-8.31｜伦敦、曼彻斯特、剑桥/Duxford、多佛/坎特伯雷</p>
       <div class="chips">
-        <span class="chip">伦敦前段：8/21-8/25</span>
-        <span class="chip">曼彻斯特：8/25-8/27</span>
-        <span class="chip">伦敦后段：8/27-8/31</span>
-        <span class="chip">价格统一换算成人民币</span>
+        <span class="chip">价格统一折算人民币</span>
+        <span class="chip">三人段优先真实床位</span>
+        <span class="chip">超过 ¥2500/晚标红</span>
+        <span class="chip">Airbnb 仅保留 10 条以上评价房源</span>
       </div>
     </div>
   </header>
 
   <main>
     <div class="wrap">
-      <nav class="tabs" role="tablist">
-        <button class="tab-button active" data-tab="londonSplit" type="button">伦敦 1+3</button>
-        <button class="tab-button" data-tab="londonAll" type="button">伦敦全程三人</button>
-        <button class="tab-button" data-tab="manchester" type="button">曼彻斯特 8/25-27</button>
-        <button class="tab-button" data-tab="londonReturn" type="button">伦敦后段 8/27-31</button>
-      </nav>
+      <div class="tabs">
+        <button class="tab-button active" data-tab="londonSplit">伦敦 1+3</button>
+        <button class="tab-button" data-tab="londonAll">伦敦全程三人</button>
+        <button class="tab-button" data-tab="manchester">曼彻斯特 8/25-27</button>
+        <button class="tab-button" data-tab="londonReturn">伦敦后段 8/27-31</button>
+      </div>
 
-      <section id="londonSplit" class="panel active">
-        <div class="quick">
-          <div class="quick-card"><strong>D1 单人</strong><span>8/21-8/22，一人先到伦敦</span></div>
-          <div class="quick-card"><strong>D2-D5 三人</strong><span>8/22-8/25，三人同住</span></div>
-          <div class="quick-card"><strong>Airbnb</strong><span>以口碑稳定、床位清楚的房源为主</span></div>
-          <div class="quick-card"><strong>交通</strong><span>Euston / 国王十字一带最省事</span></div>
-        </div>
+      <section id="londonSplit" class="panel active"></section>
+      <section id="londonAll" class="panel"></section>
+      <section id="manchester" class="panel"></section>
+      <section id="londonReturn" class="panel"></section>
 
-        <div class="block">
-          <div class="block-head">
-            <h2>D1｜8/21 单人住宿备选</h2>
-            <p>这几个都适合一个人先到伦敦住一晚。优先选 Euston / Russell Square / Bloomsbury 一带，22 号和另外两人集合更轻松。</p>
-          </div>
-          <div class="cards">
-            <div class="choice">
-              <img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/56bee051.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Royal National Hotel">
-              <div class="choice-body">
-                <h3>Royal National Hotel</h3>
-                <p><b>房型</b> Twin Room，2 Twin Beds。约 ¥1210/晚。</p>
-                <p><b>交通</b> 到 Euston 步行/公交约 8 分钟，打车约 3 分钟。</p>
-                <p><a href="https://www.expedia.com/London-Hotels-The-Royal-National-Hotel.h55001.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1">Expedia</a> · <a href="https://www.booking.com/hotel/gb/royal-national.html">Booking</a></p>
-              </div>
-            </div>
-            <div class="choice">
-              <img src="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/93788716.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Star Hotel">
-              <div class="choice-body">
-                <h3>Star Hotel</h3>
-                <p><b>房型</b> Single Room，1 Twin Bed。约 ¥932/晚。</p>
-                <p><b>交通</b> 到 Euston 公共交通约 39 分钟，打车约 18 分钟。</p>
-                <p><a href="https://www.expedia.com/London-Hotels-Star-Hotel-Bed-Breakfast.h888617.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1">Expedia</a> · <a href="https://www.booking.com/hotel/gb/star-hotel.html">Booking</a></p>
-              </div>
-            </div>
-            <div class="choice">
-              <img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/e57c5389.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="City Sleeper / Royal National area">
-              <div class="choice-body">
-                <h3>City Sleeper / Bedford Way 一带</h3>
-                <p><b>房型</b> 单人/双人房按当天下单页确认。Royal National 同区域。</p>
-                <p><b>交通</b> 到 Euston、Russell Square、国王十字都短。</p>
-                <p><a href="https://www.expedia.com/London-Hotels-City-Sleeper-At-Royal-National-Hotel.h91228514.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1">Expedia</a></p>
-              </div>
-            </div>
-            <div class="choice">
-              <img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/e57c5389.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Tavistock / Bloomsbury area">
-              <div class="choice-body">
-                <h3>Tavistock / Bloomsbury 一带</h3>
-                <p><b>房型</b> 单人或双人基础房，适合 D1 过渡。</p>
-                <p><b>交通</b> 靠 Russell Square，第二天去三人房或 Euston 都方便。</p>
-                <p><a href="https://www.expedia.com/London-Hotels-Tavistock-Hotel.h54849.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1">Expedia</a></p>
-              </div>
-            </div>
-            <div class="choice">
-              <img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/4114400d.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="President Hotel">
-              <div class="choice-body">
-                <h3>President Hotel</h3>
-                <p><b>房型</b> 单人/双人房按下单页确认。</p>
-                <p><b>交通</b> Russell Square 附近，适合与 Royal National / Bloomsbury 三人段衔接。</p>
-                <p><a href="https://www.expedia.com/London-Hotels-President-Hotel.h25275.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1">Expedia</a></p>
-              </div>
-            </div>
-            <div class="choice">
-              <img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/ebc0dda5.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="George Hotel">
-              <div class="choice-body">
-                <h3>George Hotel</h3>
-                <p><b>房型</b> 单人/双人基础房，需确认是否共用卫浴。</p>
-                <p><b>交通</b> Russell Square 约 5 分钟，Euston 约 8 分钟步行。</p>
-                <p><a href="https://www.expedia.com/London-Hotels-George-Hotel.h1876169.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1">Expedia</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <article class="option">
-          <div class="head">
-            <div class="photo">
-              <img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/dfc6cfd7.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Royal National Triple Room">
-              <div class="links">
-                <a href="https://www.expedia.com/London-Hotels-The-Royal-National-Hotel.h55001.Hotel-Information?chkin=2026-08-22&chkout=2026-08-25&rm1=a3">Expedia</a>
-                <a href="https://www.booking.com/hotel/gb/royal-national.html">Booking</a>
-                <a href="https://www.imperialhotels.co.uk/hotels/royal-national-hotel/rooms/triple-room/53-27/">官网房型</a>
-              </div>
-            </div>
-            <div>
-              <div class="title-row">
-                <div>
-                  <h2>D2-D5｜Royal National Hotel｜Triple Room</h2>
-                  <p>8/22-8/25 三人住。位置对 Euston、HP Tour 换乘、市中心步行都最顺。</p>
-                </div>
-                <span class="badge">首选</span>
-              </div>
-              <div class="meta">
-                <div class="pill"><b>价格</b>约 ¥4495 / 3 晚</div>
-                <div class="pill"><b>每晚</b>约 ¥1498</div>
-                <div class="pill"><b>床</b>3 Twin Beds</div>
-                <div class="pill"><b>退款</b>8/19 前可退</div>
-              </div>
-              <div class="tags">
-                <span class="tag good">三张单人床</span>
-                <span class="tag good">24 小时前台</span>
-                <span class="tag good">行李衔接最简单</span>
-              </div>
-            </div>
-          </div>
-          <div class="body grid2">
-            <div class="mini"><h3>房间</h3><p>Triple Room，约 269 sq ft，Free WiFi、冰箱、桌子、熨斗/熨衣板。早餐可加购。</p></div>
-            <div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>到 Euston</b>步行/公交约 8 分钟；打车约 3 分钟。</div><div class="route"><b>到 HP Tour</b>到 Watford Junction 约 35 分钟，再接 shuttle 约 15 分钟。</div><div class="route"><b>到 Tower Bridge</b>公共交通约 33 分钟；打车约 17 分钟。</div><div class="route"><b>到 Big Ben</b>公共交通约 25 分钟；打车约 10 分钟。</div></div></div>
-          </div>
-        </article>
-
-        <article class="option">
-          <div class="head">
-            <div class="photo">
-              <img src="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/6268d8f6.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Star Hotel Quadruple Room">
-              <div class="links"><a href="https://www.expedia.com/London-Hotels-Star-Hotel-Bed-Breakfast.h888617.Hotel-Information?chkin=2026-08-22&chkout=2026-08-25&rm1=a3">Expedia</a><a href="https://www.booking.com/hotel/gb/star-hotel.html">Booking</a></div>
-            </div>
-            <div>
-              <div class="title-row"><div><h2>D2-D5｜Star Hotel｜Quadruple Room</h2><p>西伦敦小型酒店，评分高，三人睡眠面更宽；去 Euston/国王十字比 Bloomsbury 远。</p></div><span class="badge">稳妥</span></div>
-              <div class="meta"><div class="pill"><b>价格</b>约 ¥5358 / 3 晚</div><div class="pill"><b>每晚</b>约 ¥1786</div><div class="pill"><b>床</b>1 Double + 2 Twin</div><div class="pill"><b>退款</b>加价可 8/19 前退</div></div>
-              <div class="tags"><span class="tag good">真实床位</span><span class="tag good">评分 9.0/10</span><span class="tag warn">无电梯</span></div>
-            </div>
-          </div>
-          <div class="body grid2"><div class="mini"><h3>房间</h3><p>Quadruple Room，约 213 sq ft，Free WiFi、冰箱、桌子、遮光窗帘。</p></div><div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>到 Euston</b>公共交通约 39 分钟；打车约 18 分钟。</div><div class="route"><b>到 HP Tour</b>公共交通约 1小时29分；打车约 39 分钟。</div><div class="route"><b>到 Tower Bridge</b>公共交通约 50 分钟；打车约 31 分钟。</div><div class="route"><b>到 Heathrow</b>公共交通约 58 分钟；打车约 25 分钟。</div></div></div></div>
-        </article>
-
-        <article class="option">
-          <div class="head">
-            <div class="photo">
-              <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1534865615026164814/original/2e84e3d5-94e2-4a94-a592-cdab6f9f5350.jpeg?im_w=960" alt="Camden Airbnb">
-              <div class="links"><a href="https://zh.airbnb.com/rooms/1534865615026164814?adults=3&check_in=2026-08-22&check_out=2026-08-25">Airbnb</a></div>
-            </div>
-            <div>
-              <div class="title-row"><div><h2>D2-D5｜Camden / Mornington Crescent Airbnb</h2><p>2 卧 2 卫，靠近 Mornington Crescent。去 Euston/国王十字比西伦敦民宿更顺。</p></div><span class="badge">Airbnb</span></div>
-              <div class="meta"><div class="pill"><b>价格</b>¥173,534 JPY ≈ ¥7254</div><div class="pill"><b>每晚</b>约 ¥2418</div><div class="pill"><b>床</b>1 张 1.8m + 1 张 1.35m</div><div class="pill"><b>退款</b>搜索页显示免费取消</div></div>
-              <div class="tags"><span class="tag good">4.89 / 37 条评价</span><span class="tag good">2 个卫生间</span><span class="tag warn">三人中两人需同床</span></div>
-            </div>
-          </div>
-          <div class="body grid2"><div class="mini"><h3>房源</h3><p>整套出租单元，厨房、洗衣机、洗碗机、全尺寸冰箱、快速 WiFi。页面说明位于一楼。</p></div><div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>到 Euston</b>Northern line / 步行 / 短途打车约 10-18 分钟。</div><div class="route"><b>到 HP Tour</b>先到 Euston，再去 Watford Junction。</div><div class="route"><b>到 Tower Bridge</b>公共交通约 35-45 分钟；打车约 20-30 分钟。</div><div class="route"><b>到西区</b>Northern line 方向较顺。</div></div></div></div>
-        </article>
-
-        <article class="option">
-          <div class="head">
-            <div class="photo">
-              <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1077431780373331051/original/6484fff8-a2aa-4b16-a94c-225321d4b6e3.jpeg?im_w=960" alt="West Kensington Airbnb">
-              <div class="links"><a href="https://zh.airbnb.com/rooms/1077431780373331051?adults=3&check_in=2026-08-22&check_out=2026-08-25">Airbnb</a></div>
-            </div>
-            <div>
-              <div class="title-row"><div><h2>D2-D5｜West Kensington Airbnb</h2><p>2 卧 3 床，三人分开睡更容易；西伦敦位置去 Heathrow 方便，去 Euston 较远。</p></div><span class="badge">三床</span></div>
-              <div class="meta"><div class="pill"><b>价格</b>¥130,012 JPY ≈ ¥5435</div><div class="pill"><b>每晚</b>约 ¥1812</div><div class="pill"><b>床</b>2 卧室，3 张床</div><div class="pill"><b>退款</b>7/23 前可免费取消</div></div>
-              <div class="tags"><span class="tag good">4.82 / 73 条评价</span><span class="tag good">自助入住</span><span class="tag warn">床型细节下单前再确认</span></div>
-            </div>
-          </div>
-          <div class="body grid2"><div class="mini"><h3>房源</h3><p>整套出租单元，5 位客人，2 卧室，3 张床，1 卫。</p></div><div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>到地铁</b>公开信息约 5-6 分钟到 West Kensington。</div><div class="route"><b>到 Euston</b>公共交通约 35-45 分钟；打车约 25-35 分钟。</div><div class="route"><b>到 Tower Bridge</b>公共交通约 45-55 分钟。</div><div class="route"><b>到 Heathrow</b>Piccadilly line 方向较顺，约 45-60 分钟。</div></div></div></div>
-        </article>
-
-        <article class="option over">
-          <div class="head">
-            <div class="photo">
-              <img src="https://a0.muscache.com/im/pictures/prohost-api/Hosting-1566071751940768005/original/4e8b0a55-04f1-46e4-bb47-6e537132420f.jpeg?im_w=960" alt="Portobello Airbnb">
-              <div class="links"><a href="https://zh.airbnb.com/rooms/1566071751940768005?adults=3&check_in=2026-08-22&check_out=2026-08-25">Airbnb</a></div>
-            </div>
-            <div>
-              <div class="title-row"><div><h2>D2-D5｜Portobello Road 现代 2 床度假屋</h2><p>2 卧 3 床，评价好；主要问题是位置偏西，去 Euston/HP Tour 不如 Bloomsbury。</p></div><span class="badge warn">高质但远</span></div>
-              <div class="meta"><div class="pill"><b>价格</b>¥208,780 JPY ≈ ¥8727</div><div class="pill red"><b>每晚</b>约 ¥2909</div><div class="pill"><b>床</b>2 卧室，3 张床</div><div class="pill"><b>退款</b>7/23 前可免费取消</div></div>
-              <div class="tags"><span class="tag good">5.0 / 35 条评价</span><span class="tag good">自助入住</span><span class="tag warn">价格偏高</span></div>
-            </div>
-          </div>
-        </article>
-      </section>
-
-      <section id="londonAll" class="panel">
-        <div class="quick">
-          <div class="quick-card"><strong>首选</strong><span>Royal National：三张单人床，位置最顺</span></div>
-          <div class="quick-card"><strong>备选</strong><span>Star Hotel：评分高，床位真实</span></div>
-          <div class="quick-card"><strong>Airbnb</strong><span>Camden / West Kensington / Portobello</span></div>
-          <div class="quick-card"><strong>口碑</strong><span>优先保留评价和床位信息更清楚的选项</span></div>
-        </div>
-
-        <article class="option">
-          <div class="head">
-            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/dfc6cfd7.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Royal National Triple Room"><div class="links"><a href="https://www.expedia.com/London-Hotels-The-Royal-National-Hotel.h55001.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&rm1=a3">Expedia</a><a href="https://www.booking.com/hotel/gb/royal-national.html">Booking</a></div></div>
-            <div><div class="title-row"><div><h2>Royal National Hotel｜Triple Room</h2><p>8/21-8/25 四晚三人同住。Euston、Russell Square、国王十字都顺。</p></div><span class="badge">推荐</span></div><div class="meta"><div class="pill"><b>价格</b>约 ¥6338 / 4 晚</div><div class="pill"><b>每晚</b>约 ¥1585</div><div class="pill"><b>床</b>3 Twin Beds</div><div class="pill"><b>库存</b>抓取时剩 1 间</div></div><div class="tags"><span class="tag good">三张单人床</span><span class="tag good">24 小时前台</span><span class="tag good">拖行李最省事</span></div></div>
-          </div>
-        </article>
-
-        <article class="option">
-          <div class="head">
-            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/6268d8f6.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Star Hotel Quadruple Room"><div class="links"><a href="https://www.expedia.com/London-Hotels-Star-Hotel-Bed-Breakfast.h888617.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&rm1=a3">Expedia</a><a href="https://www.booking.com/hotel/gb/star-hotel.html">Booking</a></div></div>
-            <div><div class="title-row"><div><h2>Star Hotel｜Quadruple Room</h2><p>8/21-8/25 四晚三人同住。小型酒店/B&B，评分高，西伦敦位置。</p></div><span class="badge">稳妥</span></div><div class="meta"><div class="pill"><b>价格</b>约 ¥7528 / 4 晚</div><div class="pill"><b>每晚</b>约 ¥1882</div><div class="pill"><b>床</b>1 Double + 2 Twin</div><div class="pill"><b>退款</b>加价可 8/18 前退</div></div><div class="tags"><span class="tag good">真实床位</span><span class="tag good">9.0/10</span><span class="tag warn">无电梯</span></div></div>
-          </div>
-        </article>
-
-        <article class="option">
-          <div class="head">
-            <div class="photo"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1534865615026164814/original/2e84e3d5-94e2-4a94-a592-cdab6f9f5350.jpeg?im_w=960" alt="Camden Airbnb"><div class="links"><a href="https://zh.airbnb.com/rooms/1534865615026164814?adults=3&check_in=2026-08-21&check_out=2026-08-25">Airbnb</a></div></div>
-            <div><div class="title-row"><div><h2>Camden / Mornington Crescent Airbnb</h2><p>2 卧 2 卫，靠地铁，适合 Euston/国王十字方向。</p></div><span class="badge">Airbnb</span></div><div class="meta"><div class="pill"><b>价格</b>¥221,632 JPY ≈ ¥9264</div><div class="pill"><b>每晚</b>约 ¥2316</div><div class="pill"><b>床</b>1 张 1.8m + 1 张 1.35m</div><div class="pill"><b>退款</b>7/22 前可免费取消</div></div><div class="tags"><span class="tag good">4.89 / 37 条评价</span><span class="tag good">2 卫生间</span><span class="tag warn">三人中两人同床</span></div></div>
-          </div>
-        </article>
-
-        <article class="option over">
-          <div class="head">
-            <div class="photo"><img src="https://a0.muscache.com/im/pictures/prohost-api/Hosting-1566071751940768005/original/4e8b0a55-04f1-46e4-bb47-6e537132420f.jpeg?im_w=960" alt="Portobello Airbnb"><div class="links"><a href="https://zh.airbnb.com/rooms/1566071751940768005?adults=3&check_in=2026-08-21&check_out=2026-08-25">Airbnb</a></div></div>
-            <div><div class="title-row"><div><h2>Portobello Road 现代 2 床度假屋</h2><p>2 卧 3 床，房源质量好；价格高，且对 Euston/HP Tour 不如北伦敦顺。</p></div><span class="badge red">偏贵</span></div><div class="meta"><div class="pill"><b>价格</b>¥275,412 JPY ≈ ¥11512</div><div class="pill red"><b>每晚</b>约 ¥2878</div><div class="pill"><b>床</b>2 卧室，3 张床</div><div class="pill"><b>退款</b>7/22 前可免费取消</div></div><div class="tags"><span class="tag good">5.0 / 35 条评价</span><span class="tag warn">价格偏高</span></div></div>
-          </div>
-        </article>
-      </section>
-
-      <section id="manchester" class="panel">
-        <div class="quick">
-          <div class="quick-card"><strong>日期</strong><span>8/25 入住，8/27 退房</span></div>
-          <div class="quick-card"><strong>行程</strong><span>曼彻斯特科学工业博物馆、足球博物馆、利物浦一日游</span></div>
-          <div class="quick-card"><strong>位置</strong><span>Manchester Piccadilly / Victoria / 市中心优先</span></div>
-          <div class="quick-card"><strong>床位</strong><span>三人房或四人房，不靠 sofa bed</span></div>
-        </div>
-
-        <article class="option">
-          <div class="head">
-            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/6268d8f6.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="The Reach at Piccadilly"><div class="links"><a href="https://www.expedia.com/Manchester-Hotels-Reach-AT-Piccadilly-Tribute-Portfolio.h96970748.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3">Expedia</a></div></div>
-            <div><div class="title-row"><div><h2>The Reach at Piccadilly｜Family Room</h2><p>Piccadilly 旁边，去利物浦、回伦敦、城内移动都好用。</p></div><span class="badge">曼城首选</span></div><div class="meta"><div class="pill"><b>床</b>1 Double + 2 Twin</div><div class="pill"><b>房型</b>Family Room, Multiple Beds</div><div class="pill"><b>区域</b>Piccadilly / Canal</div><div class="pill"><b>备注</b>Marriott 系</div></div><div class="tags"><span class="tag good">真实床位</span><span class="tag good">靠 Piccadilly</span><span class="tag good">去利物浦火车方便</span></div></div>
-          </div>
-          <div class="body grid2"><div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>酒店 → Manchester Piccadilly</b>步行级别，适合 8/27 去伦敦/剑桥方向。</div><div class="route"><b>酒店 → National Football Museum</b>电车/步行约 15-25 分钟。</div><div class="route"><b>酒店 → Science and Industry Museum</b>公交/电车约 15-25 分钟；打车约 10 分钟。</div><div class="route"><b>酒店 → Liverpool Lime Street</b>从 Piccadilly / Victoria 坐火车，约 40-60 分钟。</div></div></div><div class="mini"><h3>适合度</h3><p>更适合把曼彻斯特当两晚交通枢纽。优先度高于老旧便宜酒店。</p></div></div>
-        </article>
-
-        <article class="option">
-          <div class="head">
-            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/f7e161bc.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Britannia Manchester"><div class="links"><a href="https://www.expedia.com/Manchester-Hotels-Britannia-Hotel-Manchester-City-Centre.h41523.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3">Expedia</a></div></div>
-            <div><div class="title-row"><div><h2>Britannia Hotel Manchester｜Triple / Family Room</h2><p>市中心 Piccadilly Gardens 附近，价格通常低，但酒店评价一般。</p></div><span class="badge warn">便宜备选</span></div><div class="meta"><div class="pill"><b>床</b>Triple Room / Family Room</div><div class="pill"><b>可选</b>3 Twin 或 1 Double + 2 Twin</div><div class="pill"><b>评分</b>6.8/10</div><div class="pill"><b>位置</b>Piccadilly Gardens</div></div><div class="tags"><span class="tag good">市中心</span><span class="tag warn">评价一般</span><span class="tag warn">可能有酒吧/夜间噪音</span></div></div>
-          </div>
-        </article>
-
-        <article class="option">
-          <div class="head">
-            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/9da2c734.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Manchester Stay Hotel"><div class="links"><a href="https://www.expedia.com/Manchester-Hotels-YALLY-Hotel.h42395450.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3">Expedia</a></div></div>
-            <div><div class="title-row"><div><h2>Manchester Stay Hotel｜Standard Triple Room</h2><p>三张单人床，免费停车；位置不如市中心，适合打车/自驾取向。</p></div><span class="badge">三单床</span></div><div class="meta"><div class="pill"><b>床</b>3 Twin Beds</div><div class="pill"><b>房型</b>Standard Triple Room</div><div class="pill"><b>设施</b>Free WiFi / free parking</div><div class="pill"><b>面积</b>约 172 sq ft</div></div><div class="tags"><span class="tag good">三张单人床</span><span class="tag good">停车方便</span><span class="tag warn">离核心景点更远</span></div></div>
-          </div>
-        </article>
-
-        <article class="option">
-          <div class="head">
-            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/7c674f08.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Travelodge Manchester Central Arena"><div class="links"><a href="https://www.expedia.com/Manchester-Hotels-Travelodge-Manchester-Central-Arena.h4924312.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3">Expedia</a></div></div>
-            <div><div class="title-row"><div><h2>Travelodge Manchester Central Arena｜Family / Quadruple</h2><p>靠 AO Arena / Victoria，去国家足球博物馆和 Victoria 站方便。</p></div><span class="badge">Victoria 方向</span></div><div class="meta"><div class="pill"><b>床</b>Family: 1 Double + 2 Twin</div><div class="pill"><b>可选</b>Quadruple: 2 Double</div><div class="pill"><b>区域</b>Central Arena</div><div class="pill"><b>适合</b>利物浦火车/市中心</div></div><div class="tags"><span class="tag good">真实床位</span><span class="tag good">靠 Victoria</span><span class="tag warn">基础型酒店</span></div></div>
-          </div>
-        </article>
-
-        <article class="option">
-          <div class="head">
-            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/d4aeafa6.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Leonardo Manchester Central"><div class="links"><a href="https://www.expedia.com/Manchester-Hotels-Jurys-Inn-Manchester-City-Centre.h205304.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3">Expedia</a></div></div>
-            <div><div class="title-row"><div><h2>Leonardo Hotel Manchester Central｜Standard Triple</h2><p>靠 Manchester Central / Deansgate，去科学工业博物馆方便。</p></div><span class="badge">景点友好</span></div><div class="meta"><div class="pill"><b>房型</b>Standard Triple Room</div><div class="pill"><b>设施</b>Free WiFi / desk</div><div class="pill"><b>区域</b>Manchester Central</div><div class="pill"><b>适合</b>科学工业博物馆</div></div><div class="tags"><span class="tag good">到 MOSI 近</span><span class="tag good">市中心</span><span class="tag warn">床型以下单页为准</span></div></div>
-          </div>
-        </article>
-      </section>
-
-      <section id="londonReturn" class="panel">
-        <div class="quick">
-          <div class="quick-card"><strong>日期</strong><span>8/27 入住，8/31 退房</span></div>
-          <div class="quick-card"><strong>行程</strong><span>Duxford/剑桥、多佛/坎特伯雷、伦敦机场离境</span></div>
-          <div class="quick-card"><strong>位置</strong><span>King's Cross / St Pancras / Euston 优先</span></div>
-          <div class="quick-card"><strong>床位</strong><span>三人房，优先三张单人床</span></div>
-        </div>
-
-        <article class="option">
-          <div class="head">
-            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/dfc6cfd7.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Hilton London Euston"><div class="links"><a href="https://www.expedia.com/London-Hotels-Hilton-London-Euston.h2612.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3">Expedia</a><a href="https://www.booking.com/hotel/gb/hilton-london-euston.html">Booking</a></div></div>
-            <div><div class="title-row"><div><h2>Hilton London Euston｜Triple Room</h2><p>Euston / St Pancras / King's Cross 三角区，适合后段铁路日行程。</p></div><span class="badge">后段首选</span></div><div class="meta"><div class="pill"><b>床</b>3 Twin Beds</div><div class="pill"><b>面积</b>约 172 sq ft</div><div class="pill"><b>位置</b>Euston</div><div class="pill"><b>设施</b>保险箱、熨斗、WiFi</div></div><div class="tags"><span class="tag good">三张单人床</span><span class="tag good">去火车站最顺</span><span class="tag good">机场日也好衔接</span></div></div>
-          </div>
-          <div class="body grid2"><div class="mini"><h3>交通</h3><div class="routes"><div class="route"><b>到 Cambridge / Duxford</b>从 King's Cross / St Pancras 区域转铁路去 Cambridge，再接 Duxford 方向。</div><div class="route"><b>到 Dover / Canterbury</b>到 St Pancras 坐 Southeastern High Speed 方向较顺。</div><div class="route"><b>到 Heathrow</b>地铁/Elizabeth line 换乘；打车约 45-60 分钟。</div><div class="route"><b>到 Gatwick</b>St Pancras / Thameslink 方向可衔接。</div></div></div><div class="mini"><h3>适合度</h3><p>后段每天铁路出行多，Euston / St Pancras 比西伦敦或南岸更省心。</p></div></div>
-        </article>
-
-        <article class="option">
-          <div class="head">
-            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/1b1ab152.jpg?impolicy=fcrop&w=1200&h=800&quality=medium" alt="Staunton Hotel"><div class="links"><a href="https://www.expedia.com/London-Hotels-Staunton-Hotel.h1381535.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3">Expedia</a></div></div>
-            <div><div class="title-row"><div><h2>Staunton Hotel｜Triple Room Ensuite</h2><p>Bloomsbury，离 Euston / British Museum / Tottenham Court Road 都近。</p></div><span class="badge">舒适</span></div><div class="meta"><div class="pill"><b>床</b>3 Twin 或 1 Twin + 1 Double</div><div class="pill"><b>面积</b>约 194 sq ft</div><div class="pill"><b>评价</b>Triple 房型 9.6/10</div><div class="pill"><b>卫浴</b>Ensuite</div></div><div class="tags"><span class="tag good">独立卫浴</span><span class="tag good">Bloomsbury</span><span class="tag warn">床型需选择三单床配置</span></div></div>
-          </div>
-        </article>
-
-        <article class="option">
-          <div class="head">
-            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/02888876.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Travelodge King's Cross Royal Scot"><div class="links"><a href="https://www.expedia.com/London-Hotels-Travelodge-London-Kings-Cross-Royal-Scot-Hotel.h6395.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3">Expedia</a></div></div>
-            <div><div class="title-row"><div><h2>Travelodge London Kings Cross Royal Scot｜Triple Room</h2><p>King's Cross / St Pancras 方向，铁路日程友好，设施基础。</p></div><span class="badge">交通优先</span></div><div class="meta"><div class="pill"><b>床</b>3 Twin Beds</div><div class="pill"><b>房型</b>Triple Room</div><div class="pill"><b>区域</b>King's Cross</div><div class="pill"><b>定位</b>基础型酒店</div></div><div class="tags"><span class="tag good">三张单人床</span><span class="tag good">靠 St Pancras</span><span class="tag warn">舒适度普通</span></div></div>
-          </div>
-        </article>
-
-        <article class="option">
-          <div class="head">
-            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/56bee051.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Albany Hotel"><div class="links"><a href="https://www.expedia.com/London-Hotels-Albany-Hotel.h11899736.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3">Expedia</a></div></div>
-            <div><div class="title-row"><div><h2>Albany Hotel｜Triple Room Shared Bathroom</h2><p>Bloomsbury / Euston 附近，三张单人床；共用卫浴是主要减分。</p></div><span class="badge warn">省钱备选</span></div><div class="meta"><div class="pill"><b>床</b>3 Twin Beds</div><div class="pill"><b>面积</b>约 237 sq ft</div><div class="pill"><b>卫浴</b>Shared Bathroom</div><div class="pill"><b>交通</b>Euston 约 9 分钟步行</div></div><div class="tags"><span class="tag good">三张单人床</span><span class="tag good">位置好</span><span class="tag warn">共用卫浴</span></div></div>
-          </div>
-        </article>
-
-        <article class="option">
-          <div class="head">
-            <div class="photo"><img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/e57c5389.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Kings Cross apartment"><div class="links"><a href="https://www.expedia.com/London-Hotels-Kings-Cross-International.h55185244.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3">Expedia</a></div></div>
-            <div><div class="title-row"><div><h2>Budget Apartment Next to Kings Cross - Eurostar</h2><p>公寓型，靠 King's Cross / St Pancras，适合想要更多床位和厨房空间。</p></div><span class="badge">公寓</span></div><div class="meta"><div class="pill"><b>床</b>1 Double + 3 Twin</div><div class="pill"><b>面积</b>约 377 sq ft</div><div class="pill"><b>房型</b>Superior/Deluxe Apartment</div><div class="pill"><b>容量</b>Sleeps 5</div></div><div class="tags"><span class="tag good">床位充足</span><span class="tag good">靠 Eurostar / St Pancras</span><span class="tag warn">公寓管理稳定性需看下单页评价</span></div></div>
-          </div>
-        </article>
-      </section>
-
-      <p class="fine">价格为抓取页面时的估算，汇率按 USD/CNY≈6.80、JPY/CNY≈0.0418。实际库存、税费和退款截止以进入订房付款前页面为准。</p>
+      <p class="fine">价格为抓取页面时的估算，汇率按 USD/CNY≈6.80、JPY/CNY≈0.0418。实际库存、税费、押金、退房时间、房间是否有窗、床型和退款截止日期，以进入订房付款前页面为准；下单前应再次截图确认。</p>
     </div>
   </main>
 
   <script>
-    const buttons = document.querySelectorAll('.tab-button');
-    const panels = document.querySelectorAll('.panel');
+    const IMG = {
+      royal: "https://images.trvl-media.com/lodging/1000000/60000/55100/55001/dfc6cfd7.jpg?impolicy=fcrop&w=1200&h=800&quality=medium",
+      royal2: "https://images.trvl-media.com/lodging/1000000/60000/55100/55001/56bee051.jpg?impolicy=resizecrop&rw=900&ra=fit",
+      royal3: "https://images.trvl-media.com/lodging/1000000/60000/55100/55001/e57c5389.jpg?impolicy=resizecrop&rw=900&ra=fit",
+      royal4: "https://images.trvl-media.com/lodging/1000000/60000/55100/55001/02888876.jpg?impolicy=resizecrop&rw=900&ra=fit",
+      star: "https://images.trvl-media.com/lodging/1000000/890000/888700/888617/6268d8f6.jpg?impolicy=fcrop&w=1200&h=800&quality=medium",
+      star2: "https://images.trvl-media.com/lodging/1000000/890000/888700/888617/93788716.jpg?impolicy=resizecrop&rw=900&ra=fit",
+      star3: "https://images.trvl-media.com/lodging/1000000/890000/888700/888617/f7e161bc.jpg?impolicy=resizecrop&rw=900&ra=fit",
+      camden: "https://a0.muscache.com/im/pictures/hosting/Hosting-1534865615026164814/original/2e84e3d5-94e2-4a94-a592-cdab6f9f5350.jpeg?im_w=960",
+      porto: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-1566071751940768005/original/4e8b0a55-04f1-46e4-bb47-6e537132420f.jpeg?im_w=960"
+    };
+
+    const links = {
+      royal2125: "https://www.expedia.com/London-Hotels-The-Royal-National-Hotel.h55001.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&rm1=a3",
+      royal2225: "https://www.expedia.com/London-Hotels-The-Royal-National-Hotel.h55001.Hotel-Information?chkin=2026-08-22&chkout=2026-08-25&rm1=a3",
+      royalSingle: "https://www.expedia.com/London-Hotels-The-Royal-National-Hotel.h55001.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1",
+      star2125: "https://www.expedia.com/London-Hotels-Star-Hotel-Bed-Breakfast.h888617.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&rm1=a3",
+      star2225: "https://www.expedia.com/London-Hotels-Star-Hotel-Bed-Breakfast.h888617.Hotel-Information?chkin=2026-08-22&chkout=2026-08-25&rm1=a3",
+      camden2125: "https://zh.airbnb.com/rooms/1534865615026164814?adults=3&check_in=2026-08-21&check_out=2026-08-25",
+      camden2225: "https://zh.airbnb.com/rooms/1534865615026164814?adults=3&check_in=2026-08-22&check_out=2026-08-25",
+      west2125: "https://zh.airbnb.com/rooms/1077431780373331051?adults=3&check_in=2026-08-21&check_out=2026-08-25",
+      west2225: "https://zh.airbnb.com/rooms/1077431780373331051?adults=3&check_in=2026-08-22&check_out=2026-08-25",
+      porto2125: "https://zh.airbnb.com/rooms/1566071751940768005?adults=3&check_in=2026-08-21&check_out=2026-08-25",
+      porto2225: "https://zh.airbnb.com/rooms/1566071751940768005?adults=3&check_in=2026-08-22&check_out=2026-08-25"
+    };
+
+    const booking = {
+      royal: "https://www.booking.com/hotel/gb/royal-national.html",
+      star: "https://www.booking.com/hotel/gb/star-hotel.html"
+    };
+
+    const d1Choices = [
+      ["Royal National Hotel", IMG.royal2, "Twin Room，2 Twin Beds，约 ¥1210。", "到 Euston 步行/公交约 8 分钟，第二天换三人房最少折腾。"],
+      ["Star Hotel", IMG.star2, "Single Room，1 Twin Bed，约 ¥932。", "西伦敦，去 Heathrow 和西侧住宿顺；去 Euston 公共交通约 39 分钟。"],
+      ["City Sleeper / Bedford Way 一带", IMG.royal3, "单人或双人房按下单页确认。", "Russell Square / Euston 中间，衔接 Bloomsbury 三人段方便。"],
+      ["Tavistock / Bloomsbury 一带", IMG.royal, "单人或双人房。", "大英博物馆、Russell Square、Euston 都在短程范围。"],
+      ["President Hotel", IMG.royal4, "单人或双人房。", "Russell Square 旁，适合第二天转 Royal National / Bloomsbury。"],
+      ["George Hotel", IMG.star3, "单人房。", "Euston / St Pancras 步行圈，房间通常紧凑但换乘方便。"]
+    ];
+
+    function commonLondonRoutes(area) {
+      if (area === "west") return [
+        ["到 Euston", "公共交通约 35-45 分钟，打车约 25-35 分钟。"],
+        ["到 Tower Bridge", "公共交通约 45-60 分钟。"],
+        ["到 Heathrow", "Piccadilly line 方向约 45-60 分钟，打车通常更顺。"],
+        ["到 HP Studio", "先去 Euston，再 Watford Junction 火车 + 接驳，整体时间偏长。"]
+      ];
+      return [
+        ["到 Euston", "步行/公交短程，拖行李压力低。"],
+        ["到 HP Studio", "Euston 到 Watford Junction 火车约 20 分钟，再接驳约 15 分钟。"],
+        ["到 Tower Bridge", "公共交通约 33-45 分钟，打车约 17-30 分钟。"],
+        ["到 Big Ben", "公共交通约 25-35 分钟，打车约 10-20 分钟。"]
+      ];
+    }
+
+    const splitOptions = [
+      {
+        title: "D2-D5｜Royal National Hotel｜Triple Room", badge: "首选", img: IMG.royal,
+        desc: "最适合不想每天算地铁的人。位置在 Russell Square / Euston 中间，去火车站、集合点和市区景点都省事。",
+        meta: [["价格", "约 ¥4495 / 3 晚"], ["每晚", "约 ¥1498"], ["床", "3 Twin Beds"], ["库存", "抓取时剩 4 间"]],
+        tags: [["good", "三张单人床"], ["good", "24 小时前台"], ["good", "可免费取消至 8/19 前"]],
+        links: [["Expedia", links.royal2225], ["Booking", booking.royal], ["官网房型", "https://www.imperialhotels.co.uk/hotels/royal-national-hotel/rooms/triple-room/53-27/"]],
+        routes: commonLondonRoutes(), env: "大型酒店，前台和寄存更稳定；房间有 WiFi、冰箱、书桌、熨斗，楼内有餐厅和早餐。窗户、景观、是否高楼层以下单页房型细则为准。退房、税费和押金以付款前页面为准。"
+      },
+      {
+        title: "D2-D5｜Star Hotel｜Quadruple Room", badge: "稳妥", img: IMG.star,
+        desc: "西伦敦小型酒店/B&B，评分高，床位宽松；缺点是到 Euston、国王十字和北伦敦集合点更远。",
+        meta: [["价格", "约 ¥5358 / 3 晚"], ["每晚", "约 ¥1786"], ["床", "1 Double + 2 Twin"], ["退款", "加价可 8/19 前退"]],
+        tags: [["good", "真实床位"], ["good", "评分高"], ["warn", "无电梯"]],
+        links: [["Expedia", links.star2225], ["Booking", booking.star]],
+        routes: commonLondonRoutes("west"), env: "小型住宿，房间有 WiFi、冰箱、书桌和遮光帘；晚到需提前联系。可退款、退房时间和税费以付款页为准。"
+      },
+      {
+        title: "D2-D5｜Camden / Mornington Crescent Airbnb", badge: "Airbnb", img: IMG.camden,
+        desc: "公寓感更强，离 Euston 和 Northern line 近，适合想要厨房、洗衣机和更像家的空间。",
+        meta: [["价格", "约 ¥7254 / 3 晚"], ["每晚", "约 ¥2418"], ["床", "1 张 1.8m + 1 张 1.35m"], ["评价", "4.89 / 37 条"]],
+        tags: [["good", "非新房源"], ["good", "2 卫生间"], ["warn", "三人中两人同床"]],
+        links: [["Airbnb", links.camden2225]],
+        routes: commonLondonRoutes(), env: "2 卧 2 卫，厨房、洗衣机、洗碗机、全尺寸冰箱、快速 WiFi；房源页面显示一层无楼梯。清洁费、服务费和退房规则以 Airbnb 付款页为准。"
+      },
+      {
+        title: "D2-D5｜West Kensington Airbnb", badge: "性价比", img: IMG.camden,
+        desc: "价格更舒服，地铁站步行约 5-6 分钟；整体更适合西伦敦和 Heathrow，不适合频繁去 Euston。",
+        meta: [["价格", "约 ¥5435 / 3 晚"], ["每晚", "约 ¥1812"], ["床", "2 卧 3 床"], ["评价", "4.82 / 73 条"]],
+        tags: [["good", "非新房源"], ["good", "自助入住"], ["warn", "到 Euston 较远"]],
+        links: [["Airbnb", links.west2225]],
+        routes: commonLondonRoutes("west"), env: "公寓型，适合想要洗衣和厨房的人；床位细节需在房源照片和描述中再次确认，避免隐藏 sofa bed。"
+      },
+      {
+        title: "D2-D5｜Portobello Road 现代 2 卧度假屋", badge: "偏贵", badgeClass: "red", over: true, img: IMG.porto,
+        desc: "房源质量和评价都好，但地理位置偏西，且每晚超过 ¥2500，不建议作为默认选择。",
+        meta: [["价格", "约 ¥8727 / 3 晚"], ["每晚", "约 ¥2909", "red"], ["床", "2 卧，3 张床"], ["评价", "5.0 / 35 条"]],
+        tags: [["good", "非新房源"], ["good", "自助入住"], ["bad", "超过 ¥2500/晚"]],
+        links: [["Airbnb", links.porto2225]],
+        routes: commonLondonRoutes("west"), env: "2 卧 3 床，房源质感更强；适合愿意为房间质量和街区体验加钱的人。清洁费、服务费和退房条款以 Airbnb 付款页为准。"
+      }
+    ];
+
+    const allLondon = [
+      ["Royal National Hotel｜Triple Room", "推荐", IMG.royal, "8/21-8/25 四晚三人同住。最突出的优点是不用换地方，Euston 和 Russell Square 都近。", [["价格","约 ¥6338 / 4 晚"],["每晚","约 ¥1585"],["床","3 Twin Beds"],["库存","抓取时剩 1 间"]], [["good","三张单人床"],["good","24 小时前台"],["good","拖箱最省事"]], [["Expedia", links.royal2125],["Booking", booking.royal]], commonLondonRoutes(), "大型酒店，寄存和前台稳定；房内通常有 WiFi、冰箱、书桌、熨斗。退房时间、含税总价和可退款日期以付款页为准。"],
+      ["Star Hotel｜Quadruple Room", "稳妥", IMG.star, "四晚三人同住，1 Double + 2 Twin，比普通 triple 更宽松；西伦敦位置让去机场更顺。", [["价格","约 ¥7528 / 4 晚"],["每晚","约 ¥1882"],["床","1 Double + 2 Twin"],["退款","加价可 8/18 前退"]], [["good","真实床位"],["good","评分高"],["warn","无电梯"]], [["Expedia", links.star2125],["Booking", booking.star]], commonLondonRoutes("west"), "小型 B&B，房间有 WiFi、冰箱、书桌和遮光帘；没有电梯，行李多要慎重。"],
+      ["Camden / Mornington Crescent Airbnb", "Airbnb", IMG.camden, "四晚公寓方案，离 Euston 近，适合想洗衣、做早餐、晚上有客厅的人。", [["价格","约 ¥9264 / 4 晚"],["每晚","约 ¥2316"],["床","1 张 1.8m + 1 张 1.35m"],["评价","4.89 / 37 条"]], [["good","非新房源"],["good","2 卫生间"],["warn","两人同床"]], [["Airbnb", links.camden2125]], commonLondonRoutes(), "2 卧 2 卫，有厨房、洗衣机、洗碗机、冰箱和快速 WiFi。清洁费、服务费、退房时间和取消截止日期以付款前明细为准。"],
+      ["Portobello Road 现代 2 卧度假屋", "偏贵", IMG.porto, "房源质感好，2 卧 3 床，但位置偏西且价格超过 ¥2500/晚。", [["价格","约 ¥11512 / 4 晚"],["每晚","约 ¥2878","red"],["床","2 卧，3 张床"],["评价","5.0 / 35 条"]], [["good","非新房源"],["good","自助入住"],["bad","超过 ¥2500/晚"]], [["Airbnb", links.porto2125]], commonLondonRoutes("west"), "更像度假屋，适合想要街区体验和更好空间的人。取消政策、清洁费、退房时间以付款前页面为准。", true],
+      ["West Kensington Airbnb｜2 卧 3 床", "性价比", IMG.camden, "西伦敦公寓方案，价格通常比 Camden / Portobello 友好，适合把预算放在优先级前面。", [["价格","需付款页复核"],["床","2 卧 3 床"],["评价","4.82 / 73 条"],["入住","自助入住"]], [["good","非新房源"],["good","评价足够"],["warn","到 Euston 较远"]], [["Airbnb", links.west2125]], commonLondonRoutes("west"), "公寓型，想要厨房和洗衣时比酒店舒服。下单前必须再次确认每张床的照片和描述，不接受 sofa bed 作为第三张床。"],
+      ["Hilton London Euston｜Triple Room", "交通稳", IMG.royal2, "Euston 旁商务酒店方案，位置和前台稳定性强，适合不想住大型团队酒店但仍要铁路方便。", [["价格","需付款页复核"],["床","3 Twin Beds"],["面积","约 172 sq ft"],["设施","空调、餐厅、健身房"]], [["good","三张单人床"],["good","24 小时前台"],["warn","通常高于 Royal National"]], [["Expedia","https://www.expedia.com/London-Hotels-Hilton-London-Euston.h2612.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&rm1=a3"],["Booking","https://www.booking.com/hotel/gb/hilton-london-euston.html"]], commonLondonRoutes(), "商务酒店环境更稳定，有餐饮、空调、健身房和前台。房间是否有窗、早餐、退房时间、可退款截止日和税费以付款页为准。"],
+      ["Staunton Hotel｜Triple Room Ensuite", "舒适", IMG.royal, "Bloomsbury 小型酒店，独立卫浴，比共享卫浴经济房更适合连续四晚。", [["价格","需付款页复核"],["床","3 Twin 或 1 Twin + 1 Double"],["面积","约 194 sq ft"],["卫浴","Ensuite"]], [["good","独立卫浴"],["good","Bloomsbury"],["warn","需锁定三单床配置"]], [["Expedia","https://www.expedia.com/London-Hotels-Staunton-Hotel.h1381535.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&rm1=a3"],["Booking","https://www.booking.com/searchresults.html?ss=Staunton+Hotel+London"]], commonLondonRoutes(), "小型酒店，区域安静度和步行便利性较好。下单时只选独立卫浴三人房；退房、税费、可退款截止日和是否含早餐以付款页为准。"],
+      ["Travelodge London Kings Cross Royal Scot｜Triple Room", "交通优先", IMG.royal3, "King's Cross / St Pancras 方向，主打交通和价格，不主打舒适度。", [["价格","需付款页复核"],["床","3 Twin Beds"],["房型","Triple Room"],["定位","基础连锁"]], [["good","三张单人床"],["good","靠 King's Cross"],["warn","设施基础"]], [["Expedia","https://www.expedia.com/London-Hotels-Travelodge-London-Kings-Cross-Royal-Scot-Hotel.h6395.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&rm1=a3"],["Travelodge","https://www.travelodge.co.uk/"]], commonLondonRoutes(), "适合只要睡觉、洗澡和交通的人。退房、早餐、提前入住、免费取消截止日和税费以付款页为准。"],
+      ["Budget Apartment Next to Kings Cross - Eurostar", "公寓", IMG.star, "公寓型，多床位，适合三人想分开睡并接受自助入住/公寓管理的人。", [["价格","需付款页复核"],["床","1 Double + 3 Twin"],["面积","约 377 sq ft"],["容量","Sleeps 5"]], [["good","床位充足"],["good","靠 St Pancras"],["warn","入住规则需看清"]], [["Expedia","https://www.expedia.com/London-Hotels-Kings-Cross-International.h55185244.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&rm1=a3"]], commonLondonRoutes(), "床位空间更强，但公寓要重点看押金、清洁费、退房清洁要求和钥匙领取方式。可退款日期和总价以付款页为准。"],
+      ["St Athans Hotel｜Triple Room Shared Bathroom", "经济型", IMG.star3, "Euston 附近经济型三人房，三单床清楚；共享卫浴和房间小是主要缺点。", [["价格","需付款页复核"],["床","3 Twin Beds"],["面积","约 113 sq ft"],["卫浴","Shared Bathroom"]], [["good","三张单人床"],["good","Euston 近"],["warn","共享卫浴"]], [["Expedia","https://www.expedia.com/London-Hotels-St-Athans-Hotel.h1613992.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&rm1=a3"],["Booking","https://www.booking.com/searchresults.html?ss=St+Athans+Hotel+London"]], commonLondonRoutes(), "适合只看位置和床位的低预算备选。连续四晚共享卫浴会比较累；退房、楼梯/电梯、税费和取消政策以付款页为准。"]
+    ];
+
+    function manRoutes(type) {
+      if (type === "victoria") return [["到 National Football Museum","步行/电车约 8-15 分钟。"],["到 Manchester Victoria","步行短程，拖箱轻松。"],["到 Science and Industry Museum","电车/公交约 20-30 分钟，打车约 10-15 分钟。"],["到 Liverpool Lime Street","Victoria 或 Piccadilly 火车约 40-60 分钟。"]];
+      if (type === "mosi") return [["到 Science and Industry Museum","步行/公交约 10-18 分钟。"],["到 National Football Museum","电车/步行约 20-30 分钟。"],["到 Piccadilly","电车/公交约 15-25 分钟，打车约 8-12 分钟。"],["到 Liverpool","可从 Oxford Road / Piccadilly / Victoria 转火车。"]];
+      if (type === "edge") return [["到 Piccadilly","公交/打车为主，约 15-25 分钟。"],["到 National Football Museum","公交/电车约 25-35 分钟。"],["到 Science and Industry Museum","公交/打车约 20-35 分钟。"],["到 Liverpool","先接到 Piccadilly，再火车约 40-60 分钟。"]];
+      return [["到 Manchester Piccadilly","步行或短程交通，适合 8/27 回伦敦。"],["到 National Football Museum","电车/步行约 15-25 分钟，打车约 8-15 分钟。"],["到 Science and Industry Museum","公交/电车约 15-30 分钟，打车约 10 分钟。"],["到 Liverpool Lime Street","从 Piccadilly/Victoria 坐火车约 40-60 分钟。"]];
+    }
+
+    const manchester = [
+      ["The Reach at Piccadilly｜Family Room", "曼城首选", IMG.royal2, "Piccadilly 旁边，适合把曼城两晚当交通枢纽。去利物浦和回伦敦都省心。", [["房型","Family Room, Multiple Beds"],["床","1 Double + 2 Twin"],["区域","Piccadilly / Canal"],["系统","Marriott 系"]], [["good","真实床位"],["good","靠 Piccadilly"],["good","火车日方便"]], [["Expedia","https://www.expedia.com/Manchester-Hotels-Reach-AT-Piccadilly-Tribute-Portfolio.h96970748.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3"],["Marriott","https://www.marriott.com/"]], manRoutes(), "新式酒店，城市景观房、WiFi，整体比老牌便宜酒店更稳。退房、是否含早餐、税费和免费取消截止日以付款页为准。"],
+      ["Treehouse Hotel Manchester｜Two Queen / Triple Suite", "舒适", IMG.star, "新酒店质感更好，靠市中心北侧，去购物、足球博物馆和 Victoria 都方便。", [["房型","2 Queen Beds / Triple Suite"],["床","2 Queen 或三人套房"],["设施","空调、餐厅、健身房"],["退房","常见为 11:00"]], [["good","舒适度高"],["good","24 小时前台"],["warn","通常比 Travelodge 贵"]], [["Expedia","https://www.expedia.com/Manchester-Hotels-Treehouse-Manchester.h91703156.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3"],["Booking","https://www.booking.com/searchresults.html?ss=Treehouse+Hotel+Manchester"]], manRoutes("victoria"), "偏设计酒店，设施明显好于基础连锁；三人下单时优先选择 2 queen 或明确 triple suite，不选 sofa bed。"],
+      ["Leonardo Hotel Manchester Central｜Standard Triple", "景点友好", IMG.royal, "靠 Manchester Central / Deansgate，最照顾科学工业博物馆那天。", [["房型","Standard Triple Room"],["床","以下单页为准"],["设施","WiFi、书桌、餐饮"],["区域","Deansgate / Central"]], [["good","到 MOSI 近"],["good","市中心"],["warn","去 Piccadilly 需短程交通"]], [["Expedia","https://www.expedia.com/Manchester-Hotels-Jurys-Inn-Manchester-City-Centre.h205304.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3"],["Booking","https://www.booking.com/searchresults.html?ss=Leonardo+Hotel+Manchester+Central"]], manRoutes("mosi"), "标准商务酒店，比纯预算酒店更稳。三人房床型、退房时间、早餐和免费取消截止日以下单页为准。"],
+      ["Travelodge Manchester Piccadilly｜Triple / Family", "交通优先", IMG.royal3, "位置非常实用，适合预算优先但仍想贴近火车站。", [["房型","Triple / Family"],["床","3 Twin 或 1 Double + 2 Twin"],["定位","基础连锁"],["区域","Piccadilly"]], [["good","靠火车站"],["good","真实床位"],["warn","设施基础"]], [["Expedia","https://www.expedia.com/Manchester-Hotels-Travelodge-Manchester-Piccadilly.h6603453.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3"],["Travelodge","https://www.travelodge.co.uk/"]], manRoutes(), "Travelodge 的优势是直接、便宜、床位明确；劣势是房间和公共区域都偏基础。"],
+      ["Travelodge Manchester Central Arena｜Family / Quadruple", "Victoria 方向", IMG.royal4, "靠 AO Arena / Victoria，去国家足球博物馆最顺，利物浦火车也方便。", [["房型","Family / Quadruple"],["床","1 Double + 2 Twin 或 2 Double"],["区域","Central Arena"],["定位","基础连锁"]], [["good","真实床位"],["good","靠 Victoria"],["warn","舒适度普通"]], [["Expedia","https://www.expedia.com/Manchester-Hotels-Travelodge-Manchester-Central-Arena.h4924312.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3"],["Travelodge","https://www.travelodge.co.uk/"]], manRoutes("victoria"), "适合把睡觉和交通放第一的人。下单时选明确 1 Double + 2 Twin 或 2 Double 的房型。"],
+      ["Britannia Hotel Manchester｜Triple / Family Room", "便宜备选", IMG.star3, "市中心 Piccadilly Gardens 附近，价格通常低；主要风险是评价一般和夜间噪音。", [["房型","Triple / Family"],["床","3 Twin 或 1 Double + 2 Twin"],["评分","约 6.8/10"],["退房","常见为 10:00 前"]], [["good","市中心"],["warn","评价一般"],["warn","可能有酒吧噪音"]], [["Expedia","https://www.expedia.com/Manchester-Hotels-Britannia-Hotel-Manchester-City-Centre.h41523.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3"],["Booking","https://www.booking.com/searchresults.html?ss=Britannia+Hotel+Manchester"]], manRoutes(), "有 24 小时前台、餐厅、酒吧、早餐和 WiFi，但房间老旧概率较高。只建议在价格明显低时作为备选。"],
+      ["Manchester Stay Hotel / YALLY Hotel｜Standard Triple", "三单床", IMG.star2, "三张单人床很清楚，适合在意床型的人；位置不如市中心，需要接受打车或公交。", [["房型","Standard Triple Room"],["床","3 Twin Beds"],["面积","约 172 sq ft"],["设施","WiFi、免费停车"]], [["good","三张单人床"],["good","免费停车"],["warn","离核心景点更远"]], [["Expedia","https://www.expedia.com/Manchester-Hotels-YALLY-Hotel.h42395450.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3"]], manRoutes("edge"), "卖点是三张真床和停车，住宿体验偏基础。适合价格明显低时作为睡觉型选择。"],
+      ["Travelodge Manchester Ancoats｜Family Room", "北区", IMG.royal2, "Ancoats / Northern Quarter 方向，吃饭方便，去 Piccadilly 也不算远。", [["房型","Family Room"],["床","1 Double + 2 Twin"],["区域","Ancoats"],["定位","基础连锁"]], [["good","真实床位"],["good","吃饭方便"],["warn","非火车站门口"]], [["Expedia","https://www.expedia.com/Manchester-Hotels-Travelodge-Manchester-Ancoats-Hotel.h1172641.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3"],["Travelodge","https://www.travelodge.co.uk/"]], manRoutes(), "连锁基础房，胜在明确床位和区域便利。退房、早餐、停车和取消政策以付款页为准。"],
+      ["Travelodge Manchester Upper Brook Street｜Triple Room", "位置一般", IMG.royal3, "靠大学区，三张单人床明确；去核心景点和火车站需要公交或打车。", [["房型","Triple Room"],["床","3 Twin Beds"],["设施","WiFi"],["区域","Upper Brook Street"]], [["good","三张单人床"],["warn","不在市中心核心"],["warn","通勤略多"]], [["Expedia","https://www.expedia.com/Manchester-Hotels-Travelodge-Manchester-Upper-Brook-Street.h4673009.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3"],["Travelodge","https://www.travelodge.co.uk/"]], manRoutes("edge"), "核心优点是三张单人床明确、预算可控；劣势是每天都要多一点交通。"],
+      ["The Mitre Hotel｜Standard Triple", "老楼备选", IMG.royal, "靠 Manchester Cathedral / Victoria，去足球博物馆极近，但要注意老楼和房间差异。", [["房型","Standard Triple Room"],["床","3 Twin Beds"],["区域","Cathedral / Victoria"],["卫浴","选 Ensuite，避开 shared"]], [["good","三张单人床"],["good","离足球博物馆近"],["warn","老楼舒适度需确认"]], [["Expedia","https://www.expedia.com/Manchester-Hotels-The-Mitre-Hotel.h1066974.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3"],["Booking","https://www.booking.com/searchresults.html?ss=The+Mitre+Hotel+Manchester"]], manRoutes("victoria"), "位置好但酒店更老，房型差异较大。下单时只选明确独立卫浴的三单床房。"]
+    ];
+
+    function returnRoutes(area) {
+      if (area === "south") return [["到 London Bridge","公交/地铁短程，Dover 方向可接。"],["到 St Pancras","公共交通约 20-35 分钟。"],["到 Cambridge/Duxford","需先北上 King's Cross，通勤增加。"],["到 Gatwick","London Bridge / Thameslink 方向较方便。"]];
+      return [["到 Cambridge / Duxford","去 King's Cross / St Pancras 接铁路到 Cambridge，再转 Duxford 方向。"],["到 Dover / Canterbury","到 St Pancras 接 Southeastern High Speed 方向最顺。"],["到 Heathrow","地铁/Elizabeth line 换乘，打车约 45-60 分钟。"],["到 Gatwick","St Pancras 接 Thameslink 方向可衔接。"]];
+    }
+
+    const londonReturn = [
+      ["Hilton London Euston｜Triple Room", "后段首选", IMG.royal2, "Euston / St Pancras / King's Cross 三角区，后段每天坐火车时优势最明显。", [["房型","Triple Room"],["床","3 Twin Beds"],["面积","约 172 sq ft"],["设施","空调、健身房、餐厅"]], [["good","三张单人床"],["good","火车日最顺"],["good","24 小时前台"]], [["Expedia","https://www.expedia.com/London-Hotels-Hilton-London-Euston.h2612.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3"],["Booking","https://www.booking.com/hotel/gb/hilton-london-euston.html"]], returnRoutes(), "商务型酒店，餐厅、酒吧、空调、健身房、每日清洁和 24 小时前台都更稳。退房时间、含税总价、可退款截止日以付款页为准。"],
+      ["Staunton Hotel｜Triple Room Ensuite", "舒适", IMG.royal, "Bloomsbury 小型酒店，离大英博物馆、Euston 和 Tottenham Court Road 都近。", [["房型","Triple Room, Ensuite"],["床","3 Twin 或 1 Twin + 1 Double"],["面积","约 194 sq ft"],["卫浴","独立卫浴"]], [["good","独立卫浴"],["good","Bloomsbury"],["warn","需选三单床配置"]], [["Expedia","https://www.expedia.com/London-Hotels-Staunton-Hotel.h1381535.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3"],["Booking","https://www.booking.com/searchresults.html?ss=Staunton+Hotel+London"]], returnRoutes(), "房型评价较高，体量比大酒店小。下单前确认床型为 3 Twin；退房、早餐、税费和可退款日以下单页为准。"],
+      ["Travelodge London Kings Cross Royal Scot｜Triple Room", "交通优先", IMG.royal3, "King's Cross / St Pancras 方向，铁路日程友好，房间和服务预期要按基础连锁看。", [["房型","Triple Room"],["床","3 Twin Beds"],["区域","King's Cross"],["定位","基础型酒店"]], [["good","三张单人床"],["good","靠 St Pancras"],["warn","舒适度普通"]], [["Expedia","https://www.expedia.com/London-Hotels-Travelodge-London-Kings-Cross-Royal-Scot-Hotel.h6395.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3"],["Travelodge","https://www.travelodge.co.uk/"]], returnRoutes(), "优点是位置和床位，缺点是设施基础、房间可能紧凑。退房、早餐、提前入住、免费取消截止日以付款页为准。"],
+      ["Albany Hotel｜Triple Room Shared Bathroom", "省钱备选", IMG.royal4, "Bloomsbury / Euston 附近，三张单人床；共享卫浴是主要减分点。", [["房型","Triple Room"],["床","3 Twin Beds"],["面积","约 237 sq ft"],["卫浴","Shared Bathroom"]], [["good","三张单人床"],["good","Euston 约 9 分钟步行"],["warn","共享卫浴"]], [["Expedia","https://www.expedia.com/London-Hotels-Albany-Hotel.h11899736.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3"]], returnRoutes(), "位置强、床位明确，但共享卫浴会影响体验。适合预算差距很明显时。"],
+      ["Budget Apartment Next to Kings Cross - Eurostar", "公寓", IMG.star, "公寓型，靠 King's Cross / St Pancras，适合想要更多床位和一点厨房空间的人。", [["房型","Superior/Deluxe Apartment"],["床","1 Double + 3 Twin"],["面积","约 377 sq ft"],["容量","Sleeps 5"]], [["good","床位充足"],["good","靠 Eurostar / St Pancras"],["warn","管理稳定性需看评价"]], [["Expedia","https://www.expedia.com/London-Hotels-Kings-Cross-International.h55185244.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3"]], returnRoutes(), "床位数量舒服，适合三个人分开睡。公寓型要重点看入住说明、押金、清洁费、退房要求和取消政策。"],
+      ["LSE Passfield Hall｜Basic Triple Room", "宿舍型", IMG.royal, "学生宿舍型夏季住宿，Euston 附近，三张单人床清楚；舒适度按宿舍预期。", [["房型","Basic Triple Room"],["床","3 Twin Beds"],["面积","约 237 sq ft"],["卫浴","Shared Bathroom"]], [["good","三张单人床"],["good","Euston 约 6 分钟步行"],["warn","共享卫浴/宿舍感"]], [["Expedia","https://www.expedia.com/London-Hotels-LSE-Passfield-Hall.h11974680.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3"]], returnRoutes(), "位置非常好，但住宿形态更接近学生宿舍。适合预算紧时考虑；退房、早餐、行李寄存和取消政策以付款页为准。"],
+      ["St Athans Hotel｜Triple Room Shared Bathroom", "经济型", IMG.star3, "老式经济酒店，Euston / Russell Square 附近，三张单人床；共享卫浴是核心取舍。", [["房型","Triple Room"],["床","3 Twin Beds"],["面积","约 113 sq ft"],["卫浴","Shared Bathroom"]], [["good","三张单人床"],["good","Euston 约 9 分钟步行"],["warn","房间小/共享卫浴"]], [["Expedia","https://www.expedia.com/London-Hotels-St-Athans-Hotel.h1613992.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3"],["Booking","https://www.booking.com/searchresults.html?ss=St+Athans+Hotel+London"]], returnRoutes(), "适合省钱和位置优先，不能按舒适酒店期待。退房、早餐、楼梯/电梯、取消截止日和税费以付款页为准。"],
+      ["London Queen's Eurostar - King's Cross｜Triple Ensuite", "三单床", IMG.star2, "King's Cross 一带，三张单人床加独立卫浴，适合重视铁路衔接。", [["房型","Triple Room Ensuite"],["床","3 Twin Beds"],["面积","约 215 sq ft"],["位置","Swinton Street"]], [["good","三张单人床"],["good","独立卫浴"],["warn","小楼管理需看评价"]], [["Expedia","https://www.expedia.com/London-Hotels-London-Queens-Eurostar-Kings-Cross.h38735499.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3"]], returnRoutes(), "优点是三张单人床和独立卫浴；下单前重点看入住说明、是否有前台、押金、退房要求和取消政策。"],
+      ["The Suites - St Pancras Hotel Group｜Large Room / Suite", "套房型", IMG.royal3, "靠 St Pancras，房型有多床配置，适合想要比普通 triple 更大空间的人。", [["房型","Large Room / Suite"],["床","3 Twin + 1 King 等配置"],["设施","WiFi"],["区域","King's Cross / St Pancras"]], [["good","床位充足"],["good","靠 St Pancras"],["warn","需确认具体房型"]], [["Expedia","https://www.expedia.com/London-Hotels-Comfort-Inn-Suites-Kings-Cross-St-Pancras.h37002037.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3"]], returnRoutes(), "适合重视空间和床位的人，但一定要在下单页锁定多床房型。退房、可退款日期、押金和额外费用以付款页为准。"],
+      ["The Bridge Hotel London｜Standard Triple", "南岸备选", IMG.royal4, "Southwark / London Bridge 方向，去多佛线可接受，但去 Cambridge/Duxford 不如国王十字方便。", [["房型","Standard Triple Room"],["床","3 Twin Beds"],["区域","Southwark"],["定位","经济型"]], [["good","三张单人床"],["good","去 London Bridge 方便"],["warn","不适合 Cambridge 日"]], [["Expedia","https://www.expedia.com/London-Hotels-The-Bridge-Hotel-London.h4472945.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3"],["Booking","https://www.booking.com/searchresults.html?ss=The+Bridge+Hotel+London"]], returnRoutes("south"), "不是后段首选区域，但可作为价格明显好时的南岸备选。退房时间、税费、可退款截止日和房间是否有窗以下单页为准。"]
+    ];
+
+    const summaries = {
+      londonSplit: [["Plan A","8/21 一人住，8/22-25 三人同住。"],["D1 选择","单人房不固定 Royal National，按价格和衔接选。"],["D2-D5","Bloomsbury / Euston 最省换乘和拖箱时间。"],["床型口径","第三人不靠 sofa bed；Airbnb 需再次确认床详情。"]],
+      londonAll: [["Plan B","8/21-8/25 四晚三人同住，不换房。"],["首选逻辑","优先三张真床、交通顺、前台稳定。"],["候选数量","10 个三人可住选项。"],["提醒","超过 ¥2500/晚只作为高价备选。"]],
+      manchester: [["日期","8/25 入住，8/27 退房。"],["行程","科学工业博物馆、足球博物馆、利物浦一日游。"],["位置","Piccadilly / Victoria / 市中心优先。"],["候选","10 个三人可住选项，避开 sofa bed。"]],
+      londonReturn: [["日期","8/27 入住，8/31 退房。"],["行程","Duxford/剑桥、多佛/坎特伯雷、伦敦机场离境。"],["位置","King's Cross / St Pancras / Euston 优先。"],["候选","10 个三人可住选项，标出共享卫浴和风险点。"]]
+    };
+
+    function quickHtml(items) {
+      return `<div class="quick">${items.map(([k,v]) => `<div class="quick-card"><strong>${k}</strong><span>${v}</span></div>`).join("")}</div>`;
+    }
+    function optionFromTuple(tuple, idx) {
+      const [title, badge, img, desc, meta, tags, hrefs, routes, env, over] = tuple;
+      return { title: `${idx ? idx + "｜" : ""}${title}`, badge, img, desc, meta, tags, links: hrefs, routes, env, over, badgeClass: badge.includes("贵") ? "red" : (badge.includes("备选") || badge.includes("一般") || badge.includes("型") ? "warn" : "") };
+    }
+    function renderOption(o) {
+      return `<article class="option ${o.over ? "over" : ""}">
+        <div class="head">
+          <div class="photo"><img src="${o.img}" alt="${o.title}"><div class="links">${o.links.map(([t,u]) => `<a href="${u}">${t}</a>`).join("")}</div></div>
+          <div>
+            <div class="title-row"><div><h2>${o.title}</h2><p>${o.desc}</p></div><span class="badge ${o.badgeClass || ""}">${o.badge}</span></div>
+            <div class="meta">${o.meta.map(([k,v,c]) => `<div class="pill ${c || ""}"><b>${k}</b>${v}</div>`).join("")}</div>
+            <div class="tags">${o.tags.map(([c,t]) => `<span class="tag ${c}">${t}</span>`).join("")}</div>
+          </div>
+        </div>
+        <div class="body grid2">
+          <div class="mini"><h3>交通</h3><div class="routes">${o.routes.map(([k,v]) => `<div class="route"><b>${k}</b>${v}</div>`).join("")}</div></div>
+          <div class="mini"><h3>住宿环境、退房和费用</h3><p>${o.env}</p></div>
+        </div>
+      </article>`;
+    }
+    function renderChoices() {
+      return `<div class="block"><div class="block-head"><h2>D1｜8/21 单人房候选</h2><p>这一晚的目标是便宜、好入住、第二天和三人段衔接省事。若 D2-D5 住 Bloomsbury/Euston，一晚单人房住同区域最省拖箱；若后段住西伦敦，则 Star Hotel 这类西侧选项衔接更顺。</p></div>
+        <div class="cards">${d1Choices.map(([name,img,room,traffic]) => `<article class="choice"><img src="${img}" alt="${name}"><div class="choice-body"><h3>${name}</h3><p><b>房型</b> ${room}</p><p><b>交通</b> ${traffic}</p></div></article>`).join("")}</div></div>`;
+    }
+
+    document.querySelector("#londonSplit").innerHTML = quickHtml(summaries.londonSplit) + renderChoices() + splitOptions.map(renderOption).join("");
+    document.querySelector("#londonAll").innerHTML = quickHtml(summaries.londonAll) + allLondon.map((x) => renderOption(optionFromTuple(x))).join("");
+    document.querySelector("#manchester").innerHTML = quickHtml(summaries.manchester) + manchester.map((x, i) => renderOption(optionFromTuple(x, i + 1))).join("");
+    document.querySelector("#londonReturn").innerHTML = quickHtml(summaries.londonReturn) + londonReturn.map((x, i) => renderOption(optionFromTuple(x, i + 1))).join("");
+
+    const buttons = document.querySelectorAll(".tab-button");
+    const panels = document.querySelectorAll(".panel");
     buttons.forEach((button) => {
-      button.addEventListener('click', () => {
-        buttons.forEach((b) => b.classList.toggle('active', b === button));
-        panels.forEach((panel) => panel.classList.toggle('active', panel.id === button.dataset.tab));
+      button.addEventListener("click", () => {
+        buttons.forEach((b) => b.classList.toggle("active", b === button));
+        panels.forEach((panel) => panel.classList.toggle("active", panel.id === button.dataset.tab));
       });
     });
   </script>
