@@ -117,7 +117,7 @@
         <span class="chip">价格统一折算人民币</span>
         <span class="chip">三人段优先真实床位</span>
         <span class="chip">超过 ¥2500/晚标红</span>
-        <span class="chip">Airbnb 仅保留 10 条以上评价房源</span>
+        <span class="chip">所有可见候选必须有空调</span>
       </div>
     </div>
   </header>
@@ -339,11 +339,125 @@
     ];
 
     const summaries = {
-      londonSplit: [["Plan A","8/21 一人住，8/22-25 三人同住。"],["D1 选择","单人房不固定 Royal National，按价格和衔接选。"],["D2-D5","Bloomsbury / Euston 最省换乘和拖箱时间。"],["床型口径","第三人不靠 sofa bed；Airbnb 需再次确认床详情。"]],
-      londonAll: [["Plan B","8/21-8/25 四晚三人同住，不换房。"],["首选逻辑","优先三张真床、交通顺、前台稳定。"],["候选数量","10 个三人可住选项。"],["提醒","超过 ¥2500/晚只作为高价备选。"]],
-      manchester: [["日期","8/25 入住，8/27 退房。"],["行程","科学工业博物馆、足球博物馆、利物浦一日游。"],["位置","Piccadilly / Victoria / 市中心优先。"],["候选","10 个三人可住选项，避开 sofa bed。"]],
-      londonReturn: [["日期","8/27 入住，8/31 退房。"],["行程","Duxford/剑桥、多佛/坎特伯雷、伦敦机场离境。"],["位置","King's Cross / St Pancras / Euston 优先。"],["候选","10 个三人可住选项，标出共享卫浴和风险点。"]]
+      londonSplit: [["Plan A","8/21 一人住，8/22-25 三人同住。"],["空调硬条件","无空调或公开页面不明确的酒店已剔除。"],["D2-D5","优先 Euston / St Pancras / King's Cross 周边。"],["床型口径","第三人不靠 sofa bed；三人房下单页需锁定真实床位。"]],
+      londonAll: [["Plan B","8/21-8/25 四晚三人同住，不换房。"],["空调硬条件","只保留公开页面明确 air conditioning 的选项。"],["床型口径","只考虑 3 Twin / 1 Double + 2 Twin / 2 Queen / 多床套房。"],["提醒","价格、库存、退改以付款前页面为准。"]],
+      manchester: [["日期","8/25 入住，8/27 退房。"],["行程","科学工业博物馆、足球博物馆、利物浦一日游。"],["空调硬条件","只保留空调明确的市中心/车站候选。"],["床型口径","下单时锁定真实床位，不接受 sofa bed。"]],
+      londonReturn: [["日期","8/27 入住，8/31 退房。"],["行程","Duxford/剑桥、多佛/坎特伯雷、伦敦机场离境。"],["空调硬条件","只保留空调明确的酒店/套房。"],["位置","King's Cross / St Pancras / Euston 优先。"]]
     };
+
+    function enforceAirConditioningRequirement() {
+      d1Choices.splice(0, d1Choices.length,
+        {
+          name: "Hilton London Euston",
+          img: IMG.royal2,
+          price: "参考约 ¥1600-2300 / 1 晚",
+          room: "Single / Double / Twin 按付款页确认",
+          link: "https://www.expedia.com/London-Hotels-Hilton-London-Euston.h2612.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1",
+          transfer: "Euston 旁；若 D2-D5 住 Euston / St Pancras 一带，第二天短程拖箱。",
+          refund: "空调明确；24 小时前台。退房、退款截止日和税费以付款页为准。"
+        },
+        {
+          name: "Pullman London St Pancras",
+          img: IMG.royal,
+          price: "参考约 ¥1800-2600 / 1 晚",
+          room: "Classic / Superior Room 按付款页确认",
+          link: "https://www.expedia.com/London-Hotels-Pullman-London-St-Pancras.h535667.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1",
+          transfer: "St Pancras / Euston 中间；第二天转后续三人房或火车站都很顺。",
+          refund: "Expedia 页面显示全客房空调；退房、早餐、退款截止日以付款页为准。"
+        },
+        {
+          name: "Radisson Blu Hotel, London Euston Square",
+          img: IMG.royal3,
+          price: "参考约 ¥1500-2300 / 1 晚",
+          room: "Standard / Superior Room 按付款页确认",
+          link: "https://www.expedia.com/London-Hotels-Radisson-Blu-Grafton-Hotel.h608.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1",
+          transfer: "Euston Square 地铁旁；去 Euston、St Pancras、Bloomsbury 都是短程。",
+          refund: "Expedia 页面显示全客房空调；退改、押金和含税总价以付款页为准。"
+        },
+        {
+          name: "Euston Square Hotel",
+          img: IMG.royal4,
+          price: "参考约 ¥1100-1800 / 1 晚",
+          room: "Single / Double / Twin 按付款页确认",
+          link: "https://www.expedia.com/London-Hotels-Euston-Square-Hotel.h84038.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1",
+          transfer: "Euston Square 旁；第二天拖箱到 Euston / King's Cross 区域很轻。",
+          refund: "Expedia 页面显示全客房空调；房间偏紧凑，退款和税费以付款页为准。"
+        },
+        {
+          name: "The Wesley Euston",
+          img: IMG.star,
+          price: "参考约 ¥1300-2100 / 1 晚",
+          room: "Single / Double Room 按付款页确认",
+          link: "https://www.expedia.com/London-Hotels-The-Wesley-Euston.h2143095.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1",
+          transfer: "Euston 附近；第二天转 Euston / St Pancras 周边三人房方便。",
+          refund: "Expedia 页面显示全客房空调；退房、退款截止日和早餐以付款页为准。"
+        },
+        {
+          name: "The Suites - St Pancras Hotel Group",
+          img: IMG.star3,
+          price: "参考约 ¥1600-2400 / 1 晚",
+          room: "Suite / Large Room 按付款页确认",
+          link: "https://www.expedia.com/London-Hotels-Comfort-Inn-Suites-Kings-Cross-St-Pancras.h37002037.Hotel-Information?chkin=2026-08-21&chkout=2026-08-22&rm1=a1",
+          transfer: "King's Cross / St Pancras 一带；若 D2-D5 也选该区域，可减少换房移动。",
+          refund: "官网/Expedia 信息显示套房有空调；退房、押金、退款截止日以付款页为准。"
+        }
+      );
+
+      splitOptions.splice(0, splitOptions.length,
+        {
+          title: "D2-D5｜Star Hotel｜Quadruple Room", badge: "稳妥", img: IMG.star,
+          desc: "官网写明两间 Quadruple / family rooms 安装空调；床型为 1 Double + 2 Twin，符合三人真实床位。",
+          meta: [["价格", "约 ¥5358 / 3 晚"], ["每晚", "约 ¥1786"], ["床", "1 Double + 2 Twin"], ["空调", "Quadruple 房型有，可能需日费"]],
+          tags: [["good", "空调明确"], ["good", "真实床位"], ["warn", "无电梯"]],
+          links: [["Expedia", links.star2225], ["官网房型", "https://www.starhotellondon.co.uk/rooms/"]],
+          routes: commonLondonRoutes("west"), env: "小型 B&B，Quadruple 房型官网明确有空调且有迷你冰箱；空调可能按日收费。退房、退款截止日和最终税费以付款页为准。"
+        },
+        {
+          title: "D2-D5｜Hilton London Euston｜Triple Room", badge: "交通稳", img: IMG.royal2,
+          desc: "Euston 旁商务酒店，适合后续铁路日程；公开页面显示 air conditioning，Triple Room 为 3 Twin Beds。",
+          meta: [["价格", "需付款页复核"], ["床", "3 Twin Beds"], ["面积", "约 172 sq ft"], ["设施", "空调、餐厅、健身房"]],
+          tags: [["good", "空调明确"], ["good", "三张单人床"], ["good", "24 小时前台"]],
+          links: [["Expedia", "https://www.expedia.com/London-Hotels-Hilton-London-Euston.h2612.Hotel-Information?chkin=2026-08-22&chkout=2026-08-25&rm1=a3"], ["Booking", "https://www.booking.com/hotel/gb/hilton-london-euston.html"]],
+          routes: commonLondonRoutes(), env: "商务酒店环境更稳定，有餐饮、空调、健身房和前台。房间是否有窗、早餐、退房时间、可退款截止日和税费以付款页为准。"
+        },
+        {
+          title: "D2-D5｜The Suites - St Pancras Hotel Group｜Large Room / Suite", badge: "套房型", img: IMG.star3,
+          desc: "St Pancras Hotel Group 官网写明 all suites come with air conditioning；多床房型适合三人分开睡。",
+          meta: [["价格", "需付款页复核"], ["床", "3 Twin + 1 King 等配置"], ["设施", "空调、WiFi"], ["区域", "King's Cross / St Pancras"]],
+          tags: [["good", "空调明确"], ["good", "床位充足"], ["warn", "需锁定具体多床房"]],
+          links: [["Expedia", "https://www.expedia.com/London-Hotels-Comfort-Inn-Suites-Kings-Cross-St-Pancras.h37002037.Hotel-Information?chkin=2026-08-22&chkout=2026-08-25&rm1=a3"], ["官网", "https://www.stpancrashotelgroup.com/hotels/the-suites.html"]],
+          routes: commonLondonRoutes(), env: "适合重视空间和床位的人；必须在下单页锁定多床套房，不接受 sofa bed 替代第三张床。退房、押金和退款以付款页为准。"
+        }
+      );
+
+      allLondon.splice(0, allLondon.length,
+        ["Star Hotel｜Quadruple Room", "稳妥", IMG.star, "四晚三人同住，官网明确 Quadruple 房型有空调；1 Double + 2 Twin。", [["价格","约 ¥7528 / 4 晚"],["每晚","约 ¥1882"],["床","1 Double + 2 Twin"],["空调","Quadruple 房型有，可能需日费"]], [["good","空调明确"],["good","真实床位"],["warn","无电梯"]], [["Expedia", links.star2125],["官网房型","https://www.starhotellondon.co.uk/rooms/"]], commonLondonRoutes("west"), "小型 B&B，Quadruple 房型官网明确有空调和迷你冰箱。退房、退款截止日和空调日费以付款页/官网为准。"],
+        ["Hilton London Euston｜Triple Room", "交通稳", IMG.royal2, "Euston 旁商务酒店，公开页面显示空调；Triple Room 为 3 Twin Beds。", [["价格","需付款页复核"],["床","3 Twin Beds"],["面积","约 172 sq ft"],["设施","空调、餐厅、健身房"]], [["good","空调明确"],["good","三张单人床"],["good","24 小时前台"]], [["Expedia","https://www.expedia.com/London-Hotels-Hilton-London-Euston.h2612.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&rm1=a3"],["Booking","https://www.booking.com/hotel/gb/hilton-london-euston.html"]], commonLondonRoutes(), "商务酒店环境更稳定，有餐饮、空调、健身房和前台。房间是否有窗、早餐、退房时间、可退款截止日和税费以付款页为准。"],
+        ["The Suites - St Pancras Hotel Group｜Large Room / Suite", "套房型", IMG.star3, "官网写明 all suites come with air conditioning；适合想要更多床位和空间的人。", [["价格","需付款页复核"],["床","3 Twin + 1 King 等配置"],["设施","空调、WiFi"],["区域","King's Cross / St Pancras"]], [["good","空调明确"],["good","床位充足"],["warn","需锁定具体房型"]], [["Expedia","https://www.expedia.com/London-Hotels-Comfort-Inn-Suites-Kings-Cross-St-Pancras.h37002037.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&rm1=a3"],["官网","https://www.stpancrashotelgroup.com/hotels/the-suites.html"]], commonLondonRoutes(), "床位空间更强，但必须在下单页锁定多床套房，不接受 sofa bed 替代第三张床。可退款日期和总价以付款页为准。"],
+        ["Radisson Blu Hotel, London Euston Square｜Family / Connecting", "需锁床型", IMG.royal3, "Euston Square 旁，公开页面显示全客房空调；适合只在可锁定多床/连通房时考虑。", [["价格","需付款页复核"],["床","多床/连通房需锁定"],["设施","空调、迷你冰箱"],["区域","Euston Square"]], [["good","空调明确"],["good","位置很好"],["warn","床型必须付款页确认"]], [["Expedia","https://www.expedia.com/London-Hotels-Radisson-Blu-Grafton-Hotel.h608.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&rm1=a3"]], commonLondonRoutes(), "只在付款页能锁定 3 Twin / 2 Queen / 1 Double + 2 Twin / 连通房时保留；不接受 sofa bed。退改和税费以付款页为准。"],
+        ["Pullman London St Pancras｜Triple / Family Room", "高配", IMG.royal, "公开页面显示全客房空调；St Pancras / Euston 位置非常适合铁路行程。", [["价格","需付款页复核"],["床","三人床型需锁定"],["设施","空调、24h room service"],["区域","St Pancras"]], [["good","空调明确"],["good","位置强"],["warn","通常偏贵"]], [["Expedia","https://www.expedia.com/London-Hotels-Pullman-London-St-Pancras.h535667.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&rm1=a3"]], commonLondonRoutes(), "只在下单页能锁定真实三人床位时考虑；不要选择 sofa bed 方案。退房、退款截止日和税费以付款页为准。"]
+      );
+
+      manchester.splice(0, manchester.length,
+        ["The Reach at Piccadilly｜Family Room", "曼城首选", IMG.royal2, "Piccadilly 旁边，Expedia 空调筛选页列入 air conditioning；适合利物浦和回伦敦。", [["房型","Family Room, Multiple Beds"],["床","1 Double + 2 Twin"],["区域","Piccadilly / Canal"],["空调","公开筛选页确认"]], [["good","空调明确"],["good","真实床位"],["good","靠 Piccadilly"]], [["Expedia","https://www.expedia.com/Manchester-Hotels-Reach-AT-Piccadilly-Tribute-Portfolio.h96970748.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3"]], manRoutes(), "新式酒店，适合把曼城当交通枢纽。退房、是否含早餐、税费和免费取消截止日以付款页为准。"],
+        ["Treehouse Hotel Manchester｜Two Queen / Triple Suite", "舒适", IMG.star, "Expedia 页面显示 Air conditioning，退房常见 11:00。", [["房型","2 Queen Beds / Triple Suite"],["床","2 Queen 或三人套房"],["设施","空调、餐厅、健身房"],["退房","常见为 11:00"]], [["good","空调明确"],["good","舒适度高"],["warn","通常比 Travelodge 贵"]], [["Expedia","https://www.expedia.com/Manchester-Hotels-Treehouse-Manchester.h91703156.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3"]], manRoutes("victoria"), "偏设计酒店；三人下单时优先选择 2 Queen 或明确 triple suite，不选 sofa bed。"],
+        ["Travelodge Manchester Piccadilly｜Triple / Family", "交通优先", IMG.royal3, "Expedia 页面列有 Air conditioning；Piccadilly 位置最方便。", [["房型","Triple / Family"],["床","3 Twin 或 1 Double + 2 Twin"],["定位","基础连锁"],["空调","公开页面确认"]], [["good","空调明确"],["good","靠火车站"],["good","真实床位"]], [["Expedia","https://www.expedia.com/Manchester-Hotels-Travelodge-Manchester-Piccadilly.h6603453.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3"]], manRoutes(), "基础连锁，优势是直接和位置。退房、早餐、提前入住、免费取消截止日以付款页为准。"],
+        ["Travelodge Manchester Central Arena｜Family / Quadruple", "Victoria 方向", IMG.royal4, "Expedia 页面显示 Air conditioning；靠 AO Arena / Victoria。", [["房型","Family / Quadruple"],["床","1 Double + 2 Twin 或 2 Double"],["区域","Central Arena"],["退房","页面显示 noon"]], [["good","空调明确"],["good","真实床位"],["good","靠 Victoria"]], [["Expedia","https://www.expedia.com/Manchester-Hotels-Travelodge-Manchester-Central-Arena.h4924312.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3"]], manRoutes("victoria"), "适合把睡觉和交通放第一的人；下单时选明确 1 Double + 2 Twin 或 2 Double 的房型。"],
+        ["Maldron Hotel Manchester City Centre｜Family / Twin", "商务稳", IMG.royal, "Expedia 空调筛选页列入 air conditioning；市中心位置，评价稳定。", [["房型","Family / Twin 需锁定"],["床","真实床位需付款页确认"],["设施","空调、餐厅、健身房"],["区域","City Centre"]], [["good","空调明确"],["good","市中心"],["warn","床型需锁定"]], [["Expedia","https://www.expedia.com/Manchester-Hotels-Maldron-Hotel-Manchester-City-Centre.h58836496.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3"]], manRoutes("mosi"), "只在付款页能锁定真实三人床位时保留；不接受 sofa bed。退改和税费以付款页为准。"],
+        ["DoubleTree by Hilton Manchester - Piccadilly｜Two Queen / Twin", "车站稳", IMG.star2, "Expedia 空调筛选页列入 air conditioning；Piccadilly 旁。", [["房型","Two Queen / Twin 需锁定"],["床","真实床位需付款页确认"],["设施","空调、餐厅、健身房"],["区域","Piccadilly"]], [["good","空调明确"],["good","火车站方便"],["warn","床型需锁定"]], [["Expedia","https://www.expedia.com/Manchester-Hotels-DoubleTree-By-Hilton-Hotel-Manchester-Piccadilly.h2145205.Hotel-Information?chkin=2026-08-25&chkout=2026-08-27&rm1=a3"]], manRoutes(), "适合重视车站和舒适度。下单页必须确认真实床位，退改和税费以付款页为准。"]
+      );
+
+      londonReturn.splice(0, londonReturn.length,
+        ["Hilton London Euston｜Triple Room", "后段首选", IMG.royal2, "Euston / St Pancras / King's Cross 三角区，公开页面显示空调，Triple Room 为 3 Twin Beds。", [["房型","Triple Room"],["床","3 Twin Beds"],["面积","约 172 sq ft"],["设施","空调、健身房、餐厅"]], [["good","空调明确"],["good","三张单人床"],["good","火车日最顺"]], [["Expedia","https://www.expedia.com/London-Hotels-Hilton-London-Euston.h2612.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3"],["Booking","https://www.booking.com/hotel/gb/hilton-london-euston.html"]], returnRoutes(), "商务型酒店，餐厅、酒吧、空调、健身房、每日清洁和 24 小时前台都更稳。退房时间、含税总价、可退款截止日以付款页为准。"],
+        ["The Suites - St Pancras Hotel Group｜Large Room / Suite", "套房型", IMG.royal3, "官网写明 all suites come with air conditioning；适合后段铁路日程。", [["房型","Large Room / Suite"],["床","3 Twin + 1 King 等配置"],["设施","空调、WiFi"],["区域","King's Cross / St Pancras"]], [["good","空调明确"],["good","床位充足"],["warn","需确认具体房型"]], [["Expedia","https://www.expedia.com/London-Hotels-Comfort-Inn-Suites-Kings-Cross-St-Pancras.h37002037.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3"],["官网","https://www.stpancrashotelgroup.com/hotels/the-suites.html"]], returnRoutes(), "必须在下单页锁定多床套房，不接受 sofa bed 替代第三张床。退房、可退款日期、押金和额外费用以付款页为准。"],
+        ["Radisson Blu Hotel, London Euston Square｜Family / Connecting", "需锁床型", IMG.royal, "公开页面显示全客房空调；Euston Square 旁，后段交通顺。", [["房型","多床/连通房需锁定"],["床","真实床位需付款页确认"],["设施","空调、迷你冰箱"],["区域","Euston Square"]], [["good","空调明确"],["good","位置很好"],["warn","床型必须付款页确认"]], [["Expedia","https://www.expedia.com/London-Hotels-Radisson-Blu-Grafton-Hotel.h608.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3"]], returnRoutes(), "只在付款页能锁定真实三人床位时保留；不接受 sofa bed。退改和税费以付款页为准。"],
+        ["Pullman London St Pancras｜Triple / Family Room", "高配", IMG.star, "公开页面显示全客房空调；St Pancras / Euston 位置非常适合后段铁路行程。", [["房型","三人床型需锁定"],["床","真实床位需付款页确认"],["设施","空调、24h room service"],["区域","St Pancras"]], [["good","空调明确"],["good","位置强"],["warn","通常偏贵"]], [["Expedia","https://www.expedia.com/London-Hotels-Pullman-London-St-Pancras.h535667.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3"]], returnRoutes(), "只在下单页能锁定真实三人床位时考虑；不要选择 sofa bed 方案。退房、退款截止日和税费以付款页为准。"],
+        ["The Wesley Euston｜Family / Triple", "Euston", IMG.star3, "Expedia 页面显示全客房空调；Euston 附近，后段火车日方便。", [["房型","Family / Triple 需锁定"],["床","真实床位需付款页确认"],["设施","空调、WiFi"],["区域","Euston"]], [["good","空调明确"],["good","Euston 近"],["warn","床型需锁定"]], [["Expedia","https://www.expedia.com/London-Hotels-The-Wesley-Euston.h2143095.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3"]], returnRoutes(), "只在付款页能锁定真实三人床位时考虑；退房、退款截止日和税费以付款页为准。"],
+        ["Euston Square Hotel｜Twin / Connecting", "紧凑", IMG.royal4, "Expedia 页面显示全客房空调；位置很强但房间偏紧凑。", [["房型","Twin / Connecting 需锁定"],["床","真实床位需付款页确认"],["设施","空调、隔音"],["区域","Euston Square"]], [["good","空调明确"],["good","位置强"],["warn","房间偏小"]], [["Expedia","https://www.expedia.com/London-Hotels-Euston-Square-Hotel.h84038.Hotel-Information?chkin=2026-08-27&chkout=2026-08-31&rm1=a3"]], returnRoutes(), "只在可锁定三人真实床位或连通房时保留；不接受 sofa bed。退房、税费和退款以付款页为准。"]
+      );
+    }
+
+    enforceAirConditioningRequirement();
 
     function quickHtml(items) {
       return `<div class="quick">${items.map(([k,v]) => `<div class="quick-card"><strong>${k}</strong><span>${v}</span></div>`).join("")}</div>`;
@@ -369,7 +483,7 @@
       </article>`;
     }
     function renderChoices() {
-      return `<div class="block"><div class="block-head"><h2>D1｜8/21 单人房候选</h2><p>这一晚的目标是便宜、好入住、第二天和三人段衔接省事。若 D2-D5 住 Bloomsbury/Euston，一晚单人房住同区域最省拖箱；若后段住西伦敦，则 Star Hotel 这类西侧选项衔接更顺。</p></div>
+      return `<div class="block"><div class="block-head"><h2>D1｜8/21 单人房候选</h2><p>这一晚只保留公开页面明确有空调的酒店。目标是好入住、第二天和三人段衔接省事；若 D2-D5 住 Euston / St Pancras 一带，D1 也住同区域最省拖箱。</p></div>
         <div class="cards">${d1Choices.map((item) => `<article class="choice"><img src="${item.img}" alt="${item.name}"><div class="choice-body"><h3>${item.name}</h3><p><b>参考价</b> ${item.price}</p><p><b>房型</b> ${item.room}</p><p><b>第二天拖箱</b> ${item.transfer}</p><p><b>退房/退款</b> ${item.refund}</p><p><a href="${item.link}">订房链接</a></p></div></article>`).join("")}</div></div>`;
     }
 
