@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>伦敦三人住宿报告｜8.21-8.25</title>
+  <style>
+    :root {
+      --bg: #f1f4f6;
+      --card: #fff;
+      --ink: #15202b;
+      --muted: #5f6e7d;
+      --line: #d9e0e7;
+      --blue: #176d7a;
+      --green: #20784f;
+      --amber: #946900;
+      --red: #a7352a;
+      --soft-blue: #e8f4f6;
+      --soft-green: #e8f6ee;
+      --soft-amber: #fff3cc;
+      --soft-red: #ffe8e4;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      line-height: 1.55;
+    }
+    a { color: var(--blue); text-decoration: none; font-weight: 650; }
+    a:hover { text-decoration: underline; }
+    header {
+      color: white;
+      background:
+        linear-gradient(90deg, rgba(18,61,70,.94), rgba(42,86,92,.8)),
+        url("https://images.trvl-media.com/lodging/1000000/60000/55100/55001/56bee051.jpg?impolicy=resizecrop&rw=1400&ra=fit");
+      background-size: cover;
+      background-position: center;
+      padding: 44px 28px 38px;
+    }
+    .wrap { max-width: 1240px; margin: 0 auto; }
+    h1 { margin: 0 0 12px; font-size: 36px; letter-spacing: 0; }
+    h2 { margin: 0 0 14px; font-size: 24px; letter-spacing: 0; }
+    h3 { margin: 0 0 10px; font-size: 19px; letter-spacing: 0; }
+    p { margin: 0 0 10px; }
+    main { padding: 24px 28px 42px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .chip {
+      border: 1px solid rgba(255,255,255,.42);
+      background: rgba(255,255,255,.13);
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 14px;
+    }
+    .note {
+      background: #fff8dd;
+      border: 1px solid #ecd58f;
+      border-radius: 8px;
+      padding: 13px 15px;
+      color: #533d00;
+      margin-bottom: 18px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 8px 26px rgba(21,32,43,.07);
+      margin-bottom: 18px;
+      overflow: hidden;
+    }
+    .section { padding: 18px 20px; border-top: 1px solid var(--line); }
+    .section:first-child { border-top: 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { text-align: left; vertical-align: top; padding: 10px; border-bottom: 1px solid var(--line); }
+    th { background: #f5f8fa; color: #344454; white-space: nowrap; }
+    tr:last-child td { border-bottom: 0; }
+    .tag {
+      display: inline-block;
+      padding: 3px 7px;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: 750;
+      margin: 0 3px 3px 0;
+      white-space: nowrap;
+    }
+    .good { color: var(--green); background: var(--soft-green); }
+    .warn { color: var(--amber); background: var(--soft-amber); }
+    .bad { color: var(--red); background: var(--soft-red); }
+    .info { color: var(--blue); background: var(--soft-blue); }
+    .hotel-hero {
+      display: grid;
+      grid-template-columns: 430px 1fr;
+      min-height: 285px;
+    }
+    .photo-link {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr auto;
+      background: #dce3e9;
+    }
+    .photo-link img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .link-strip {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 10px;
+      background: #ffffff;
+      border-top: 1px solid var(--line);
+    }
+    .book {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      border: 1px solid #b8d5da;
+      border-radius: 6px;
+      background: #edf8fa;
+      padding: 6px 9px;
+      font-size: 13px;
+    }
+    .hotel-copy { padding: 18px 20px; }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin: 14px 0;
+    }
+    .metric {
+      border: 1px solid var(--line);
+      background: #f7f9fb;
+      border-radius: 8px;
+      padding: 10px;
+      min-height: 76px;
+    }
+    .metric b { display: block; font-size: 12px; color: var(--muted); margin-bottom: 5px; }
+    .metric span { font-weight: 800; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .mini {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fbfcfd;
+    }
+    ul { margin: 0; padding-left: 18px; }
+    li { margin: 5px 0; }
+    .routes {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .route {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fbfcfd;
+    }
+    .route-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      border-bottom: 1px solid #e7edf2;
+      padding-bottom: 7px;
+      margin-bottom: 9px;
+    }
+    .route-head strong { font-size: 15px; }
+    .time { color: #b34b2e; font-weight: 850; white-space: nowrap; }
+    .path { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 13px; }
+    .step { background: #edf2f5; border: 1px solid #d7e0e7; border-radius: 6px; padding: 5px 7px; }
+    .arrow { color: #748292; font-weight: 800; }
+    .fine { color: var(--muted); font-size: 13px; margin-top: 8px; }
+    .route a { font-size: 13px; }
+    .callout {
+      border-left: 4px solid var(--blue);
+      background: #f6fbfc;
+      border-radius: 0 8px 8px 0;
+      padding: 11px 13px;
+      margin-top: 10px;
+      color: #31404f;
+      font-size: 14px;
+    }
+    .score { font-size: 26px; font-weight: 900; color: var(--blue); }
+    @media (max-width: 920px) {
+      header, main { padding-left: 16px; padding-right: 16px; }
+      h1 { font-size: 29px; }
+      .hotel-hero { grid-template-columns: 1fr; }
+      .photo-link img { height: 240px; }
+      .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid-2, .routes { grid-template-columns: 1fr; }
+      table { font-size: 13px; }
+      th, td { padding: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>伦敦 3 人住宿候选报告</h1>
+      <p>这版按“能不能订、住几个人、床怎么分、有没有退款、到行程点怎么走”重做。别再说“拖行李优势明显”这种空话，下面直接写到站时间和换乘。</p>
+      <div class="chips">
+        <span class="chip">2026-08-21 入住</span>
+        <span class="chip">2026-08-25 退房</span>
+        <span class="chip">4 晚</span>
+        <span class="chip">3 位成人</span>
+        <span class="chip">预算 ¥1600-1800/晚，必要时可上浮</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="note">
+        核验口径：可订价、床型、退款截止日优先采用能带入 2026-08-21 至 2026-08-25、3 adults、1 room 的订房页；交通时间从 Google Maps 路线页读取，包含公共交通和打车/驾车。Google Maps 是“立即出发”口径，2026 年实际当天班次、施工和路况会变，订票/出门前需要再开导航确认。
+      </div>
+
+      <section class="card">
+        <div class="section">
+          <h2>订房来源怎么判断</h2>
+          <table>
+            <thead><tr><th>渠道</th><th>这次用它做什么</th><th>可靠性和限制</th></tr></thead>
+            <tbody>
+              <tr><td>Expedia</td><td>主要用于确认指定日期、3 成人、房型、床型、总价、剩余房量、退款选项。</td><td>大型 OTA，可以订；但价格和库存实时变化。下单前要复核总价、取消政策、税费和是否含早餐。</td></tr>
+              <tr><td>Hotels.com</td><td>交叉看房型和设施，例如 Royal National、W6 的房型/位置说明。</td><td>和 Expedia 同属 Expedia Group，不算完全独立库存来源，适合参考。</td></tr>
+              <tr><td>Booking.com</td><td>独立 OTA 交叉验证酒店存在、房型、评价。Royal National、W6、Star Hotel 都有 Booking 页面。</td><td>适合比价和看评价；本轮没有在 Booking 上稳定确认同日期同房型可订总价，所以主表“已确认可订”仍以 Expedia 证据为准。</td></tr>
+              <tr><td>酒店官网</td><td>确认官方房型描述。Royal National 官网确认三人房三张单人床；Space Apart 官网用于确认物业。</td><td>官网最适合核验房型和政策，但官网价格/库存也要进入预订流程再确认。</td></tr>
+              <tr><td>Airbnb</td><td>只从 Airbnb 页面找民宿/整套公寓候选，见下方 Airbnb 专区。</td><td>当前没有拿到无需登录即可确认 8/21-8/25 可订价、床型和取消政策的具体 Airbnb 房源，所以不放入主推荐。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section">
+          <h2>总表</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>排序</th>
+                <th>住宿</th>
+                <th>类型</th>
+                <th>房型和床</th>
+                <th>可订证据</th>
+                <th>退款</th>
+                <th>设备/窗</th>
+                <th>含税总价</th>
+                <th>结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Royal National Hotel</td>
+                <td>酒店</td>
+                <td>Triple Room；3 张 Twin Beds</td>
+                <td><span class="tag good">Reserve</span><span class="tag good">We have 1 left</span></td>
+                <td>Expedia 页面本次未抓到明确“免费取消至某日”；按页面可见选项当作需下单页复核</td>
+                <td>Free WiFi、冰箱、书桌、熨斗/熨衣板；房型文案未明示 window/no window</td>
+                <td>$932，总均摊约 ¥1582/晚</td>
+                <td><strong>最推荐。</strong>去 Euston 公共交通/步行约 8 分钟，打车约 3 分钟。</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>W6 Hotel Hammersmith - Family Studio</td>
+                <td>Aparthotel</td>
+                <td>Family Studio；1 Double Bed + 1 Double Sofa Bed；Sleeps 4</td>
+                <td><span class="tag good">Reserve</span><span class="tag good">We have 2 left</span></td>
+                <td>Non-refundable +$0；Fully refundable before Aug 19 +$95</td>
+                <td>City view、Free WiFi、in-room safe、soundproofing、熨斗/熨衣板；未明示 no window</td>
+                <td>$854，总均摊约 ¥1450/晚</td>
+                <td>预算最舒服，但去 Euston 公共交通约 30 分钟，打车约 20 分钟。</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>W6 Hotel Hammersmith - Triple Studio</td>
+                <td>Aparthotel</td>
+                <td>Triple Studio；1 Twin Bed + 1 Double Bed；Sleeps 3</td>
+                <td><span class="tag good">Reserve</span><span class="tag good">We have 3 left</span></td>
+                <td>Non-refundable +$0；Fully refundable before Aug 19 +$88</td>
+                <td>City view、Free WiFi、in-room safe、soundproofing、熨斗/熨衣板；未明示 no window</td>
+                <td>$789，总均摊约 ¥1339/晚</td>
+                <td>最省钱，但两个人要睡一张双人床。</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Star Hotel</td>
+                <td>B&B / 小酒店</td>
+                <td>Quadruple Room；1 Double Bed + 2 Twin Beds；Sleeps 4</td>
+                <td><span class="tag good">Reserve</span><span class="tag good">We have 1 left</span></td>
+                <td>Non-refundable +$0；Fully refundable before Aug 18 +$58</td>
+                <td>Free WiFi、Refrigerator、blackout drapes、desk；图片显示窗帘/窗，但房型文字未单独写 window</td>
+                <td>$1107，总均摊约 ¥1879/晚</td>
+                <td>B&B 里唯一确认可订且评价不错的候选，但略超预算、位置偏西。</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Space Apart Hotel</td>
+                <td>公寓式酒店</td>
+                <td>Triple Studio；1 Double Bed + 1 Double Sofa Bed；Sleeps 3</td>
+                <td><span class="tag good">Reserve</span><span class="tag good">We have 1 left</span></td>
+                <td>Non-refundable +$0；Fully refundable before Aug 20 +$58</td>
+                <td>Kitchenette、washer/dryer、air conditioning、rooftop terrace、Free WiFi、refrigerator；评论提到两扇窗，但房型文字未明示</td>
+                <td>$1269，总均摊约 ¥2154/晚</td>
+                <td>住得舒服，但按含税总价明显超预算。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <article class="card">
+        <div class="hotel-hero">
+          <div class="photo-link">
+            <img src="https://images.trvl-media.com/lodging/1000000/60000/55100/55001/56bee051.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Royal National Hotel">
+            <div class="link-strip">
+              <a class="book" target="_blank" rel="noreferrer" href="https://www.expedia.com/London-Hotels-The-Royal-National-Hotel.h55001.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&x_pwa=1&rfrr=HSR&pwa_ts=1720000000000&useRewards=false&rm1=a3&regionId=178279&destination=London%2C%20England%2C%20United%20Kingdom&destType=MARKET&selected=55001&sort=RECOMMENDED">订房链接：Expedia</a>
+              <a class="book" target="_blank" rel="noreferrer" href="https://www.booking.com/hotel/gb/royal-national.html">比价：Booking.com</a>
+              <a class="book" target="_blank" rel="noreferrer" href="https://www.imperialhotels.co.uk/hotels/royal-national-hotel/rooms/triple-room/53-27/">房型链接：官方 Triple Room</a>
+              <a class="book" target="_blank" rel="noreferrer" href="https://www.hotels.com/ho626300/the-royal-national-hotel-london-united-kingdom/">参考：Hotels.com</a>
+            </div>
+          </div>
+          <div class="hotel-copy">
+            <h2>1. Royal National Hotel</h2>
+            <p><span class="tag good">首选</span><span class="tag info">Russell Square / Bloomsbury</span><span class="tag info">最适合赶 Euston 火车</span></p>
+            <div class="metrics">
+              <div class="metric"><b>房型</b><span>Triple Room</span></div>
+              <div class="metric"><b>床</b><span>3 张 Twin Beds</span></div>
+              <div class="metric"><b>价格</b><span>$932 / 4 晚</span></div>
+              <div class="metric"><b>均摊</b><span>约 ¥1582/晚</span></div>
+            </div>
+            <div class="grid-2">
+              <div class="mini">
+                <h3>设备/房间</h3>
+                <ul>
+                  <li>Expedia 可见：Free WiFi、Refrigerator、Desk、Iron/ironing board。</li>
+                  <li>酒店设施：24/7 front desk、餐厅、可付费早餐、自助停车。</li>
+                  <li>官网房型页：三张 single beds、en-suite bathroom、free Wi-Fi、TV、radio、tea/coffee making facilities。</li>
+                  <li>窗：本次可订房型文案未明示 window，也未写 no windows。不能把“有窗”当已确认卖点。</li>
+                </ul>
+              </div>
+              <div class="mini">
+                <h3>退款/订房证据</h3>
+                <ul>
+                  <li>指定日期：Aug 21 - Aug 25，3 travelers，1 room。</li>
+                  <li>可订证据：Triple Room、Sleeps 3、3 Twin Beds、We have 1 left、$932 total、Reserve。</li>
+                  <li>退款：页面本次未稳定抓到免费取消截止日，进入下单页前必须复核。</li>
+                </ul>
+              </div>
+            </div>
+            <div class="callout">这里所谓“拖行李优势”说人话就是：去 Euston 赶 8/25 曼彻斯特火车，Google Maps 显示从酒店到 Euston 公共交通/步行约 8 分钟，打车约 3 分钟；W6 则是公共交通约 30 分钟、打车约 20 分钟。</div>
+          </div>
+        </div>
+        <div class="section">
+          <h3>交通：Google Maps 抓取结果</h3>
+          <div class="routes">
+            <div class="route">
+              <div class="route-head"><strong>到 Euston 站</strong><span class="time">公交/步行约 8 分钟｜打车约 3 分钟</span></div>
+              <div class="path"><span class="step">Royal National Hotel</span><span class="arrow">→</span><span class="step">London Euston</span></div>
+              <div class="fine">用途：8/25 去 Manchester。<a target="_blank" rel="noreferrer" href="https://www.google.com/maps/dir/Royal%20National%20Hotel%2C%2038-51%20Bedford%20Way%2C%20London%20WC1H%200DG/London%20Euston%20Station/data=!4m2!4m1!3e3">公共交通导航</a> · <a target="_blank" rel="noreferrer" href="https://www.google.com/maps/dir/Royal%20National%20Hotel%2C%2038-51%20Bedford%20Way%2C%20London%20WC1H%200DG/London%20Euston%20Station/data=!4m2!4m1!3e0">打车/驾车导航</a></div>
+            </div>
+            <div class="route">
+              <div class="route-head"><strong>到 HP Tour / Watford Junction</strong><span class="time">到 Watford 公共交通约 35 分钟｜打车约 39 分钟</span></div>
+              <div class="path"><span class="step">酒店</span><span class="arrow">→</span><span class="step">Euston</span><span class="arrow">→</span><span class="step">West Midlands Railway</span><span class="arrow">→</span><span class="step">Watford Junction</span><span class="arrow">→</span><span class="step">影城 shuttle 约 15 分钟</span></div>
+              <div class="fine"><a target="_blank" rel="noreferrer" href="https://www.google.com/maps/dir/Royal%20National%20Hotel%2C%2038-51%20Bedford%20Way%2C%20London%20WC1H%200DG/Watford%20Junction%20Station%2C%20Watford/data=!4m2!4m1!3e3">到 Watford 公共交通</a> · <a target="_blank" rel="noreferrer" href="https://www.wbstudiotour.co.uk/getting-here/">官方 shuttle 说明</a></div>
+            </div>
+            <div class="route">
+              <div class="route-head"><strong>到 Tower Bridge</strong><span class="time">公共交通约 33 分钟｜打车约 17 分钟</span></div>
+              <div class="path"><span class="step">酒店</span><span class="arrow">→</span><span class="step">公交/地铁</span><span class="arrow">→</span><span class="step">Tower Bridge</span></div>
+              <div class="fine"><a target="_blank" rel="noreferrer" href="https://www.google.com/maps/dir/Royal%20National%20Hotel%2C%2038-51%20Bedford%20Way%2C%20London%20WC1H%200DG/Tower%20Bridge%2C%20London/data=!4m2!4m1!3e3">公共交通导航</a> · <a target="_blank" rel="noreferrer" href="https://www.google.com/maps/dir/Royal%20National%20Hotel%2C%2038-51%20Bedford%20Way%2C%20London%20WC1H%200DG/Tower%20Bridge%2C%20London/data=!4m2!4m1!3e0">打车/驾车导航</a></div>
+            </div>
+            <div class="route">
+              <div class="route-head"><strong>到 Big Ben / Westminster</strong><span class="time">公共交通约 25 分钟｜打车约 10 分钟</span></div>
+              <div class="path"><span class="step">酒店</span><span class="arrow">→</span><span class="step">公交/地铁</span><span class="arrow">→</span><span class="step">Big Ben</span></div>
+              <div class="fine"><a target="_blank" rel="noreferrer" href="https://www.google.com/maps/dir/Royal%20National%20Hotel%2C%2038-51%20Bedford%20Way%2C%20London%20WC1H%200DG/Big%20Ben%2C%20Westminster%2C%20London/data=!4m2!4m1!3e3">公共交通导航</a> · <a target="_blank" rel="noreferrer" href="https://www.google.com/maps/dir/Royal%20National%20Hotel%2C%2038-51%20Bedford%20Way%2C%20London%20WC1H%200DG/Big%20Ben%2C%20Westminster%2C%20London/data=!4m2!4m1!3e0">打车/驾车导航</a></div>
+            </div>
+            <div class="route">
+              <div class="route-head"><strong>到 Emirates Stadium</strong><span class="time">公共交通约 20 分钟｜打车约 15 分钟</span></div>
+              <div class="path"><span class="step">酒店</span><span class="arrow">→</span><span class="step">Piccadilly line</span><span class="arrow">→</span><span class="step">Arsenal / Emirates</span></div>
+              <div class="fine"><a target="_blank" rel="noreferrer" href="https://www.google.com/maps/dir/Royal%20National%20Hotel%2C%2038-51%20Bedford%20Way%2C%20London%20WC1H%200DG/Emirates%20Stadium%2C%20London/data=!4m2!4m1!3e3">公共交通导航</a> · <a target="_blank" rel="noreferrer" href="https://www.google.com/maps/dir/Royal%20National%20Hotel%2C%2038-51%20Bedford%20Way%2C%20London%20WC1H%200DG/Emirates%20Stadium%2C%20London/data=!4m2!4m1!3e0">打车/驾车导航</a></div>
+            </div>
+            <div class="route">
+              <div class="route-head"><strong>Heathrow / Gatwick 到酒店</strong><span class="time">Heathrow 公共交通约 1h14｜Gatwick 约 1h01</span></div>
+              <div class="path"><span class="step">Heathrow</span><span class="arrow">→</span><span class="step">Piccadilly / Elizabeth line</span><span class="arrow">→</span><span class="step">酒店</span></div>
+              <div class="fine">打车：Heathrow 约 47 分钟；Gatwick 约 1h17。<a target="_blank" rel="noreferrer" href="https://www.google.com/maps/dir/Royal%20National%20Hotel%2C%2038-51%20Bedford%20Way%2C%20London%20WC1H%200DG/Heathrow%20Airport%20Terminal%202%20%26%203%2C%20London/data=!4m2!4m1!3e3">Heathrow 公共交通</a> · <a target="_blank" rel="noreferrer" href="https://www.google.com/maps/dir/Royal%20National%20Hotel%2C%2038-51%20Bedford%20Way%2C%20London%20WC1H%200DG/Gatwick%20Airport%2C%20London/data=!4m2!4m1!3e3">Gatwick 公共交通</a></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="hotel-hero">
+          <div class="photo-link">
+            <img src="https://images.trvl-media.com/lodging/3000000/2040000/2030300/2030220/c75934f3.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="W6 Hotel Hammersmith">
+            <div class="link-strip">
+              <a class="book" target="_blank" rel="noreferrer" href="https://www.expedia.com/London-Hotels-W6-Hotel-Hammersmith.h2030220.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&x_pwa=1&useRewards=false&rm1=a3&regionId=178279&destination=London&destType=MARKET">订房链接：Expedia</a>
+              <a class="book" target="_blank" rel="noreferrer" href="https://www.booking.com/hotel/gb/so-sienna.html">比价：Booking.com</a>
+              <a class="book" target="_blank" rel="noreferrer" href="https://www.hotels.com/ho269043/w6-hotel-hammersmith-london-united-kingdom/">参考：Hotels.com</a>
+              <a class="book" target="_blank" rel="noreferrer" href="https://images.trvl-media.com/lodging/3000000/2040000/2030300/2030220/c75934f3.jpg?impolicy=resizecrop&rw=900&ra=fit">房型/酒店图片</a>
+            </div>
+          </div>
+          <div class="hotel-copy">
+            <h2>2. W6 Hotel Hammersmith - Family Studio</h2>
+            <p><span class="tag good">预算友好</span><span class="tag info">Aparthotel</span><span class="tag warn">离 Euston 远</span></p>
+            <div class="metrics">
+              <div class="metric"><b>房型</b><span>Family Studio</span></div>
+              <div class="metric"><b>床</b><span>1 Double + 1 Sofa Bed</span></div>
+              <div class="metric"><b>价格</b><span>$854 / 4 晚</span></div>
+              <div class="metric"><b>均摊</b><span>约 ¥1450/晚</span></div>
+            </div>
+            <div class="grid-2">
+              <div class="mini">
+                <h3>设备/房间</h3>
+                <ul>
+                  <li>Expedia 可见：City view、Free WiFi、in-room safe、soundproofing、熨斗/熨衣板。</li>
+                  <li>Hotels.com 摘要：apartments feature kitchenettes、flat-screen TVs、DVD players；Hammersmith Station 约 3 分钟。</li>
+                  <li>房型：Sleeps 4，1 bedroom，1 Double Bed + 1 Double Sofa Bed。</li>
+                  <li>窗：房型写 City view，未写 no windows；但也未单独列 window。</li>
+                </ul>
+              </div>
+              <div class="mini">
+                <h3>退款/订房证据</h3>
+                <ul>
+                  <li>Family Studio：We have 2 left，$178 nightly，$854 total，Reserve。</li>
+                  <li>不可退：+$0。</li>
+                  <li>可退：Fully refundable before Aug 19，+$95；Reserve now, pay later。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <h3>交通：Google Maps 抓取结果</h3>
+          <div class="routes">
+            <div class="route"><div class="route-head"><strong>到 Euston 站</strong><span class="time">公共交通约 30 分钟｜打车约 20 分钟</span></div><div class="path"><span class="step">W6</span><span class="arrow">→</span><span class="step">Piccadilly / District + Victoria</span><span class="arrow">→</span><span class="step">Euston</span></div><div class="fine"><a href="https://www.google.com/maps/dir/W6%20Hotel%20Hammersmith%2C%2038-40%20Glenthorne%20Road%2C%20London%20W6%200LS/London%20Euston%20Station/data=!4m2!4m1!3e3" target="_blank" rel="noreferrer">公共交通导航</a> · <a href="https://www.google.com/maps/dir/W6%20Hotel%20Hammersmith%2C%2038-40%20Glenthorne%20Road%2C%20London%20W6%200LS/London%20Euston%20Station/data=!4m2!4m1!3e0" target="_blank" rel="noreferrer">打车/驾车导航</a></div></div>
+            <div class="route"><div class="route-head"><strong>到 HP Tour</strong><span class="time">公共交通约 1h26｜打车约 39 分钟</span></div><div class="path"><span class="step">W6</span><span class="arrow">→</span><span class="step">Circle/H&C</span><span class="arrow">→</span><span class="step">West Midlands Railway</span><span class="arrow">→</span><span class="step">影城</span></div><div class="fine"><a href="https://www.google.com/maps/dir/W6%20Hotel%20Hammersmith%2C%2038-40%20Glenthorne%20Road%2C%20London%20W6%200LS/Warner%20Bros.%20Studio%20Tour%20London%2C%20Studio%20Tour%20Drive%2C%20Leavesden/data=!4m2!4m1!3e3" target="_blank" rel="noreferrer">公共交通导航</a> · <a href="https://www.google.com/maps/dir/W6%20Hotel%20Hammersmith%2C%2038-40%20Glenthorne%20Road%2C%20London%20W6%200LS/Warner%20Bros.%20Studio%20Tour%20London%2C%20Studio%20Tour%20Drive%2C%20Leavesden/data=!4m2!4m1!3e0" target="_blank" rel="noreferrer">打车/驾车导航</a></div></div>
+            <div class="route"><div class="route-head"><strong>到 Tower Bridge</strong><span class="time">公共交通约 43 分钟｜打车约 31 分钟</span></div><div class="path"><span class="step">W6</span><span class="arrow">→</span><span class="step">District / Piccadilly + Jubilee</span><span class="arrow">→</span><span class="step">Tower Bridge</span></div><div class="fine"><a href="https://www.google.com/maps/dir/W6%20Hotel%20Hammersmith%2C%2038-40%20Glenthorne%20Road%2C%20London%20W6%200LS/Tower%20Bridge%2C%20London/data=!4m2!4m1!3e3" target="_blank" rel="noreferrer">公共交通导航</a> · <a href="https://www.google.com/maps/dir/W6%20Hotel%20Hammersmith%2C%2038-40%20Glenthorne%20Road%2C%20London%20W6%200LS/Tower%20Bridge%2C%20London/data=!4m2!4m1!3e0" target="_blank" rel="noreferrer">打车/驾车导航</a></div></div>
+            <div class="route"><div class="route-head"><strong>Heathrow 到酒店</strong><span class="time">公共交通约 54 分钟｜打车约 25 分钟</span></div><div class="path"><span class="step">Heathrow</span><span class="arrow">→</span><span class="step">Piccadilly line</span><span class="arrow">→</span><span class="step">Hammersmith</span></div><div class="fine"><a href="https://www.google.com/maps/dir/W6%20Hotel%20Hammersmith%2C%2038-40%20Glenthorne%20Road%2C%20London%20W6%200LS/Heathrow%20Airport%20Terminal%202%20%26%203%2C%20London/data=!4m2!4m1!3e3" target="_blank" rel="noreferrer">公共交通导航</a> · <a href="https://www.google.com/maps/dir/W6%20Hotel%20Hammersmith%2C%2038-40%20Glenthorne%20Road%2C%20London%20W6%200LS/Heathrow%20Airport%20Terminal%202%20%26%203%2C%20London/data=!4m2!4m1!3e0" target="_blank" rel="noreferrer">打车/驾车导航</a></div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="hotel-hero">
+          <div class="photo-link">
+            <img src="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/f7e161bc.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Star Hotel room">
+            <div class="link-strip">
+              <a class="book" target="_blank" rel="noreferrer" href="https://www.expedia.com/London-Hotels-Star-Hotel-Bed-Breakfast.h888617.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&x_pwa=1&useRewards=false&rm1=a3&regionId=178279&destination=London&destType=MARKET">订房链接：Expedia</a>
+              <a class="book" target="_blank" rel="noreferrer" href="https://www.booking.com/hotel/gb/star-hotel.html">比价：Booking.com</a>
+              <a class="book" target="_blank" rel="noreferrer" href="https://us.trip.com/hotels/london-hotel-detail-3723504/star-hotel-bandb/">参考：Trip.com</a>
+              <a class="book" target="_blank" rel="noreferrer" href="https://images.trvl-media.com/lodging/1000000/890000/888700/888617/f059cef2.jpg?impolicy=fcrop&w=1200&h=800&quality=medium">房型图片：Quadruple Room</a>
+            </div>
+          </div>
+          <div class="hotel-copy">
+            <h2>3. Star Hotel - B&B 候选</h2>
+            <p><span class="tag good">B&B 中可订</span><span class="tag warn">略超预算</span><span class="tag info">Shepherd’s Bush / Hammersmith</span></p>
+            <div class="metrics">
+              <div class="metric"><b>房型</b><span>Quadruple Room</span></div>
+              <div class="metric"><b>床</b><span>1 Double + 2 Twin</span></div>
+              <div class="metric"><b>价格</b><span>$1107 / 4 晚</span></div>
+              <div class="metric"><b>均摊</b><span>约 ¥1879/晚</span></div>
+            </div>
+            <div class="grid-2">
+              <div class="mini">
+                <h3>设备/房间</h3>
+                <ul>
+                  <li>213 sq ft，1 bedroom，Sleeps 4。</li>
+                  <li>Free WiFi、Refrigerator、desk、blackout drapes、free cribs。</li>
+                  <li>窗：图片里能看到窗/窗帘，但房型文字没有单独写 window；没有电梯，Noise-free guestrooms cannot be guaranteed。</li>
+                </ul>
+              </div>
+              <div class="mini">
+                <h3>退款/订房证据</h3>
+                <ul>
+                  <li>We have 1 left，$231 nightly，$1107 total，Reserve。</li>
+                  <li>不可退：+$0。</li>
+                  <li>可退：Fully refundable before Aug 18，+$58；Reserve now, pay deposit。</li>
+                </ul>
+              </div>
+            </div>
+            <div class="callout">这是我补查到的 B&B/小酒店里，唯一在指定日期能明确确认可订、且评价不错的三人可住候选。Albany Hotel 指定日期无房；Rooms at 175 不接受 Expedia 预订且评分/评论风险高；Airbnb/Vrbo 本轮没有拿到无需登录且能明确确认这几天可订的具体房源。</div>
+          </div>
+        </div>
+        <div class="section">
+          <h3>交通：Google Maps 抓取结果</h3>
+          <div class="routes">
+            <div class="route"><div class="route-head"><strong>到 Euston 站</strong><span class="time">公共交通约 39 分钟｜打车约 18 分钟</span></div><div class="path"><span class="step">Star Hotel</span><span class="arrow">→</span><span class="step">Piccadilly / District + Victoria</span><span class="arrow">→</span><span class="step">Euston</span></div><div class="fine"><a href="https://www.google.com/maps/dir/Star%20Hotel%2C%2097-99%20Shepherds%20Bush%20Road%2C%20London%20W6%207LP/London%20Euston%20Station/data=!4m2!4m1!3e3" target="_blank" rel="noreferrer">公共交通导航</a> · <a href="https://www.google.com/maps/dir/Star%20Hotel%2C%2097-99%20Shepherds%20Bush%20Road%2C%20London%20W6%207LP/London%20Euston%20Station/data=!4m2!4m1!3e0" target="_blank" rel="noreferrer">打车/驾车导航</a></div></div>
+            <div class="route"><div class="route-head"><strong>到 HP Tour</strong><span class="time">公共交通约 1h29｜打车约 39 分钟</span></div><div class="path"><span class="step">Star Hotel</span><span class="arrow">→</span><span class="step">铁路/地铁换乘</span><span class="arrow">→</span><span class="step">Warner Bros. Studio Tour</span></div><div class="fine"><a href="https://www.google.com/maps/dir/Star%20Hotel%2C%2097-99%20Shepherds%20Bush%20Road%2C%20London%20W6%207LP/Warner%20Bros.%20Studio%20Tour%20London%2C%20Studio%20Tour%20Drive%2C%20Leavesden/data=!4m2!4m1!3e3" target="_blank" rel="noreferrer">公共交通导航</a> · <a href="https://www.google.com/maps/dir/Star%20Hotel%2C%2097-99%20Shepherds%20Bush%20Road%2C%20London%20W6%207LP/Warner%20Bros.%20Studio%20Tour%20London%2C%20Studio%20Tour%20Drive%2C%20Leavesden/data=!4m2!4m1!3e0" target="_blank" rel="noreferrer">打车/驾车导航</a></div></div>
+            <div class="route"><div class="route-head"><strong>到 Tower Bridge</strong><span class="time">公共交通约 50 分钟｜打车约 31 分钟</span></div><div class="path"><span class="step">Star Hotel</span><span class="arrow">→</span><span class="step">District / Piccadilly + Jubilee</span><span class="arrow">→</span><span class="step">Tower Bridge</span></div><div class="fine"><a href="https://www.google.com/maps/dir/Star%20Hotel%2C%2097-99%20Shepherds%20Bush%20Road%2C%20London%20W6%207LP/Tower%20Bridge%2C%20London/data=!4m2!4m1!3e3" target="_blank" rel="noreferrer">公共交通导航</a> · <a href="https://www.google.com/maps/dir/Star%20Hotel%2C%2097-99%20Shepherds%20Bush%20Road%2C%20London%20W6%207LP/Tower%20Bridge%2C%20London/data=!4m2!4m1!3e0" target="_blank" rel="noreferrer">打车/驾车导航</a></div></div>
+            <div class="route"><div class="route-head"><strong>Heathrow 到酒店</strong><span class="time">公共交通约 58 分钟｜打车约 25 分钟</span></div><div class="path"><span class="step">Heathrow</span><span class="arrow">→</span><span class="step">Piccadilly line</span><span class="arrow">→</span><span class="step">Hammersmith / Shepherd’s Bush</span></div><div class="fine"><a href="https://www.google.com/maps/dir/Star%20Hotel%2C%2097-99%20Shepherds%20Bush%20Road%2C%20London%20W6%207LP/Heathrow%20Airport%20Terminal%202%20%26%203%2C%20London/data=!4m2!4m1!3e3" target="_blank" rel="noreferrer">公共交通导航</a> · <a href="https://www.google.com/maps/dir/Star%20Hotel%2C%2097-99%20Shepherds%20Bush%20Road%2C%20London%20W6%207LP/Heathrow%20Airport%20Terminal%202%20%26%203%2C%20London/data=!4m2!4m1!3e0" target="_blank" rel="noreferrer">打车/驾车导航</a></div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="hotel-hero">
+          <div class="photo-link">
+            <img src="https://images.trvl-media.com/lodging/3000000/2360000/2357700/2357691/61d97f33.jpg?impolicy=resizecrop&rw=900&ra=fit" alt="Space Apart Hotel">
+            <div class="link-strip">
+              <a class="book" target="_blank" rel="noreferrer" href="https://www.expedia.com/London-Hotels-Space-Apart-Hotel.h2357691.Hotel-Information?chkin=2026-08-21&chkout=2026-08-25&x_pwa=1&useRewards=false&rm1=a3&regionId=178279&destination=London&destType=MARKET">订房链接：Expedia</a>
+              <a class="book" target="_blank" rel="noreferrer" href="https://www.spaceaparthotel.com/">官方链接：Space Apart Hotel</a>
+            </div>
+          </div>
+          <div class="hotel-copy">
+            <h2>4. Space Apart Hotel</h2>
+            <p><span class="tag warn">舒服但贵</span><span class="tag info">公寓式酒店</span><span class="tag info">Bayswater / Queensway</span></p>
+            <div class="metrics">
+              <div class="metric"><b>房型</b><span>Triple Studio</span></div>
+              <div class="metric"><b>床</b><span>1 Double + 1 Sofa Bed</span></div>
+              <div class="metric"><b>价格</b><span>$1269 / 4 晚</span></div>
+              <div class="metric"><b>均摊</b><span>约 ¥2154/晚</span></div>
+            </div>
+            <div class="grid-2">
+              <div class="mini">
+                <h3>设备/房间</h3>
+                <ul>
+                  <li>280 sq ft，1 bedroom，Sleeps 3。</li>
+                  <li>Kitchenette、washer/dryer、air conditioning、rooftop terrace、Free WiFi、refrigerator。</li>
+                  <li>窗：房型文字未写 window；但同页评论提到“good light from two windows”，不等于你们可订房型官方保证。</li>
+                </ul>
+              </div>
+              <div class="mini">
+                <h3>退款/订房证据</h3>
+                <ul>
+                  <li>We have 1 left，$264 nightly，$1269 total，Reserve。</li>
+                  <li>不可退：+$0。</li>
+                  <li>可退：Fully refundable before Aug 20，+$58；Reserve now, pay later。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <h3>交通：Google Maps 抓取结果</h3>
+          <div class="routes">
+            <div class="route"><div class="route-head"><strong>到 Euston 站</strong><span class="time">公共交通约 27 分钟｜打车约 12 分钟</span></div><div class="path"><span class="step">Space Apart</span><span class="arrow">→</span><span class="step">公交/地铁</span><span class="arrow">→</span><span class="step">Euston</span></div><div class="fine"><a href="https://www.google.com/maps/dir/Space%20Apart%20Hotel%2C%2036-37%20Kensington%20Garden%20Square%2C%20London%20W2%204BQ/London%20Euston%20Station/data=!4m2!4m1!3e3" target="_blank" rel="noreferrer">公共交通导航</a> · <a href="https://www.google.com/maps/dir/Space%20Apart%20Hotel%2C%2036-37%20Kensington%20Garden%20Square%2C%20London%20W2%204BQ/London%20Euston%20Station/data=!4m2!4m1!3e0" target="_blank" rel="noreferrer">打车/驾车导航</a></div></div>
+            <div class="route"><div class="route-head"><strong>到 HP Tour</strong><span class="time">公共交通约 1h32｜打车约 38 分钟</span></div><div class="path"><span class="step">Space Apart</span><span class="arrow">→</span><span class="step">Euston/铁路换乘</span><span class="arrow">→</span><span class="step">Warner Bros. Studio Tour</span></div><div class="fine"><a href="https://www.google.com/maps/dir/Space%20Apart%20Hotel%2C%2036-37%20Kensington%20Garden%20Square%2C%20London%20W2%204BQ/Warner%20Bros.%20Studio%20Tour%20London%2C%20Studio%20Tour%20Drive%2C%20Leavesden/data=!4m2!4m1!3e3" target="_blank" rel="noreferrer">公共交通导航</a> · <a href="https://www.google.com/maps/dir/Space%20Apart%20Hotel%2C%2036-37%20Kensington%20Garden%20Square%2C%20London%20W2%204BQ/Warner%20Bros.%20Studio%20Tour%20London%2C%20Studio%20Tour%20Drive%2C%20Leavesden/data=!4m2!4m1!3e0" target="_blank" rel="noreferrer">打车/驾车导航</a></div></div>
+            <div class="route"><div class="route-head"><strong>到 Tower Bridge</strong><span class="time">公共交通约 46 分钟｜打车约 27 分钟</span></div><div class="path"><span class="step">Space Apart</span><span class="arrow">→</span><span class="step">Jubilee / bus</span><span class="arrow">→</span><span class="step">Tower Bridge</span></div><div class="fine"><a href="https://www.google.com/maps/dir/Space%20Apart%20Hotel%2C%2036-37%20Kensington%20Garden%20Square%2C%20London%20W2%204BQ/Tower%20Bridge%2C%20London/data=!4m2!4m1!3e3" target="_blank" rel="noreferrer">公共交通导航</a> · <a href="https://www.google.com/maps/dir/Space%20Apart%20Hotel%2C%2036-37%20Kensington%20Garden%20Square%2C%20London%20W2%204BQ/Tower%20Bridge%2C%20London/data=!4m2!4m1!3e0" target="_blank" rel="noreferrer">打车/驾车导航</a></div></div>
+            <div class="route"><div class="route-head"><strong>Heathrow 到酒店</strong><span class="time">公共交通约 38 分钟｜打车约 34 分钟</span></div><div class="path"><span class="step">Heathrow</span><span class="arrow">→</span><span class="step">Elizabeth line / District</span><span class="arrow">→</span><span class="step">Bayswater</span></div><div class="fine"><a href="https://www.google.com/maps/dir/Space%20Apart%20Hotel%2C%2036-37%20Kensington%20Garden%20Square%2C%20London%20W2%204BQ/Heathrow%20Airport%20Terminal%202%20%26%203%2C%20London/data=!4m2!4m1!3e3" target="_blank" rel="noreferrer">公共交通导航</a> · <a href="https://www.google.com/maps/dir/Space%20Apart%20Hotel%2C%2036-37%20Kensington%20Garden%20Square%2C%20London%20W2%204BQ/Heathrow%20Airport%20Terminal%202%20%26%203%2C%20London/data=!4m2!4m1!3e0" target="_blank" rel="noreferrer">打车/驾车导航</a></div></div>
+          </div>
+        </div>
+      </article>
+
+      <section class="card">
+        <div class="section">
+          <h2>Airbnb 候选</h2>
+          <p>这些候选只来自 Airbnb 页面。注意：当前没有拿到无需登录即可确认 2026-08-21 至 2026-08-25 可订价、总价和取消政策的证据，所以不放进“已确认可订”主推荐。</p>
+          <table>
+            <thead><tr><th>Airbnb 房源</th><th>页面信息</th><th>状态</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><a target="_blank" rel="noreferrer" href="https://www.airbnb.com/rooms/1185448333094070958">Modern 2BR Garden Flat King's Cross</a></td>
+                <td>Airbnb 页面显示：Entire rental unit，5 guests，2 bedrooms，3 beds，1 bath，King's Cross，评分约 4.63/5。</td>
+                <td><span class="tag warn">未确认指定日期可订</span> 需要登录/进入 Airbnb 日历核对 8/21-8/25、总价、清洁费和取消政策。</td>
+              </tr>
+              <tr>
+                <td><a target="_blank" rel="noreferrer" href="https://www.airbnb.com/rooms/21993407">King's Cross Great Value For Your Money</a></td>
+                <td>Airbnb 页面显示：Entire rental unit，最多 4 人，短步行到 King's Cross，免费 Wi-Fi、厨具、床品、毛巾等。</td>
+                <td><span class="tag warn">未确认指定日期可订</span> 可作为 Airbnb 搜索入口候选。</td>
+              </tr>
+              <tr>
+                <td><a target="_blank" rel="noreferrer" href="https://www.airbnb.com/rooms/1120799019203370746">Spacious 3-Bedroom Flat near King's Cross</a></td>
+                <td>Airbnb 页面显示：Euston 附近，3 bedrooms，fully equipped kitchen，2 bathrooms，free WiFi 和 washing machine。</td>
+                <td><span class="tag warn">未确认指定日期可订</span> 如果偏好 Airbnb，可优先手动查这个。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section">
+          <h2>查过但不放进主推荐</h2>
+          <table>
+            <thead><tr><th>住宿/平台</th><th>结果</th><th>原因</th></tr></thead>
+            <tbody>
+              <tr><td>Albany Hotel</td><td><span class="tag bad">无房</span></td><td>Expedia 指定日期、3 travelers、1 room 下显示：We have no rooms available at this property for your trip dates.</td></tr>
+              <tr><td>Rooms at 175</td><td><span class="tag bad">不推荐</span></td><td>Expedia 显示不在本站接受预订；评分 4.0，评论风险很高。</td></tr>
+              <tr><td>President Hotel</td><td><span class="tag bad">无房</span></td><td>Expedia 指定日期显示无房。</td></tr>
+              <tr><td>Z Hotel Covent Garden</td><td><span class="tag warn">不能确认</span></td><td>官方有 Family 房，但本次 Expedia 指定日期没有抓到 Reserve/总价/剩余房量。</td></tr>
+              <tr><td>Travelodge / Moxy / City Sleeper / Hyde Park Executive</td><td><span class="tag warn">不能确认</span></td><td>页面没有稳定给出 3 成人指定日期可订房型、床型和总价。</td></tr>
+              <tr><td>Vrbo</td><td><span class="tag warn">未列主推</span></td><td>用户要求 BnB 信息从 Airbnb 找，因此 Vrbo 不作为本版主数据源。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section">
+          <h2>最后建议</h2>
+          <div class="grid-2">
+            <div class="mini">
+              <div class="score">订 Royal National</div>
+              <p>三张床、中心区、到 Euston 约 8 分钟，8/25 拖行李赶曼彻斯特火车最少折腾。价格也在预算内。唯一问题是 Expedia 显示只剩 1 间，且退款截止日需要下单页复核。</p>
+            </div>
+            <div class="mini">
+              <div class="score">备选 W6 Family Studio</div>
+              <p>预算好，但去 Euston、HP Tour、Tower Bridge 都更慢。适合你们愿意用每天多 20-40 分钟路程换价格。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section">
+          <h2>来源</h2>
+          <ul>
+            <li>Expedia 指定日期页面：Royal National Hotel、W6 Hotel Hammersmith、Star Hotel、Space Apart Hotel、Albany Hotel、Rooms at 175 等。</li>
+            <li>Google Maps 路线页：各住宿到 Euston、Warner Bros. Studio Tour、Tower Bridge、Big Ben、Emirates Stadium、Heathrow/Gatwick 的公共交通和驾车时间。</li>
+            <li><a target="_blank" rel="noreferrer" href="https://www.wbstudiotour.co.uk/getting-here/">Warner Bros. Studio Tour London 官方交通页</a>：Watford Junction 到影城 shuttle 说明。</li>
+            <li><a target="_blank" rel="noreferrer" href="https://www.imperialhotels.co.uk/hotels/royal-national-hotel/rooms/triple-room/53-27/">Royal National Hotel 官方 Triple Room 房型页</a></li>
+            <li><a target="_blank" rel="noreferrer" href="https://www.spaceaparthotel.com/">Space Apart Hotel 官方页面</a></li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
