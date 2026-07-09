@@ -51,6 +51,34 @@
       padding: 7px 10px;
       font-size: 14px;
     }
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(247,245,239,.96);
+      border-bottom: 1px solid var(--line);
+      padding: 10px 0;
+      backdrop-filter: blur(8px);
+    }
+    .tab-button {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--navy);
+      border-radius: 8px;
+      padding: 10px 13px;
+      font-weight: 850;
+      cursor: pointer;
+    }
+    .tab-button.active {
+      color: #fff;
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+    .panel { display: none; }
+    .panel.active { display: block; }
     .summary {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -153,10 +181,38 @@
     }
     ul { margin: 0; padding-left: 18px; }
     li { margin: 0 0 7px; }
+    .route-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .route-card {
+      border-left: 4px solid var(--teal);
+      background: #f8fbfa;
+      border-radius: 7px;
+      padding: 10px 11px;
+      font-size: 14px;
+    }
+    .route-card b { display: block; color: var(--navy); margin-bottom: 4px; }
+    .route-card span { display: block; color: var(--muted); margin-top: 3px; }
+    .area-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .area-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 15px 16px;
+    }
+    .area-card h3 { color: var(--navy); }
     footer { color: var(--muted); padding: 8px 22px 28px; font-size: 13px; }
     @media (max-width: 820px) {
       h1 { font-size: 27px; }
-      .summary { grid-template-columns: 1fr; }
+      .summary, .route-grid, .area-grid { grid-template-columns: 1fr; }
       .head, .body { grid-template-columns: 1fr; }
       .meta { grid-template-columns: 1fr 1fr; }
     }
@@ -183,32 +239,62 @@
   </header>
 
   <main class="wrap">
-    <section class="summary">
-      <div class="summary-card"><strong>日期</strong><span>2026/8/22-8/25，三人三晚。</span></div>
-      <div class="summary-card"><strong>床位</strong><span>只保留固定床位；若两人共床，会在房型里明说。</span></div>
-      <div class="summary-card"><strong>价格</strong><span>酒店约 ¥1,498-2,496/晚；Airbnb 合规房源明显更贵。</span></div>
-      <div class="summary-card"><strong>交通</strong><span>重点看 Euston / St Pancras、HP Studio、Tower Bridge、Big Ben。</span></div>
+    <nav class="tabs" aria-label="住宿分段">
+      <button class="tab-button active" data-tab="london-front">伦敦 8/22-25</button>
+      <button class="tab-button" data-tab="manchester">曼彻斯特 8/25-27</button>
+      <button class="tab-button" data-tab="london-return">伦敦后段 8/27-31</button>
+    </nav>
+
+    <section id="london-front" class="panel active">
+      <section class="summary">
+        <div class="summary-card"><strong>日期</strong><span>2026/8/22-8/25，三人三晚。</span></div>
+        <div class="summary-card"><strong>床位</strong><span>只保留固定床位；若两人共床，会在房型里明说。</span></div>
+        <div class="summary-card"><strong>价格</strong><span>酒店约 ¥1,498-2,496/晚；Airbnb 合规房源明显更贵。</span></div>
+        <div class="summary-card"><strong>交通</strong><span>每个候选拆成地铁距离、公共交通、打车时间。</span></div>
+      </section>
+
+      <section class="note">
+        <p><b>推荐口径：</b>如果想省钱和少拖箱，优先看 King's Cross / Euston / Bloomsbury 的酒店。Star Hotel 满足空调和床位条件，但在 Hammersmith，去 Euston 与 HP Studio 时间更长。</p>
+        <p><b>汇率口径：</b>USD/CNY 按 7.18、JPY/CNY 按 0.046、GBP/CNY 按 9.20 折算。付款前仍要看平台实时汇率、税费、清洁费和退改规则。</p>
+      </section>
+
+      <section>
+        <div class="section-label">
+          <h2>酒店候选</h2>
+          <p>链接放在图片旁边。点进去后重点确认同一日期、三人入住、空调、床型和退改价。</p>
+        </div>
+        <div id="hotel-list"></div>
+      </section>
+
+      <section>
+        <div class="section-label">
+          <h2>Airbnb / 整套公寓候选</h2>
+          <p>这组都超过 2 条评价并在页面里看到空调。优势是空间、厨房、洗衣；缺点是价格显著高、去火车站通常更依赖打车。</p>
+        </div>
+        <div id="home-list"></div>
+      </section>
     </section>
 
-    <section class="note">
-      <p><b>推荐口径：</b>如果想省钱和少拖箱，优先看 King's Cross / Euston / Bloomsbury 的酒店。Airbnb 这组满足空调和评价门槛，但同日期合规整套房普遍超过 ¥2,500/晚，所以标红作为空间型备选。</p>
-      <p><b>汇率口径：</b>USD/CNY 按 7.18、JPY/CNY 按 0.046 折算。付款前仍要看平台实时汇率、税费、清洁费和退改规则。</p>
+    <section id="manchester" class="panel">
+      <section class="summary">
+        <div class="summary-card"><strong>日期</strong><span>2026/8/25 入住，2026/8/27 退房，三人两晚。</span></div>
+        <div class="summary-card"><strong>行程</strong><span>科学工业博物馆、国家足球博物馆、利物浦一日往返。</span></div>
+        <div class="summary-card"><strong>优先区域</strong><span>Piccadilly / Victoria / Deansgate。</span></div>
+        <div class="summary-card"><strong>交通重点</strong><span>去利物浦火车和 8/27 回伦敦的车站衔接。</span></div>
+      </section>
+      <div class="note"><p><b>住宿方向：</b>曼城段适合先按区域定范围，再核具体房型和价格。优先住 Piccadilly 或 Victoria，少一次拖箱转场。</p></div>
+      <div id="manchester-areas"></div>
     </section>
 
-    <section>
-      <div class="section-label">
-        <h2>酒店候选</h2>
-        <p>这些更适合带行李跑火车站和 HP Studio 的日程。链接放在图片旁边，点进去后重点确认同一日期、三人入住、空调、床型和退改价。</p>
-      </div>
-      <div id="hotel-list"></div>
-    </section>
-
-    <section>
-      <div class="section-label">
-        <h2>Airbnb / 整套公寓候选</h2>
-        <p>这组都超过 2 条评价并在页面里看到空调。优势是空间、厨房、洗衣；缺点是价格显著高、去火车站通常更依赖打车。</p>
-      </div>
-      <div id="home-list"></div>
+    <section id="london-return" class="panel">
+      <section class="summary">
+        <div class="summary-card"><strong>日期</strong><span>2026/8/27 入住，2026/8/31 退房，三人四晚。</span></div>
+        <div class="summary-card"><strong>行程</strong><span>伦敦后段、周边火车日、返程机场衔接。</span></div>
+        <div class="summary-card"><strong>优先区域</strong><span>Euston / St Pancras / Bloomsbury 或 Paddington。</span></div>
+        <div class="summary-card"><strong>交通重点</strong><span>后段火车日和离境日不要拖箱换太多线。</span></div>
+      </section>
+      <div class="note"><p><b>住宿方向：</b>后段优先选择火车站衔接好的区域，再核具体房型、空调、人民币价格和可退政策。</p></div>
+      <div id="return-areas"></div>
     </section>
   </main>
 
@@ -270,21 +356,23 @@
         tags: ["空调明确", "Bloomsbury", "固定床位需锁定", "不过度豪华"]
       },
       {
-        name: "Holiday Inn London - Bloomsbury by IHG",
-        area: "Russell Square / Bloomsbury",
-        badge: "酒店｜约 ¥7,431 / 3晚",
-        img: "https://image.dayuse.com/hotels/10841/738d25a2049aa5bcbe3657ca0db5eea7-holiday-inn-london-bloomsbury.jpg?twic=v1%2Fresize%3D3840%2Fquality%3D75",
+        name: "Star Hotel",
+        area: "Hammersmith",
+        badge: "酒店｜约 ¥5,358 / 3晚",
+        img: "https://www.starhotellondon.co.uk/wp-content/uploads/2024/04/DSC2085-768x512.jpg",
         links: [
-          ["Expedia 房型页", "https://www.expedia.com/London-Hotels-Holiday-Inn-London-Bloomsbury.h17734.Hotel-Information?chkin=2026-08-22&chkout=2026-08-25&rm1=a3"],
-          ["IHG 官网", "https://www.ihg.com/holidayinn/hotels/us/en/london/lonbl/hoteldetail"]
+          ["Expedia 房型页", "https://www.expedia.com/London-Hotels-Star-Hotel-Bed-Breakfast.h888617.Hotel-Information?chkin=2026-08-22&chkout=2026-08-25&rm1=a3"],
+          ["官网房型", "https://www.starhotellondon.co.uk/rooms/"],
+          ["Hotels.com", "https://www.hotels.com/ho515124/star-hotel-bed-breakfast-london-united-kingdom/"]
         ],
-        room: "Standard Room, 2 Double Beds；下单时锁定 2 Double Beds，不选加床版本。",
-        price: "约 ¥7,431 / 3晚；约 ¥2,477 / 晚。Expedia 搜索结果显示 $1,035 total，按 USD/CNY 7.18 折算。",
-        location: "Russell Square 附近，到 Euston / St Pancras / King's Cross 都是 1-2 站或短车程。",
-        refund: "IHG/Expedia 通常有可退和不可退价；选择可退价后再付款。",
-        luggage: "地铁口和车站衔接好，行李日推荐打车到 St Pancras，省体力。",
-        transport: ["HP Studio：Russell Square 到 Euston，再火车 + 接驳，全程约 60-80 分钟；打车约 50-75 分钟。","Tower Bridge：公共交通约 35-45 分钟；打车约 25-45 分钟。","Big Ben：Piccadilly / District 线衔接约 25-35 分钟；打车约 20-35 分钟。","St Pancras：公共交通约 12-18 分钟；打车约 8-15 分钟。"],
-        tags: ["空调明确", "IHG 官网可查", "2张双人床", "位置稳"]
+        room: "Quadruple Room；1 Double Bed + 2 Single Beds；20 平方米，独立卫浴。",
+        price: "约 ¥5,358 / 3晚；约 ¥1,786 / 晚。旧版 Expedia 抓取价折算；官网起价 £150/晚，按 GBP/CNY 9.20 约 ¥1,380/晚起。",
+        location: "Hammersmith，离 Hammersmith 地铁站约 7-10 分钟步行。",
+        refund: "官网显示 Quadruple 房型有空调，空调需日费；退款截止日以下单页为准。",
+        luggage: "价格和床位很好，但不在北边车站区。三个人带箱去 Euston / St Pancras 建议打车。",
+        station: "Hammersmith 地铁站，步行约 7-10 分钟；无电梯，房间在一楼。",
+        transport: ["HP Studio：公共交通约 75-95 分钟；打车约 45-70 分钟。","Tower Bridge：公共交通约 45-60 分钟；打车约 35-55 分钟。","Big Ben：公共交通约 35-45 分钟；打车约 25-40 分钟。","St Pancras / Euston：公共交通约 35-45 分钟；打车约 25-35 分钟。"],
+        tags: ["空调明确", "1双+2单", "价格好", "西伦敦"]
       },
       {
         name: "Crowne Plaza London - Kings Cross by IHG",
@@ -383,6 +471,78 @@
       }
     ];
 
+    const manchesterAreas = [
+      {
+        title: "Piccadilly / Canal Street",
+        why: "最适合把曼城当交通枢纽：8/27 回伦敦、去利物浦一日往返都省心。",
+        station: "Manchester Piccadilly 步行约 3-12 分钟。",
+        routes: ["科学工业博物馆：公共交通约 18-28 分钟；打车约 10-15 分钟。", "国家足球博物馆：公共交通/步行约 15-25 分钟；打车约 8-15 分钟。", "Liverpool Lime Street：火车约 40-60 分钟。", "回伦敦：Piccadilly 直上火车最顺。"],
+        hotelTypes: "优先看 Family Room / Triple Room / 2 Queen Beds，必须重新核空调和床型。"
+      },
+      {
+        title: "Victoria / AO Arena",
+        why: "去国家足球博物馆和 Victoria 站方便，利物浦火车也顺。",
+        station: "Manchester Victoria 步行约 5-12 分钟。",
+        routes: ["国家足球博物馆：步行约 8-15 分钟。", "科学工业博物馆：电车/公交约 20-30 分钟；打车约 10-18 分钟。", "Liverpool Lime Street：Victoria 或 Piccadilly 转火车约 45-65 分钟。", "回伦敦：通常需接到 Piccadilly。"],
+        hotelTypes: "适合基础连锁或家庭房；行李日比 Deansgate 轻松。"
+      },
+      {
+        title: "Deansgate / Manchester Central",
+        why: "最照顾科学工业博物馆和市中心逛街，晚上吃饭选择多。",
+        station: "Deansgate / St Peter's Square 电车站步行约 5-12 分钟。",
+        routes: ["科学工业博物馆：步行/公交约 10-18 分钟。", "国家足球博物馆：公共交通约 20-30 分钟；打车约 10-15 分钟。", "Liverpool Lime Street：先到 Piccadilly 或 Oxford Road，再火车约 45-65 分钟。", "回伦敦：需接到 Piccadilly。"],
+        hotelTypes: "适合想住得更市中心的人；拖箱去火车站建议打车。"
+      }
+    ];
+
+    const returnAreas = [
+      {
+        title: "Euston / St Pancras / King's Cross",
+        why: "后段如果有火车日或去 St Pancras，住这里最省体力。",
+        station: "Euston、King's Cross St Pancras、Russell Square 步行约 3-15 分钟。",
+        routes: ["伦敦市区景点：公共交通约 20-40 分钟；打车约 15-35 分钟。", "周边火车日：Euston / St Pancras / King's Cross 直接出发。", "Heathrow：Piccadilly line 或 Elizabeth line 转乘约 55-75 分钟；打车约 45-75 分钟。", "Gatwick：到 St Pancras 后 Thameslink，约 55-75 分钟。"],
+        hotelTypes: "优先找 Triple / Family / 2 Double Beds，避开需要临时床的房型。"
+      },
+      {
+        title: "Bloomsbury / Russell Square",
+        why: "比车站门口安静一点，去大英博物馆和西区也方便。",
+        station: "Russell Square / Euston Square 步行约 5-12 分钟。",
+        routes: ["Big Ben / Westminster：公共交通约 25-35 分钟；打车约 20-35 分钟。", "Tower Bridge：公共交通约 35-45 分钟；打车约 25-45 分钟。", "St Pancras：公共交通/打车约 10-20 分钟。", "机场：看具体机场，带箱通常先打车到铁路或地铁主线站。"],
+        hotelTypes: "适合三人连续住四晚；重点核房间面积、窗、空调和可退截止日。"
+      },
+      {
+        title: "Paddington / Bayswater",
+        why: "如果返程走 Heathrow，会比 King's Cross 方向更舒服。",
+        station: "Paddington / Lancaster Gate / Bayswater 步行约 5-12 分钟。",
+        routes: ["Heathrow：Elizabeth line / Heathrow Express 约 20-40 分钟。", "Westminster：公共交通约 20-35 分钟；打车约 20-35 分钟。", "Tower Bridge：公共交通约 40-55 分钟；打车约 30-50 分钟。", "St Pancras：公共交通约 25-40 分钟；打车约 20-35 分钟。"],
+        hotelTypes: "机场优先时可看这里；若后段火车日多，仍优先 Euston / St Pancras。"
+      }
+    ];
+
+    function renderArea(area) {
+      return `<article class="area-card"><h3>${area.title}</h3><p>${area.why}</p><div class="route-grid"><div class="route-card"><b>最近车站</b><span>${area.station}</span></div>${area.routes.map(renderRoute).join("")}</div><p><b>住宿筛选：</b>${area.hotelTypes}</p></article>`;
+    }
+
+    function stationText(item) {
+      if (item.station) return item.station;
+      if (item.area.includes("King's Cross")) return "King's Cross St Pancras 地铁/火车站，步行约 3-9 分钟；Euston 步行约 8-15 分钟。";
+      if (item.area.includes("Bloomsbury")) return "Russell Square / Euston Square / Euston 一带，步行约 6-15 分钟到最近地铁或火车站。";
+      if (item.area.includes("Clerkenwell")) return "到 King's Cross / St Pancras 建议公交或打车，通常约 10-18 分钟。";
+      if (item.area.includes("Nine Elms")) return "Nine Elms 地铁站附近，通常步行约 5-10 分钟；带箱去 Euston 建议打车。";
+      if (item.area.includes("Covent")) return "Covent Garden / Leicester Square 地铁站步行距离内，部分站点楼梯多，带箱建议打车。";
+      if (item.area.includes("Marylebone")) return "Marylebone / Baker Street 一带，步行约 6-12 分钟到地铁或火车站。";
+      return "中心区地址，具体步行时间以下单后房源地址和地图为准。";
+    }
+
+    function renderRoute(line) {
+      const parts = line.split("：");
+      const title = parts.shift();
+      const detail = parts.join("：");
+      const publicMatch = detail.match(/公共交通约[^；。]+|步行[^；。]+|[^；。]*火车[^；。]+/);
+      const taxiMatch = detail.match(/打车约[^；。]+|全程打车约[^；。]+/);
+      return `<div class="route-card"><b>${title}</b><span>公共交通：${publicMatch ? publicMatch[0].replace(/^公共交通约/, "约") : detail}</span><span>打车：${taxiMatch ? taxiMatch[0].replace(/^打车约/, "约").replace(/^全程打车约/, "约") : "按实时路况估算"}</span></div>`;
+    }
+
     function renderOption(item, index) {
       const meta = [
         ["房型/床", item.room],
@@ -393,7 +553,7 @@
       return `<article class="option ${item.over ? "over" : ""}">
         <div class="head">
           <div class="photo">
-            <img src="${item.img}" alt="${item.name}" loading="lazy">
+            <img src="${item.img}" alt="${item.name}">
             <div class="links">${item.links.map(([label, href]) => `<a href="${href}" target="_blank" rel="noopener">${label}</a>`).join("")}</div>
           </div>
           <div>
@@ -411,7 +571,10 @@
         <div class="body">
           <div>
             <h4>交通明细</h4>
-            <ul>${item.transport.map((line) => `<li>${line}</li>`).join("")}</ul>
+            <div class="route-grid">
+              <div class="route-card"><b>最近地铁/车站</b><span>${stationText(item)}</span></div>
+              ${item.transport.map(renderRoute).join("")}
+            </div>
           </div>
           <div>
             <h4>拖行李怎么理解</h4>
@@ -423,6 +586,19 @@
 
     document.querySelector("#hotel-list").innerHTML = hotels.map(renderOption).join("");
     document.querySelector("#home-list").innerHTML = homes.map((item, index) => renderOption(item, index + hotels.length)).join("");
+    document.querySelector("#manchester-areas").innerHTML = `<div class="area-grid">${manchesterAreas.map(renderArea).join("")}</div>`;
+    document.querySelector("#return-areas").innerHTML = `<div class="area-grid">${returnAreas.map(renderArea).join("")}</div>`;
+
+    const buttons = document.querySelectorAll(".tab-button");
+    const panels = document.querySelectorAll(".panel");
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        buttons.forEach((item) => item.classList.remove("active"));
+        panels.forEach((panel) => panel.classList.remove("active"));
+        button.classList.add("active");
+        document.querySelector(`#${button.dataset.tab}`).classList.add("active");
+      });
+    });
   </script>
 </body>
 </html>
