@@ -249,12 +249,125 @@
       font-size: 13px;
       margin: 0;
     }
+    .planner-section {
+      margin: 0 0 24px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.66);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    .planner-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .weather-mini,
+    .meal-card,
+    .budget-row,
+    .source-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+    .weather-mini strong,
+    .meal-card strong,
+    .budget-row strong,
+    .source-card strong {
+      display: block;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .weather-mini span,
+    .meal-card span,
+    .budget-row span,
+    .source-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .trip-day {
+      border-left: 3px solid var(--teal);
+      padding: 0 0 0 14px;
+      margin: 0 0 18px;
+    }
+    .trip-day h3 {
+      margin: 0 0 4px;
+      color: var(--navy);
+      font-size: 18px;
+    }
+    .trip-day .day-summary {
+      color: var(--muted);
+      margin: 0 0 10px;
+      font-size: 13px;
+    }
+    .timeline-list {
+      display: grid;
+      gap: 8px;
+    }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 74px 1fr;
+      gap: 10px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+    .timeline-time {
+      color: var(--teal);
+      font-weight: 800;
+      font-size: 13px;
+    }
+    .timeline-item b {
+      display: block;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+    .timeline-item span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .timeline-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 7px;
+    }
+    .timeline-links a {
+      color: var(--teal);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-size: 12px;
+      text-decoration: none;
+      background: white;
+    }
+    .risk {
+      border-color: #d97706;
+      background: #fff7ed;
+    }
+    .budget-total-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      color: var(--navy);
+      font-weight: 800;
+    }
     footer { color: var(--muted); padding: 8px 22px 28px; font-size: 13px; }
     @media (max-width: 820px) {
       h1 { font-size: 27px; }
-      .summary, .route-grid, .area-grid, .itinerary-grid { grid-template-columns: 1fr; }
+      .summary, .route-grid, .area-grid, .itinerary-grid, .planner-grid { grid-template-columns: 1fr; }
       .head, .body { grid-template-columns: 1fr; }
       .meta { grid-template-columns: 1fr 1fr; }
+      .timeline-item { grid-template-columns: 1fr; }
     }
     @media (max-width: 520px) {
       main { padding: 16px; }
@@ -284,6 +397,45 @@
       <button class="tab-button" data-tab="manchester">曼彻斯特 8/25-27</button>
       <button class="tab-button" data-tab="london-return">伦敦后段 8/27-31</button>
     </nav>
+
+    <section class="planner-section" id="trip-overview">
+      <div class="section-label">
+        <h2>旅行计划总览</h2>
+        <p>按 Notion 行程整理为 2026/8/22-8/31 英国段。天气因超出临近预报窗口，先使用英国长期气候均值和月度趋势；临行前 7-10 天需要重新查逐日预报。</p>
+      </div>
+      <div class="summary">
+        <div class="summary-card"><strong>人员</strong><span>住宿按三人同行口径；公开网页不展示姓名和航班号。</span></div>
+        <div class="summary-card"><strong>路线</strong><span>伦敦前段 → 曼彻斯特/利物浦 → 伦敦后段周边一日游。</span></div>
+        <div class="summary-card"><strong>关键风险</strong><span>8/27 同时衔接曼城退房和 Duxford/剑桥，建议早班车或顺延。</span></div>
+        <div class="summary-card"><strong>预算口径</strong><span>人民币展示；酒店为参考/实查混合，最终以下单页为准。</span></div>
+      </div>
+      <div class="planner-grid" id="weather-list"></div>
+    </section>
+
+    <section class="planner-section" id="trip-days">
+      <div class="section-label">
+        <h2>每日行程</h2>
+        <p>每天按上午、午餐、下午、晚餐/晚上拆分，交通写到可执行层级；有冲突的日子直接标风险。</p>
+      </div>
+      <div id="daily-plan"></div>
+    </section>
+
+    <section class="planner-section" id="trip-food-budget">
+      <div class="section-label">
+        <h2>餐饮与预算</h2>
+        <p>餐饮为行程附近候选，未替你锁定预订；预算含住宿参考、英国境内交通、门票和餐饮，不含国际机票与购物。</p>
+      </div>
+      <div class="planner-grid" id="meal-list"></div>
+      <div id="budget-list" style="margin-top:12px"></div>
+    </section>
+
+    <section class="planner-section" id="trip-reliability">
+      <div class="section-label">
+        <h2>数据可靠度</h2>
+        <p>这里写清楚哪些是官方/实查，哪些是参考估算，避免把动态价格说死。</p>
+      </div>
+      <div class="planner-grid" id="source-list"></div>
+    </section>
 
     <section id="london-front" class="panel active">
       <section class="summary">
@@ -362,10 +514,192 @@
 
   <footer class="wrap">
     <p>库存和价格会变动；最终以下单页显示的总价、退改截止、税费、清洁费、入住规则为准。</p>
-    <p>页面版本：2026-07-10 全行程景点酒店版</p>
+    <p>页面版本：2026-07-10 Travel Planner 技能版</p>
   </footer>
 
   <script>
+    const weatherOverview = [
+      {
+        place: "伦敦",
+        dates: "8/22-8/25、8/27-8/31",
+        temp: "约 23°C / 15°C",
+        rain: "8 月常有短阵雨，带轻薄外套和可收纳雨具。",
+        source: "https://www.metoffice.gov.uk/research/climate/maps-and-data/location-specific-long-term-averages/gcpsvg3nc"
+      },
+      {
+        place: "曼彻斯特",
+        dates: "8/25-8/27",
+        temp: "约 20-21°C / 13-14°C",
+        rain: "比伦敦更容易遇雨，博物馆日影响小，利物浦日要留雨天备选。",
+        source: "https://www.visitmanchester.com/visitor-information/weather/"
+      },
+      {
+        place: "多佛/剑桥",
+        dates: "8/27-8/28",
+        temp: "多佛约 21°C / 15°C",
+        rain: "白崖受风影响更大，优先看风力和能见度，不只看是否下雨。",
+        source: "https://www.metoffice.gov.uk/research/climate/maps-and-data/location-specific-long-term-averages/u10fvfm1g"
+      }
+    ];
+
+    const tripDays = [
+      {
+        date: "8/22",
+        title: "伦敦集合与北伦敦轻量日",
+        place: "London",
+        weather: "伦敦 8 月均值口径：约 23/15°C，阵雨概率需临近复查。",
+        items: [
+          { time: "上午", name: "抵达与进城", note: "不同机场抵达后先处理 Oyster/银行卡交通、SIM/eSIM 和行李。Gatwick/Heathrow 到市区都建议优先铁路，带大箱再短程打车到酒店。" },
+          { time: "午餐", name: "King's Cross / Euston 简餐", note: "以车站周边轻食为主，人均约 ¥120-220；当天不安排远距离餐厅。" },
+          { time: "下午", name: "Emirates Stadium / 酋长球场", note: "从 King's Cross 一带乘 Piccadilly line 到 Arsenal / Holloway Road，公共交通约 20-30 分钟；打车约 20-35 分钟。" },
+          { time: "晚上", name: "酒店附近休整", note: "三人住宿从 8/22 开始，优先少换线、早休息，为 8/23 city walk 留体力。" }
+        ]
+      },
+      {
+        date: "8/23",
+        title: "伦敦 City Walk",
+        place: "Tower Bridge / Westminster / Hyde Park",
+        weather: "户外步行日，建议雨衣或折伞，鞋子比穿搭更重要；Ritz 另看 dress code。",
+        items: [
+          { time: "09:30", name: "Tower Bridge", note: "地铁到 Tower Hill / London Bridge 后步行。可只看外观，也可进塔桥展览，官方夏季成人票约 £15.80。", link: ["官方票价", "https://www.towerbridge.org.uk/whats-on/entry-to-tower-bridge"] },
+          { time: "12:00", name: "午餐：Borough Market / South Bank", note: "顺路、选择多，人均约 ¥150-260；如果之后要去 Ritz，就别安排太撑。" },
+          { time: "14:00", name: "Big Ben + Westminster Abbey", note: "Jubilee / District / Circle 线衔接。西敏寺 2026 夏季成人票官方显示约 £27.13，建议提前订。", link: ["西敏寺票价", "https://www.westminster-abbey.org/visit-us/prices-and-entry-times/"] },
+          { time: "16:30", name: "Buckingham Palace → Hyde Park", note: "从 Westminster / St James's Park 步行串联，整体步数较高；下雨时可删 Hyde Park。" },
+          { time: "晚上", name: "Ritz / 西区附近晚餐", note: "Notion 已标 Ritz dress code。若去 Ritz，预订和着装优先级高于赶景点。" }
+        ]
+      },
+      {
+        date: "8/24",
+        title: "Warner Bros. Studio Tour + West End",
+        place: "Watford / London West End",
+        weather: "室内为主，天气影响低；重点是火车和接驳时间。",
+        items: [
+          { time: "08:30", name: "Euston → Watford Junction", note: "住 Euston / King's Cross 最顺；从 Euston 坐火车到 Watford Junction，再接官方接驳巴士。全程通常 55-70 分钟。" },
+          { time: "10:00", name: "Warner Bros. Studio Tour London", note: "门票必须提前订，官方票页显示 adult tickets start from 价格口径；实际以所选日期和时段为准。", link: ["HP Studio 官方票", "https://www.wbstudiotour.co.uk/tickets/"] },
+          { time: "13:30", name: "午餐：Studio 内餐饮", note: "不建议中途折返找餐厅，人均约 ¥150-260，预算按园区餐饮处理。" },
+          { time: "16:00", name: "回伦敦", note: "Watford Junction → Euston，再去酒店放东西或直接去西区。" },
+          { time: "晚上", name: "West End", note: "看剧日建议把晚餐放在剧院附近，预留取票和入场时间；打车回酒店通常比夜间换线舒服。" }
+        ]
+      },
+      {
+        date: "8/25",
+        title: "伦敦退房 → 曼彻斯特",
+        place: "London / Manchester",
+        weather: "曼城 8 月偏凉且更容易下雨，外套不要托运到拿不到的位置。",
+        items: [
+          { time: "上午", name: "退房与火车去 Manchester Piccadilly", note: "如果从 Euston 出发，住 Euston / King's Cross 周边行李压力最低。车票需临近在 National Rail/Trainline/运营商确认。" },
+          { time: "午餐", name: "Piccadilly 周边简餐", note: "先入住或寄存行李，再吃饭。人均约 ¥120-220。" },
+          { time: "下午", name: "Science and Industry Museum", note: "官方信息显示博物馆 10:00-17:00，常规入场免费但建议预约免费票。", link: ["科学工业博物馆", "https://www.scienceandindustrymuseum.org.uk/visit"] },
+          { time: "傍晚", name: "National Football Museum", note: "官方票务显示成人季票约 £16-18，开放通常到 17:00，若火车晚到就顺延到 8/26 上午。", link: ["足球博物馆票", "https://tickets.nationalfootballmuseum.com/category/48276"] },
+          { time: "晚上", name: "Manchester 市中心晚餐", note: "Piccadilly / Northern Quarter 候选多，人均约 ¥160-280。" }
+        ]
+      },
+      {
+        date: "8/26",
+        title: "利物浦一日游",
+        place: "Liverpool",
+        weather: "海风和阵雨都可能出现，Albert Dock 一带风更明显。",
+        items: [
+          { time: "09:00", name: "Manchester → Liverpool Lime Street", note: "从 Piccadilly / Victoria 坐火车约 40-60 分钟，具体班次出行前查。" },
+          { time: "10:30", name: "The Beatles Story", note: "官方成人票显示 £20，建议提前选时段。", link: ["Beatles Story 票价", "https://www.beatlesstory.com/plan-your-visit/prices/"] },
+          { time: "12:30", name: "午餐：Albert Dock / Liverpool ONE", note: "人均约 ¥150-280，雨天优先室内商场或码头餐厅。" },
+          { time: "14:30", name: "Cavern Club / Mathew Street", note: "从 Albert Dock 步行或短程公交/打车过去；如果想听 live music，晚上气氛更好但回曼城会变晚。" },
+          { time: "18:00", name: "回 Manchester", note: "晚高峰和活动日车次会更挤，回程票和末班时间提前确认。" }
+        ]
+      },
+      {
+        date: "8/27",
+        title: "高风险衔接日：曼城退房 + Duxford/剑桥",
+        place: "Manchester / Cambridge / Duxford",
+        risk: true,
+        weather: "跨城移动日，天气不是最大风险，时间衔接才是。",
+        items: [
+          { time: "清晨", name: "方案 A：早班火车回伦敦后硬接", note: "必须很早从 Manchester Piccadilly 出发，到伦敦后寄存/放行李，再接 King's Cross → Cambridge 或相关交通；任何延误都会压缩 Duxford 时间。" },
+          { time: "上午", name: "方案 B：把 Duxford/剑桥顺延到 8/29", note: "更稳。8/27 只处理曼城退房、回伦敦、入住后休整；这是我更推荐的版本。" },
+          { time: "下午", name: "Imperial War Museum Duxford / Cambridge University", note: "如果执行方案 A，Duxford 和剑桥二选一优先，不建议两个都深逛。", link: ["IWM Duxford", "https://www.iwm.org.uk/visits/iwm-duxford"] },
+          { time: "晚上", name: "伦敦后段酒店入住", note: "后段优先 Euston / St Pancras / King's Cross，之后去 Dover/机场都更好处理。" }
+        ]
+      },
+      {
+        date: "8/28",
+        title: "多佛白崖 + 坎特伯雷",
+        place: "Dover / Canterbury",
+        weather: "白崖要重点看风力、雨和能见度；风大时体验会明显下降。",
+        items: [
+          { time: "08:00", name: "伦敦 → Dover", note: "从 St Pancras / Victoria 等站出发，具体看所订车次。建议早出发，白崖留 2-3 小时。" },
+          { time: "10:30", name: "White Cliffs of Dover", note: "户外步道，雨天或大风时缩短路线；穿防滑鞋。" },
+          { time: "13:30", name: "午餐：Dover 或 Canterbury", note: "鱼薯/英式简餐人均约 ¥120-220；若天气差，优先早点转 Canterbury。" },
+          { time: "15:00", name: "Canterbury Cathedral", note: "官方夏季成人票页面显示约 £17.50-19.50 区间，儿童政策和附加导览以下单页为准。", link: ["坎特伯雷大教堂票", "https://www.canterbury-cathedral.org/visit/tickets-and-opening-times/"] },
+          { time: "傍晚", name: "回伦敦", note: "回程车站到酒店如果带东西多，短程打车收尾。" }
+        ]
+      },
+      {
+        date: "8/29",
+        title: "伦敦补漏/顺延缓冲",
+        place: "London",
+        weather: "作为雨天和延误缓冲日使用。",
+        items: [
+          { time: "上午", name: "Duxford/剑桥顺延位", note: "如果 8/27 不硬接，这天执行 Duxford/剑桥会更合理。" },
+          { time: "午餐", name: "车站周边或剑桥市区", note: "按当天实际路线选，人均约 ¥120-260。" },
+          { time: "下午", name: "伦敦备选：大英博物馆 / 221B / Abbey Road", note: "Notion 区域库里有这些点，可以按天气和体力选 1-2 个，不要再排满。" },
+          { time: "晚上", name: "西区/购物缓冲", note: "补买伴手礼或二刷剧院，注意第二天别太晚。" }
+        ]
+      },
+      {
+        date: "8/30",
+        title: "伦敦自由日与行李整理",
+        place: "London",
+        weather: "轻量机动日。",
+        items: [
+          { time: "上午", name: "自然历史博物馆 / 海德公园周边", note: "Notion 区域库有自然博物馆和海德公园，可组成轻量半日。" },
+          { time: "午餐", name: "South Kensington / Knightsbridge", note: "人均约 ¥150-300；如果购物，预留退税/打包时间。" },
+          { time: "下午", name: "购物与补漏", note: "不要安排远郊，给 8/31 离境留空间。" },
+          { time: "晚上", name: "确认机场交通", note: "查次日机场线路维护、罢工、首班车和打车时间；提前整理行李。" }
+        ]
+      },
+      {
+        date: "8/31",
+        title: "退房与离境",
+        place: "London departure",
+        weather: "按机场路线查当天实况。",
+        items: [
+          { time: "上午", name: "退房/寄存行李", note: "公开报告不展示航班号。按各自机场和出发时间决定是否寄存。" },
+          { time: "中午", name: "机场交通", note: "Heathrow 可看 Elizabeth line / Piccadilly line / Heathrow Express；Gatwick 可看 Thameslink / Gatwick Express / Southern。带大箱时宁可多留 30-45 分钟。" },
+          { time: "出发前", name: "最终检查", note: "护照、签证/入境材料、退税、充电宝容量、液体袋和酒店遗留物。" }
+        ]
+      }
+    ];
+
+    const mealOptions = [
+      { name: "London City Walk", detail: "Borough Market / South Bank 简餐，人均约 ¥150-260；Ritz 若执行，按官网套餐和 dress code 单独确认。" },
+      { name: "HP Studio Day", detail: "Studio 内午餐更稳，人均约 ¥150-260；晚上 West End 周边餐厅需预订。" },
+      { name: "Manchester", detail: "Piccadilly / Northern Quarter，人均约 ¥160-280；雨天优先室内 food hall。" },
+      { name: "Liverpool", detail: "Albert Dock / Liverpool ONE，人均约 ¥150-280；Cavern Club 若听现场另算饮品和门票。" },
+      { name: "Dover / Canterbury", detail: "鱼薯或英式简餐人均约 ¥120-220；天气差时把正餐放 Canterbury 市区。" },
+      { name: "自由日", detail: "按购物/博物馆位置灵活选，人均约 ¥150-300；不建议为餐厅跨城折返。" }
+    ];
+
+    const budgetPlan = {
+      items: [
+        { name: "住宿参考：伦敦前段 3晚", cost: 5360, note: "按 DoubleTree Angel / Star Hotel 等可选价位估算，参考价。" },
+        { name: "住宿参考：曼彻斯特 2晚", cost: 2000, note: "按 Piccadilly 周边三人房估算，参考价。" },
+        { name: "住宿参考：伦敦后段 4晚", cost: 8200, note: "按 DoubleTree Angel / The Wesley / Judd 等区间估算，参考价。" },
+        { name: "英国境内火车与市内交通", cost: 7500, note: "三人合计估算，含伦敦-曼城、利物浦往返、周边日和市内地铁/打车。" },
+        { name: "门票", cost: 5600, note: "三人合计估算，含 HP Studio、Tower Bridge、Westminster Abbey、Beatles Story、Canterbury 等；部分免费博物馆不计。" },
+        { name: "餐饮", cost: 13500, note: "三人 9-10 天按普通餐饮估算，不含高价下午茶/酒水。" },
+        { name: "杂项/保险/寄存", cost: 2500, note: "估算项。" }
+      ]
+    };
+
+    const dataSources = [
+      { name: "Notion 行程", detail: "作为日期、城市和景点主线；公开报告已移除姓名和航班号。", link: "" },
+      { name: "官方景点票价", detail: "Tower Bridge、西敏寺、HP Studio、Beatles Story、Canterbury Cathedral、曼城博物馆等优先采用官网或官方票务页。", link: "https://www.towerbridge.org.uk/whats-on/entry-to-tower-bridge" },
+      { name: "天气口径", detail: "出行日期超出 15 天逐日预报范围，使用 Met Office/目的地官方气候说明作为参考。", link: "https://www.metoffice.gov.uk/research/climate/maps-and-data/location-specific-long-term-averages" },
+      { name: "酒店价格", detail: "沿用当前页面订房平台实查/参考链接；价格、可退截止、税费和库存必须以下单页为准。", link: "#london-front" },
+      { name: "补充实时源", detail: "飞猪实时机酒与小红书社区抓取未纳入本版公开页；酒店和餐饮仍需在下单前按实时页面复核。", link: "" },
+      { name: "临行复核", detail: "出发前 7-10 天重查天气、铁路罢工/维修、门票余量和酒店退改截止。", link: "" }
+    ];
+
     const londonFrontItinerary = [
       {
         date: "8/22",
@@ -892,6 +1226,65 @@
       return `<article class="area-card"><h3>${area.title}</h3><p>${area.why}</p><div class="route-grid"><div class="route-card"><b>最近车站</b><span>${area.station}</span></div>${area.routes.map(renderRoute).join("")}</div><p><b>住宿筛选：</b>${area.hotelTypes}</p></article>`;
     }
 
+    function money(value) {
+      return `¥${value.toLocaleString("zh-CN")}`;
+    }
+
+    function renderWeatherOverview() {
+      document.querySelector("#weather-list").innerHTML = weatherOverview.map((item) =>
+        `<article class="weather-mini">
+          <strong>${item.place}</strong>
+          <span>${item.dates}</span>
+          <span>${item.temp}</span>
+          <span>${item.rain}</span>
+          <div class="timeline-links"><a href="${item.source}" target="_blank" rel="noopener">气候来源</a></div>
+        </article>`
+      ).join("");
+    }
+
+    function renderTripDays() {
+      document.querySelector("#daily-plan").innerHTML = tripDays.map((day) => {
+        const items = day.items.map((item) => {
+          const link = item.link ? `<div class="timeline-links"><a href="${item.link[1]}" target="_blank" rel="noopener">${item.link[0]}</a></div>` : "";
+          return `<div class="timeline-item">
+            <div class="timeline-time">${item.time}</div>
+            <div><b>${item.name}</b><span>${item.note}</span>${link}</div>
+          </div>`;
+        }).join("");
+        return `<article class="trip-day ${day.risk ? "risk" : ""}">
+          <h3>${day.date} · ${day.title}</h3>
+          <p class="day-summary">${day.place}｜${day.weather}</p>
+          <div class="timeline-list">${items}</div>
+        </article>`;
+      }).join("");
+    }
+
+    function renderMeals() {
+      document.querySelector("#meal-list").innerHTML = mealOptions.map((meal) =>
+        `<article class="meal-card"><strong>${meal.name}</strong><span>${meal.detail}</span></article>`
+      ).join("");
+    }
+
+    function renderBudgetPlan() {
+      const total = budgetPlan.items.reduce((sum, item) => sum + item.cost, 0);
+      const rows = budgetPlan.items.map((item) =>
+        `<article class="budget-row">
+          <strong>${item.name}：${money(item.cost)}</strong>
+          <span>${item.note}</span>
+        </article>`
+      ).join("");
+      document.querySelector("#budget-list").innerHTML =
+        `<div class="planner-grid">${rows}</div>
+        <div class="budget-total-line"><span>预估合计，不含国际机票和购物</span><span>${money(total)}，约 ${money(Math.round(total / 3))} / 人</span></div>`;
+    }
+
+    function renderSources() {
+      document.querySelector("#source-list").innerHTML = dataSources.map((source) => {
+        const link = source.link ? `<div class="timeline-links"><a href="${source.link}" target="_blank" rel="noopener">查看来源</a></div>` : "";
+        return `<article class="source-card"><strong>${source.name}</strong><span>${source.detail}</span>${link}</article>`;
+      }).join("");
+    }
+
     function renderDay(day) {
       return `<article class="day-card">
         <div class="day-head">
@@ -972,6 +1365,11 @@
       </article>`;
     }
 
+    renderWeatherOverview();
+    renderTripDays();
+    renderMeals();
+    renderBudgetPlan();
+    renderSources();
     renderItinerary("#london-front-itinerary", londonFrontItinerary);
     renderItinerary("#manchester-itinerary", manchesterItinerary);
     renderItinerary("#return-itinerary", returnItinerary);
