@@ -209,10 +209,50 @@
       padding: 15px 16px;
     }
     .area-card h3 { color: var(--navy); }
+    .itinerary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 0 0 20px;
+    }
+    .day-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .day-card .day-head {
+      padding: 12px 14px;
+      background: #fbfaf5;
+      border-bottom: 1px solid var(--line);
+    }
+    .day-card .day-head strong { display: block; color: var(--navy); font-size: 17px; }
+    .day-card .day-head span { color: var(--muted); font-size: 13px; }
+    .day-card .day-body { padding: 12px 14px 14px; }
+    .sight-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: 8px 0 10px;
+    }
+    .sight {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-size: 13px;
+      color: var(--navy);
+    }
+    .day-note {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 0;
+    }
     footer { color: var(--muted); padding: 8px 22px 28px; font-size: 13px; }
     @media (max-width: 820px) {
       h1 { font-size: 27px; }
-      .summary, .route-grid, .area-grid { grid-template-columns: 1fr; }
+      .summary, .route-grid, .area-grid, .itinerary-grid { grid-template-columns: 1fr; }
       .head, .body { grid-template-columns: 1fr; }
       .meta { grid-template-columns: 1fr 1fr; }
     }
@@ -260,6 +300,14 @@
 
       <section>
         <div class="section-label">
+          <h2>景点与行程</h2>
+          <p>按 Notion 行程表整理，只保留旅行信息，不展示同行者姓名或航班号。</p>
+        </div>
+        <div id="london-front-itinerary"></div>
+      </section>
+
+      <section>
+        <div class="section-label">
           <h2>酒店候选</h2>
           <p>链接放在图片旁边。点进去后重点确认同一日期、三人入住、空调、床型和退改价。</p>
         </div>
@@ -283,6 +331,13 @@
         <div class="summary-card"><strong>交通重点</strong><span>去利物浦火车和 8/27 回伦敦的车站衔接。</span></div>
       </section>
       <div class="note"><p><b>推荐口径：</b>Piccadilly 周边优先，去利物浦和回伦敦都更顺；Oxford Road / St Peter's Square 次之。下列候选都避开只靠临时床的房型。</p></div>
+      <section>
+        <div class="section-label">
+          <h2>景点与行程</h2>
+          <p>曼城段重点是市区博物馆和利物浦一日往返，住宿优先靠 Piccadilly / Victoria。</p>
+        </div>
+        <div id="manchester-itinerary"></div>
+      </section>
       <div id="manchester-list"></div>
     </section>
 
@@ -294,16 +349,109 @@
         <div class="summary-card"><strong>交通重点</strong><span>后段火车日和离境日不要拖箱换太多线。</span></div>
       </section>
       <div class="note"><p><b>推荐口径：</b>后段优先 Euston / St Pancras / King's Cross，铁路日和返程行李压力最小；如果机场走 Heathrow，再看 Paddington 方向。</p></div>
+      <section>
+        <div class="section-label">
+          <h2>景点与行程</h2>
+          <p>后段以周边一日游为主，住宿看重火车站衔接和离境日行李处理。</p>
+        </div>
+        <div id="return-itinerary"></div>
+      </section>
       <div id="return-list"></div>
     </section>
   </main>
 
   <footer class="wrap">
     <p>库存和价格会变动；最终以下单页显示的总价、退改截止、税费、清洁费、入住规则为准。</p>
-    <p>页面版本：2026-07-09 全行程酒店方案版</p>
+    <p>页面版本：2026-07-10 全行程景点酒店版</p>
   </footer>
 
   <script>
+    const londonFrontItinerary = [
+      {
+        date: "8/22",
+        title: "伦敦抵达与北伦敦",
+        area: "伦敦前段",
+        sights: ["Emirates Stadium / 酋长球场", "King's Cross / St Pancras", "Euston"],
+        note: "三人住宿从 8/22 开始。当天重点是抵达后少折腾，住 King's Cross / Euston / Angel 一带最利于后续 HP Studio 和市区行程。"
+      },
+      {
+        date: "8/23",
+        title: "伦敦 City Walk",
+        area: "伦敦核心地标",
+        sights: ["Tower Bridge", "Big Ben", "Westminster Abbey", "Buckingham Palace", "Hyde Park", "The Ritz London"],
+        note: "这天景点分布在泰晤士河两岸和西区，住北边车站区也能用地铁串起来；The Ritz 有着装要求，出门前留意 dress code。"
+      },
+      {
+        date: "8/24",
+        title: "HP Tour 与西区",
+        area: "Watford + West End",
+        sights: ["Warner Bros. Studio Tour London", "Watford Junction", "West End"],
+        note: "优先从 Euston 坐火车到 Watford Junction，再接官方接驳巴士；晚上回西区看剧，Euston / King's Cross / Bloomsbury 会比西伦敦少绕路。"
+      },
+      {
+        date: "8/25",
+        title: "退房去曼彻斯特",
+        area: "伦敦到曼城",
+        sights: ["Euston / St Pancras", "Manchester Piccadilly"],
+        note: "退房日核心是带行李去火车站。住 Euston / King's Cross 周边最省力，Hammersmith 或 Nine Elms 更建议直接打车到车站。"
+      }
+    ];
+
+    const manchesterItinerary = [
+      {
+        date: "8/25",
+        title: "曼彻斯特市区",
+        area: "Manchester",
+        sights: ["Science and Industry Museum", "National Football Museum", "Piccadilly / Victoria"],
+        note: "入住后以市区博物馆和吃饭为主。Piccadilly 方便第二天去利物浦和之后回伦敦；Victoria 更靠近国家足球博物馆。"
+      },
+      {
+        date: "8/26",
+        title: "利物浦一日游",
+        area: "Liverpool",
+        sights: ["The Beatles Story", "Cavern Club", "Liverpool Lime Street"],
+        note: "从 Manchester Piccadilly / Victoria 坐火车往返。住宿离车站越近，早出晚归越轻松。"
+      },
+      {
+        date: "8/27",
+        title: "退房回伦敦",
+        area: "Manchester to London",
+        sights: ["Manchester Piccadilly", "London Euston / St Pancras"],
+        note: "这天要带行李移动，酒店到 Piccadilly 的距离比离单个景点距离更重要。"
+      }
+    ];
+
+    const returnItinerary = [
+      {
+        date: "8/27",
+        title: "Duxford 与剑桥",
+        area: "Cambridge / Duxford",
+        sights: ["Cambridge University", "Imperial War Museum Duxford", "King's Cross / St Pancras"],
+        note: "如果从曼城回伦敦后继续接剑桥方向，住 King's Cross / St Pancras / Euston 一带更容易处理火车和行李。"
+      },
+      {
+        date: "8/28",
+        title: "多佛与坎特伯雷",
+        area: "Dover / Canterbury",
+        sights: ["White Cliffs of Dover", "Canterbury Cathedral", "London rail stations"],
+        note: "这是长距离一日游，早出晚归概率高。住宿靠主线车站或打车容易到车站，会比单纯住景区附近更实用。"
+      },
+      {
+        date: "8/29-8/30",
+        title: "伦敦补漏与休整",
+        area: "London",
+        sights: ["London free day", "Shopping / theatre buffer", "Museum backup"],
+        note: "Notion 后段没有继续细分到每个景点，先按补漏、购物、剧院或博物馆备用日处理；住宿继续以铁路和机场衔接为主。"
+      },
+      {
+        date: "8/31",
+        title: "退房与离境衔接",
+        area: "London departure",
+        sights: ["Heathrow / Gatwick route check", "Hotel luggage storage"],
+        note: "公开网页不放航班号。最终订房时确认退房时间、行李寄存和去机场的公共交通/打车时间。"
+      }
+    ];
+
     const hotels = [
       {
         name: "Kings Cross Inn Hotel",
@@ -744,6 +892,23 @@
       return `<article class="area-card"><h3>${area.title}</h3><p>${area.why}</p><div class="route-grid"><div class="route-card"><b>最近车站</b><span>${area.station}</span></div>${area.routes.map(renderRoute).join("")}</div><p><b>住宿筛选：</b>${area.hotelTypes}</p></article>`;
     }
 
+    function renderDay(day) {
+      return `<article class="day-card">
+        <div class="day-head">
+          <strong>${day.date} · ${day.title}</strong>
+          <span>${day.area}</span>
+        </div>
+        <div class="day-body">
+          <div class="sight-list">${day.sights.map((sight) => `<span class="sight">${sight}</span>`).join("")}</div>
+          <p class="day-note">${day.note}</p>
+        </div>
+      </article>`;
+    }
+
+    function renderItinerary(target, days) {
+      document.querySelector(target).innerHTML = `<div class="itinerary-grid">${days.map(renderDay).join("")}</div>`;
+    }
+
     function stationText(item) {
       if (item.station) return item.station;
       if (item.area.includes("King's Cross")) return "King's Cross St Pancras 地铁/火车站，步行约 3-9 分钟；Euston 步行约 8-15 分钟。";
@@ -807,6 +972,9 @@
       </article>`;
     }
 
+    renderItinerary("#london-front-itinerary", londonFrontItinerary);
+    renderItinerary("#manchester-itinerary", manchesterItinerary);
+    renderItinerary("#return-itinerary", returnItinerary);
     document.querySelector("#hotel-list").innerHTML = hotels.map(renderOption).join("");
     document.querySelector("#home-list").innerHTML = homes.map((item, index) => renderOption(item, index + hotels.length)).join("");
     document.querySelector("#manchester-list").innerHTML = manchesterHotels.map(renderOption).join("");
